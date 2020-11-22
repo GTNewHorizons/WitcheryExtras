@@ -1,0 +1,5 @@
+*.bat
+.gradle/
+Witchery Extras.iml
+Witchery Extras.ipr
+Witchery Extras.iws

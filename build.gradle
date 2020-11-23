@@ -66,23 +66,19 @@ sourceSets {
     main {
         java {
             srcDir 'src/java'
-			srcDir 'src/resources'
+
 
         }
-    }
-	
+    
+	resources{
+			srcDir 'src/resources'
+	}
+}
 }
 
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "eclipse"
-}
-
-sourceSets {
-    main {
-        java { srcDirs = ["$projectDir/src/Java"] }
-        resources { srcDirs = ["$projectDir/src/resources"] }
-    }
 }
 
 idea { module { inheritOutputDirs = true } }

@@ -62,6 +62,15 @@ compileJava {
 	options.encoding = "UTF-8"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+
+        }
+    }
+}
+
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "eclipse"

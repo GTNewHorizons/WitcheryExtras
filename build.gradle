@@ -66,11 +66,14 @@ sourceSets {
     main {
         java {
             srcDir 'src/java'
-			srcDir 'src/resources'
+
 
         }
-    }
-	
+    
+	resources{
+			srcDir 'src/resources'
+	}
+}
 }
 
 minecraft {

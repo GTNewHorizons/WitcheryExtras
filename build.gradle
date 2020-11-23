@@ -67,13 +67,6 @@ minecraft {
     runDir = "eclipse"
 }
 
-sourceSets {
-    main {
-        java { srcDirs = ["$projectDir/src/Java"] }
-        resources { srcDirs = ["$projectDir/src/resources"] }
-    }
-}
-
 idea { module { inheritOutputDirs = true } }
 
 configurations {
@@ -118,6 +111,13 @@ processResources
         exclude 'mcmod.info'
     }
 	exclude '**/Thumbs.db'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ["$projectDir/src/Java"] }
+        resources { srcDirs = ["$projectDir/src/resources"] }
+    }
 }
 
 task sourceJar(type: Jar) {

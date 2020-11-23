@@ -62,6 +62,15 @@ compileJava {
 	options.encoding = "UTF-8"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+
+        }
+    }
+}
+
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "eclipse"
@@ -111,13 +120,6 @@ processResources
         exclude 'mcmod.info'
     }
 	exclude '**/Thumbs.db'
-}
-
-sourceSets {
-    main {
-        java { srcDirs = ["$projectDir/src/Java"] }
-        resources { srcDirs = ["$projectDir/src/resources"] }
-    }
 }
 
 task sourceJar(type: Jar) {

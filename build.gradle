@@ -141,6 +141,13 @@ task devJar(type: Jar) {
     }
 }
 
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'alkalus.main.asm.WE_CORE_FMLLoadingPlugin'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
 artifacts {
     archives devJar
 }

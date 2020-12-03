@@ -3,15 +3,9 @@ package alkalus.main.core.proxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraft.client.Minecraft;
 
 public class Proxy_Client extends Proxy_Common {
 
-	private final static Minecraft mc = Minecraft.getMinecraft();
-	public static final synchronized Minecraft getMC() {
-		return mc;
-	}
-	
 	public void preInit(final FMLPreInitializationEvent e) {
 		super.preInit(e);
 		

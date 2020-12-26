@@ -194,7 +194,11 @@ public class WitchesOvenUtils {
 		}
 		else {
 			final ItemStack itemstack = aValidRecipe.output;
-			if (!getOutputSlot(aTile).isItemEqual(itemstack)) {
+			final ItemStack outputSlot = getOutputSlot(aTile);
+			if (outputSlot == null) {
+				return true;
+			}
+			if (!outputSlot.isItemEqual(itemstack)) {
 				return false;
 			}
 			final int result = getOutputSlot(aTile).stackSize + itemstack.stackSize;
@@ -238,31 +242,23 @@ public class WitchesOvenUtils {
 			return;
 		}
 		else {
-			
+			if (canSmelt(aTile)) {
+				final ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(getInputSlot(aTile));
+				if (getOutputSlot(aTile) == null) {
+					setOutputSlot(aTile, itemstack.copy());
+				}
+				else if (getOutputSlot(aTile).isItemEqual(itemstack)) {
+					final ItemStack itemStack = getOutputSlot(aTile);
+					itemStack.stackSize += itemstack.stackSize;
+				}
+				generateByProduct(aTile, itemstack);
+				final ItemStack itemStack2 = getInputSlot(aTile);
+				--itemStack2.stackSize;
+				if (getInputSlot(aTile).stackSize <= 0) {
+					setInputSlot(aTile, null);
+				}
+			}
 		}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-		/*if (canSmelt(aTile)) {
-		    final ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(getInputSlot(aTile));
-		    if (getOutputSlot(aTile) == null) {
-		        setOutputSlot(aTile, itemstack.copy());
-		    }
-		    else if (getOutputSlot(aTile).isItemEqual(itemstack)) {
-		        final ItemStack itemStack = getOutputSlot(aTile);
-		        itemStack.stackSize += itemstack.stackSize;
-		    }
-		    generateByProduct(aTile, itemstack);
-		    final ItemStack itemStack2 = getInputSlot(aTile);
-		    --itemStack2.stackSize;
-		    if (getInputSlot(aTile).stackSize <= 0) {
-		        setInputSlot(aTile, null);
-		    }
-		}*/
     }
 
 	public static int getFumeFunnels(TileEntityWitchesOven aTile) {

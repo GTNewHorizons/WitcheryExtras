@@ -27,9 +27,6 @@ import net.minecraft.util.StatCollector;
 
 public class NEI_Handler_Oven extends TemplateRecipeHandler
 {
-    public static ArrayList<FuelPair> afuels;
-    public static TreeSet<Integer> efuels;
-    
     public Class<? extends GuiContainer> getGuiClass() {
         return BlockWitchesOvenGUI.class;
     }
@@ -130,43 +127,11 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
         this.drawProgressBar(74, 9, 176, 14, 24, 16, 48, 0);
     }
     
-    private static Set<Item> excludedFuels() {
-        final Set<Item> efuels = new HashSet<Item>();
-        efuels.add(Item.getItemFromBlock((Block)Blocks.brown_mushroom));
-        efuels.add(Item.getItemFromBlock((Block)Blocks.red_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
-        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
-        return efuels;
-    }
-    
-    private static void findFuels() {
-        NEI_Handler_Oven.afuels = new ArrayList<FuelPair>();
-        final Set<Item> efuels = excludedFuels();
-        for (final ItemStack item : ItemList.items) {
-            if (item != null && !efuels.contains(item.getItem())) {
-                final int burnTime = TileEntityFurnace.getItemBurnTime(item);
-                if (burnTime <= 0) {
-                    continue;
-                }
-                NEI_Handler_Oven.afuels.add(new FuelPair(item.copy(), burnTime));
-            }
-        }
-    }
-    
-    private static void findFuelsOnce() {
-        if (NEI_Handler_Oven.afuels == null) {
-            findFuels();
-        }
-    }
-    
     public String getOverlayIdentifier() {
         return "witchery_cooking";
     }
     
     public TemplateRecipeHandler newInstance() {
-        findFuelsOnce();
         return super.newInstance();
     }
     
@@ -195,9 +160,8 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
         }
         
         public PositionedStack getOtherStack() {
-            findFuelsOnce();
-            if (NEI_Handler_Oven.afuels != null && NEI_Handler_Oven.afuels.size() > 0) {
-                return NEI_Handler_Oven.afuels.get(NEI_Handler_Oven.this.cycleticks / 48 % NEI_Handler_Oven.afuels.size()).stack;
+            if (afuels != null && afuels.size() > 0) {
+                return afuels.get(NEI_Handler_Oven.this.cycleticks / 48 % afuels.size()).stack;
             }
             return null;
         }

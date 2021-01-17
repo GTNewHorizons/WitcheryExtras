@@ -177,15 +177,4 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
             return stacks;
         }
     }
-    
-    public static class FuelPair
-    {
-        public PositionedStack stack;
-        public int burnTime;
-        
-        public FuelPair(final ItemStack ingred, final int burnTime) {
-            this.stack = new PositionedStack((Object)ingred, 51, 42);
-            this.burnTime = burnTime;
-        }
-    }
 }

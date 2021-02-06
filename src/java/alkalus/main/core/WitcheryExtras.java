@@ -24,7 +24,7 @@ public class WitcheryExtras {
 	
 	public static final String MODID = "WitcheryExtras";
 	public static final String NAME = "Witchery++";
-	public static final String VERSION = "0.8";
+	public static final String VERSION = "1.1.0";
 	private static final Logger log4j = new Logger();
 
 	private static final Map<Integer, BasePluginWitchery> mPreInitEvents;

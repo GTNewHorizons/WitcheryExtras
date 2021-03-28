@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import codechicken.nei.recipe.FurnaceRecipeHandler;
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.blocks.BlockWitchesOvenGUI;
 
@@ -160,8 +161,8 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
         }
         
         public PositionedStack getOtherStack() {
-            if (afuels != null && afuels.size() > 0) {
-                return afuels.get(NEI_Handler_Oven.this.cycleticks / 48 % afuels.size()).stack;
+            if (FurnaceRecipeHandler.afuels != null && FurnaceRecipeHandler.afuels.size() > 0) {
+                return FurnaceRecipeHandler.afuels.get(NEI_Handler_Oven.this.cycleticks / 48 % FurnaceRecipeHandler.afuels.size()).stack;
             }
             return null;
         }

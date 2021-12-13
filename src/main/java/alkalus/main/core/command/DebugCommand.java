@@ -11,6 +11,8 @@ import com.mojang.authlib.GameProfile;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.ReflectionUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -136,13 +138,18 @@ public class DebugCommand implements ICommand {
 		return true;
 	}
 
+	@SideOnly(Side.CLIENT)
+	private EntityPlayer getClientPlayer() {
+		return Minecraft.getMinecraft().thePlayer;
+	}
+
 	private EntityPlayer getPlayer(final String name){
 		try{
 
 			if (FMLCommonHandler.instance().getEffectiveSide().isClient()) {
 				WitcheryExtras.log(2, "Using Clientside Player Object.");
-				return Minecraft.getMinecraft().thePlayer;
-			}			
+				return getClientPlayer();
+			}
 			final List<EntityPlayer> i = new ArrayList<>();
 			final Iterator<EntityPlayerMP> iterator = MinecraftServer.getServer().getConfigurationManager().playerEntityList.iterator();
 			while (iterator.hasNext()) {

@@ -1,0 +1,9 @@
+// Add your dependencies here
+
+dependencies {
+    compile("com.github.GTNewHorizons:NotEnoughItems:master-SNAPSHOT:dev")
+
+    compile("curse.maven:witchery-69673:2234410") {
+        transitive = false
+    }
+}

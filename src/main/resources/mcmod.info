@@ -1,0 +1,18 @@
+[
+{
+  "modid": "${modId}",
+  "name": "${modName}",
+  "description": "Extends Witchery.",
+  "credits": "",
+  "logoFile": "",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
+  "url": "https://github.com/draknyte1/WitcheryExtras",
+  "updateUrl": "https://github.com/draknyte1/WitcheryExtras",
+  "authorList": [ "Alkalus/Draknyte1" ],
+  "screenshots": [ "" ],
+  "dependencies": [
+     "mod_MinecraftForge"
+  ]
+}
+]

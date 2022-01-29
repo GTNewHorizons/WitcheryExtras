@@ -19,14 +19,15 @@ public class NEI_Config implements IConfigureNEI {
 		if (Loader.isModLoaded("NotEnoughItems") && Config.instance().allowModIntegration && Config.instance().allowNotEnoughItems) {
 			WitcheryExtras.log(0, "Detected NEI, registering our own custom recipe handlers.");
 			API.registerRecipeHandler(new NEI_Handler_Oven());
-			API.registerUsageHandler(new NEI_Handler_Oven());            
+			API.registerUsageHandler(new NEI_Handler_Oven());
 			API.registerRecipeHandler(new NEI_Handler_Distillery());
-			API.registerUsageHandler(new NEI_Handler_Distillery());            
-			API.registerRecipeHandler(new NEI_Handler_Kettle());            
+			API.registerUsageHandler(new NEI_Handler_Distillery());
+			API.registerRecipeHandler(new NEI_Handler_Kettle());
+			API.registerUsageHandler(new NEI_Handler_Kettle());
 			API.registerRecipeHandler(new NEI_Handler_Cauldron());
-			API.registerUsageHandler(new NEI_Handler_Cauldron());            
+			API.registerUsageHandler(new NEI_Handler_Cauldron());
 			API.registerRecipeHandler(new NEI_Handler_SpinningWheel());
-			API.registerUsageHandler(new NEI_Handler_SpinningWheel());    
+			API.registerUsageHandler(new NEI_Handler_SpinningWheel());
 			WitcheryExtras.log(0, "Handling Witchery items and registering highlight handlers.");        
 			fixWitcheryBrokenNEI();  
 		}        	          

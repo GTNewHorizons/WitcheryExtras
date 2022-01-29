@@ -42,6 +42,11 @@ public class NEI_Handler_Kettle extends TemplateRecipeHandler
     }
     
     public void loadUsageRecipes(final ItemStack ingredient) {
+        for (final KettleRecipes.KettleRecipe recipe : KettleRecipes.instance().recipes) {
+            if (Arrays.stream(recipe.inputs).anyMatch(ingredient::isItemEqual)) {
+                this.arecipes.add(new CachedKettleRecipe(recipe.output, recipe));
+            }
+        }
     }
     
     public String getGuiTexture() {

@@ -122,7 +122,12 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
         this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(50, 23, 18, 18), "fuel", new Object[0]));
         this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(74, 9, 24, 18), "witchery_cooking", new Object[0]));
     }
-    
+
+    @Override
+    public String specifyTransferRect() {
+        return "witchery_cooking";
+    }
+
     public void drawExtras(final int recipe) {
         this.drawProgressBar(51, 25, 176, 0, 14, 14, 48, 7);
         this.drawProgressBar(74, 9, 176, 14, 24, 16, 48, 0);

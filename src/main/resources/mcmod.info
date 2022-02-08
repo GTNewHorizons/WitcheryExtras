@@ -7,8 +7,8 @@
   "logoFile": "",
   "version": "${modVersion}",
   "mcversion": "${minecraftVersion}",
-  "url": "https://github.com/draknyte1/WitcheryExtras",
-  "updateUrl": "https://github.com/draknyte1/WitcheryExtras",
+  "url": "https://github.com/GTNewHorizons/WitcheryExtras",
+  "updateUrl": "",
   "authorList": [ "Alkalus/Draknyte1" ],
   "screenshots": [ "" ],
   "dependencies": [

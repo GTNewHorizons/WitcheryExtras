@@ -69,7 +69,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
 				final ItemStack input = recipe.inputs.copy();
 				final ItemStack output = recipe.output.copy();
 				final ItemStack outputJar = recipe.outputJar.copy();
-				if (!Utils.areStacksEqual(result, output, true)) {
+				if (!Utils.areStacksEqual(result, output, true) && !Utils.areStacksEqual(result, outputJar, true)) {
 					continue;
 				}				
 				final SmeltingPair rec = new SmeltingPair(
@@ -101,7 +101,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler
 				final ItemStack input = recipe.inputs.copy();
 				final ItemStack output = recipe.output.copy();
 				final ItemStack outputJar = recipe.outputJar.copy();
-				if (!Utils.areStacksEqual(ingredient, input, true)) {
+				if (!Utils.areStacksEqual(ingredient, input, true) && !Utils.areStacksEqual(ingredient, Witchery.Items.GENERIC.itemEmptyClayJar.createStack(), true)) {
 					continue;
 				}
 				final SmeltingPair rec = new SmeltingPair(

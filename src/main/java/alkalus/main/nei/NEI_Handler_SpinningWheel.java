@@ -91,7 +91,6 @@ public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler
         public ArrayList<PositionedStack> getIngredients() {
             final ArrayList<PositionedStack> recipestacks = new ArrayList<PositionedStack>();
             recipestacks.add(this.fibre);
-            recipestacks.add(this.output);
             if (this.add1 != null) {
                 recipestacks.add(this.add1);
             }

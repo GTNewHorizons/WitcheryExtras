@@ -15,6 +15,7 @@ import com.emoniph.witchery.*;
 
 import java.awt.Rectangle;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class NEI_Handler_Distillery extends TemplateRecipeHandler
 {
@@ -102,9 +103,14 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler
         }
         
         public PositionedStack getResult() {
-            return this.outputs[0];
+            return null;
         }
-        
+
+        @Override
+        public List<PositionedStack> getOtherStacks() {
+            return Arrays.stream(this.outputs).filter(Objects::nonNull).collect(Collectors.toList());
+        }
+
         public ArrayList<PositionedStack> getIngredients() {
             final ArrayList<PositionedStack> recipestacks = new ArrayList<PositionedStack>();
             recipestacks.add(this.ingred1);
@@ -113,11 +119,6 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler
             }
             if (this.jars != null) {
                 recipestacks.add(this.jars);
-            }
-            for (final PositionedStack posStack : this.outputs) {
-                if (posStack != null) {
-                    recipestacks.add(posStack);
-                }
             }
             return recipestacks;
         }

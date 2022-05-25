@@ -85,7 +85,6 @@ public class NEI_Handler_Kettle extends TemplateRecipeHandler
         
         public ArrayList<PositionedStack> getIngredients() {
             final ArrayList<PositionedStack> recipestacks = new ArrayList<PositionedStack>();
-            recipestacks.add(this.result);
             for (final PositionedStack posStack : this.inputs) {
                 if (posStack != null) {
                     recipestacks.add(posStack);

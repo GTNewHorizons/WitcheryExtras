@@ -1,13 +1,17 @@
 package alkalus.main.nei;
 
+import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.recipe.*;
 import java.awt.*;
 import net.minecraft.client.gui.inventory.*;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.*;
 import com.emoniph.witchery.brewing.*;
 import com.emoniph.witchery.brewing.action.*;
 import net.minecraft.item.*;
 import codechicken.nei.*;
+
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class NEI_Handler_Cauldron extends TemplateRecipeHandler
@@ -28,7 +32,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 		if (outputId.equals("witchery_brewing_plus") && this.getClass() == NEI_Handler_Cauldron.class) {
 			for (final BrewActionRitualRecipe ritual : WitcheryBrewRegistry.INSTANCE.getRecipes()) {
 				for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
-					this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients));
+					this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
 				}
 			}
 		}
@@ -41,7 +45,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 		for (final BrewActionRitualRecipe ritual : WitcheryBrewRegistry.INSTANCE.getRecipes()) {
 			for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
 				if (result.isItemEqual(recipe.result)) {
-					this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients));
+					this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
 				}
 			}
 		}
@@ -53,7 +57,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 				for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
 					for (final ItemStack stack : recipe.ingredients) {
 						if (stack.isItemEqual(ingredient)) {
-							this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients));
+							this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
 						}
 					}
 				}
@@ -68,19 +72,38 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 		return "witchery:textures/gui/witchesCauldron.png";
 	}
 
-	public void drawExtras(final int recipe) {
+	public void drawExtras(final int recipeIndex) {
+		int power = ((CachedKettleRecipe) this.arecipes.get(recipeIndex)).getPower();
+		if (power == 0) {
+			return;
+		}
+
+		String text = I18n.format("WitcheryExtras.nei.power", power);
+		GuiDraw.drawString(text, 5, 54, 0x000000, false);
 	}
 
 	public String getOverlayIdentifier() {
 		return "witchery_brewing_plus";
 	}
 
+	private AltarPower getPowerCost(BrewAction recipe) {
+		try {
+			Field powerCostField = BrewAction.class.getDeclaredField("powerCost");
+			powerCostField.setAccessible(true);
+			return (AltarPower) powerCostField.get(recipe);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public class CachedKettleRecipe extends TemplateRecipeHandler.CachedRecipe
 	{
 		PositionedStack result;
 		PositionedStack[] inputs;
+		int power;
 
-		public CachedKettleRecipe(final ItemStack result, final ItemStack[] recipe) {
+		public CachedKettleRecipe(final ItemStack result, final ItemStack[] recipe, final AltarPower powerCost) {
 			super();
 			this.inputs = new PositionedStack[6];
 			this.result = new PositionedStack((Object)result, 119, 31);
@@ -91,6 +114,9 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 				else {
 					this.inputs[i] = null;
 				}
+			}
+			if (powerCost != null) {
+				this.power = powerCost.getPower();
 			}
 		}
 
@@ -106,6 +132,10 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler
 				}
 			}
 			return recipestacks;
+		}
+
+		public int getPower() {
+			return this.power;
 		}
 	}
 }

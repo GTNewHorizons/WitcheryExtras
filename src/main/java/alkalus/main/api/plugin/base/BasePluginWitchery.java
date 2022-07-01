@@ -1,11 +1,10 @@
 package alkalus.main.api.plugin.base;
 
+import alkalus.main.api.RecipeManager;
+import alkalus.main.api.plugin.interfaces.WitcheryPlugin;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import alkalus.main.api.RecipeManager;
-import alkalus.main.api.plugin.interfaces.WitcheryPlugin;
 
 /**
  * This class should be extended, then the three phase methods should be {@link Override}n as required.
@@ -13,74 +12,71 @@ import alkalus.main.api.plugin.interfaces.WitcheryPlugin;
  * @author Alkalus
  *
  */
+public abstract class BasePluginWitchery implements WitcheryPlugin {
 
-public abstract class BasePluginWitchery implements WitcheryPlugin {	
-	
-	
-	/** Just a simple {@link Enum} containing the three main Forge load phases.
-	 * @author Alkalus
-	 */
-	public static enum LoadPhase {
-		   PREINIT, INIT, POSTINIT
-		}
-	
-	/**
-	 *  Small Field used to maintain validation of the plugin.
-	 */
-	private volatile boolean isValid = true;	
+    /** Just a simple {@link Enum} containing the three main Forge load phases.
+     * @author Alkalus
+     */
+    public static enum LoadPhase {
+        PREINIT,
+        INIT,
+        POSTINIT
+    }
 
-	/** Dictates which stages your plugin will load in.
-	 * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
-	 */
-	public BasePluginWitchery(Set<LoadPhase> phases) {
-		this(phases, true);
-	}
-	
-	/** Dictates which stages your plugin will load in.
-	 * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
-	 */
-	public BasePluginWitchery(LoadPhase[] phases) {
-		this(new HashSet<LoadPhase>(Arrays.asList(phases)), true);
-	}
-	
-	/**
-	 * Internal Constructor for Plugins.
-	 * @param phases - Multiple {@link LoadPhase}s. Maximum 3.
-	 * @param internal - {@link boolean that dictates whether or not this was an internal call. 
-	 * Please use false if you reflectively call this, for future compatibility.}
-	 */
-	private BasePluginWitchery(Set<LoadPhase> phases, boolean internal) {
-		if (phases == null || phases.size() <= 0 || phases.size() >= 4) {
-			isValid = false;
-		}
-		if (isValid) {
-			for (LoadPhase p : phases) {
-				if (p == LoadPhase.PREINIT) {
-					RecipeManager.PluginManager.loadPluginForPreInit(this);
-				}
-				else if (p == LoadPhase.INIT) {
-					RecipeManager.PluginManager.loadPluginForInit(this);
-				}
-				else if (p == LoadPhase.POSTINIT) {
-					RecipeManager.PluginManager.loadPluginForPostInit(this);
-				}
-			}
-		}
-	}
-	
-	/** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
-	 * @return - You should return True/False depending upon if the code completes as expected or not.
-	 */
-	public abstract boolean preInit();
+    /**
+     *  Small Field used to maintain validation of the plugin.
+     */
+    private volatile boolean isValid = true;
 
-	/** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
-	 * @return - You should return True/False depending upon if the code completes as expected or not.
-	 */
-	public abstract boolean init();
+    /** Dictates which stages your plugin will load in.
+     * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
+     */
+    public BasePluginWitchery(Set<LoadPhase> phases) {
+        this(phases, true);
+    }
 
-	/** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
-	 * @return - You should return True/False depending upon if the code completes as expected or not.
-	 */
-	public abstract boolean postInit();
+    /** Dictates which stages your plugin will load in.
+     * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
+     */
+    public BasePluginWitchery(LoadPhase[] phases) {
+        this(new HashSet<LoadPhase>(Arrays.asList(phases)), true);
+    }
 
+    /**
+     * Internal Constructor for Plugins.
+     * @param phases - Multiple {@link LoadPhase}s. Maximum 3.
+     * @param internal - {@link boolean that dictates whether or not this was an internal call.
+     * Please use false if you reflectively call this, for future compatibility.}
+     */
+    private BasePluginWitchery(Set<LoadPhase> phases, boolean internal) {
+        if (phases == null || phases.size() <= 0 || phases.size() >= 4) {
+            isValid = false;
+        }
+        if (isValid) {
+            for (LoadPhase p : phases) {
+                if (p == LoadPhase.PREINIT) {
+                    RecipeManager.PluginManager.loadPluginForPreInit(this);
+                } else if (p == LoadPhase.INIT) {
+                    RecipeManager.PluginManager.loadPluginForInit(this);
+                } else if (p == LoadPhase.POSTINIT) {
+                    RecipeManager.PluginManager.loadPluginForPostInit(this);
+                }
+            }
+        }
+    }
+
+    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+     * @return - You should return True/False depending upon if the code completes as expected or not.
+     */
+    public abstract boolean preInit();
+
+    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+     * @return - You should return True/False depending upon if the code completes as expected or not.
+     */
+    public abstract boolean init();
+
+    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+     * @return - You should return True/False depending upon if the code completes as expected or not.
+     */
+    public abstract boolean postInit();
 }

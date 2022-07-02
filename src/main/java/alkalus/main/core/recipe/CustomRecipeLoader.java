@@ -5,17 +5,13 @@ import alkalus.main.core.recipe.fixes.GarlicRecipes;
 
 public class CustomRecipeLoader {
 
-	public CustomRecipeLoader() {
-		run();
-	}
-	
-	private final void run() {		
-		//Fixes recipes that hardcode Witchery Garlic types.
-		new GarlicRecipes();
-		OvenRecipes.generateDefaultOvenRecipes();
-		
-	}
+    public CustomRecipeLoader() {
+        run();
+    }
 
-	
-	
+    private final void run() {
+        // Fixes recipes that hardcode Witchery Garlic types.
+        new GarlicRecipes();
+        OvenRecipes.generateDefaultOvenRecipes();
+    }
 }

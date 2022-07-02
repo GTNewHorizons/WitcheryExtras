@@ -8,21 +8,16 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class Proxy_Common {
-	
-	public void preInit(final FMLPreInitializationEvent e) {
-		
-	}
 
-	public void init(final FMLInitializationEvent e) {	
-		new CustomRecipeLoader();
-	}	
+    public void preInit(final FMLPreInitializationEvent e) {}
 
-	public synchronized void postInit(final FMLPostInitializationEvent e) {	
-		Utils.registerEvent(new TooltipHandler());
-	}
+    public void init(final FMLInitializationEvent e) {
+        new CustomRecipeLoader();
+    }
 
-	public void registerRenderers() {
-		
-	}
-	
+    public synchronized void postInit(final FMLPostInitializationEvent e) {
+        Utils.registerEvent(new TooltipHandler());
+    }
+
+    public void registerRenderers() {}
 }

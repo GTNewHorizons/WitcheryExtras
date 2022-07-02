@@ -21,7 +21,7 @@ import java.util.Map;
         modid = WitcheryExtras.MODID,
         name = WitcheryExtras.NAME,
         version = WitcheryExtras.VERSION,
-        dependencies = "required-after:Forge; after:witchery;")
+        dependencies = "required-after:witchery;required-after:spongemixins;")
 public class WitcheryExtras {
 
     public static final String MODID = "WitcheryExtras";

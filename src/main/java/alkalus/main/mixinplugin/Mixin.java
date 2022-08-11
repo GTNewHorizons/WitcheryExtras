@@ -2,6 +2,7 @@ package alkalus.main.mixinplugin;
 
 import static alkalus.main.mixinplugin.TargetedMod.WITCHERY;
 
+import alkalus.main.mixins.witchery.ShockwaveTaskMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,8 @@ public enum Mixin {
     //
 
     TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, WITCHERY),
-    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, WITCHERY);
+    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, WITCHERY),
+    ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, WITCHERY);
 
     public final String mixinClass;
     public final List<TargetedMod> targetedMods;
@@ -45,5 +47,5 @@ public enum Mixin {
 enum Side {
     BOTH,
     CLIENT,
-    SERVER;
+    SERVER
 }

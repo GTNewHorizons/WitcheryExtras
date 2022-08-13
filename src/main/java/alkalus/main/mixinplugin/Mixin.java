@@ -2,6 +2,7 @@ package alkalus.main.mixinplugin;
 
 import static alkalus.main.mixinplugin.TargetedMod.WITCHERY;
 
+import alkalus.main.mixins.witchery.ShockwaveTaskMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import java.util.Arrays;
 import java.util.List;
@@ -46,5 +47,5 @@ public enum Mixin {
 enum Side {
     BOTH,
     CLIENT,
-    SERVER;
+    SERVER
 }

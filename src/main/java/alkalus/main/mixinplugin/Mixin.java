@@ -16,7 +16,8 @@ public enum Mixin {
     //
 
     TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, WITCHERY),
-    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, WITCHERY);
+    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, WITCHERY),
+    ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, WITCHERY);
 
     public final String mixinClass;
     public final List<TargetedMod> targetedMods;

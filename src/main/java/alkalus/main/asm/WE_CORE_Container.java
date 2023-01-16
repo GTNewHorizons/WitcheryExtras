@@ -32,6 +32,7 @@ public class WE_CORE_Container extends DummyModContainer {
         meta.updateUrl = "";
         meta.screenshots = new String[0];
         meta.logoFile = "";
+        meta.parent = "WitcheryExtras";
         meta.dependencies = (List<ArtifactVersion>) WE_CORE.DEPENDENCIES;
     }
 

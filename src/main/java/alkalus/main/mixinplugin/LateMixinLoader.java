@@ -17,8 +17,8 @@ public class LateMixinLoader implements ILateMixinLoader {
     @Override
     public List<String> getMixins(Set<String> loadedMods) {
         final List<String> mixins = new ArrayList<>();
-        for(Mixin mixin : Mixin.values()) {
-            if(mixin.shouldLoad(loadedMods)) {
+        for (Mixin mixin : Mixin.values()) {
+            if (mixin.shouldLoad(loadedMods)) {
                 mixins.add(mixin.mixinClass);
             }
         }

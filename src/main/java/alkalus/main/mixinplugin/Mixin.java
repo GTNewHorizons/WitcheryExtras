@@ -32,15 +32,15 @@ public enum Mixin {
                         || side == Side.CLIENT && FMLLaunchHandler.side().isClient())
                 && allModsloaded(loadedMods);
     }
-    
+
     private boolean allModsloaded(Set<String> loadedMods) {
-        if(targetedMods.isEmpty()) return true;
-        
-        for(TargetedMod target : targetedMods) {
-            if(target == TargetedMod.VANILLA) continue;
-            if(!loadedMods.isEmpty() && target.modId != null && !loadedMods.contains(target.modId)) return false;
+        if (targetedMods.isEmpty()) return true;
+
+        for (TargetedMod target : targetedMods) {
+            if (target == TargetedMod.VANILLA) continue;
+            if (!loadedMods.isEmpty() && target.modId != null && !loadedMods.contains(target.modId)) return false;
         }
-        
+
         return true;
     }
 }

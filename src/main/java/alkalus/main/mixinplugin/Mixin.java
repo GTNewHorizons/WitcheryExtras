@@ -1,23 +1,14 @@
 package alkalus.main.mixinplugin;
 
-import static alkalus.main.mixinplugin.TargetedMod.WITCHERY;
-
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public enum Mixin {
-
-    //
-    // IMPORTANT: Do not make any references to any mod from this file. This file is loaded quite early on and if
-    // you refer to other mods you load them as well. The consequence is: You can't inject any previously loaded
-    // classes!
-    // Exception: Tags.java, as long as it is used for Strings only!
-    //
-
-    TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, WITCHERY),
-    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, WITCHERY),
-    ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, WITCHERY);
+    TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, TargetedMod.WITCHERY),
+    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, TargetedMod.WITCHERY),
+    ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, TargetedMod.WITCHERY);
 
     public final String mixinClass;
     public final List<TargetedMod> targetedMods;
@@ -35,11 +26,22 @@ public enum Mixin {
         this.side = Side.BOTH;
     }
 
-    public boolean shouldLoad(List<TargetedMod> loadedMods) {
+    public boolean shouldLoad(Set<String> loadedMods) {
         return (side == Side.BOTH
                         || side == Side.SERVER && FMLLaunchHandler.side().isServer()
                         || side == Side.CLIENT && FMLLaunchHandler.side().isClient())
-                && loadedMods.containsAll(targetedMods);
+                && allModsloaded(loadedMods);
+    }
+    
+    private boolean allModsloaded(Set<String> loadedMods) {
+        if(targetedMods.isEmpty()) return true;
+        
+        for(TargetedMod target : targetedMods) {
+            if(target == TargetedMod.VANILLA) continue;
+            if(!loadedMods.isEmpty() && target.modId != null && !loadedMods.contains(target.modId)) return false;
+        }
+        
+        return true;
     }
 }
 

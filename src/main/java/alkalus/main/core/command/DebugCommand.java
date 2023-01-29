@@ -1,16 +1,10 @@
 package alkalus.main.core.command;
 
-import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.util.ReflectionUtils;
-import com.emoniph.witchery.infusion.Infusion;
-import com.mojang.authlib.GameProfile;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -21,6 +15,16 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+
+import alkalus.main.core.WitcheryExtras;
+import alkalus.main.core.util.ReflectionUtils;
+
+import com.emoniph.witchery.infusion.Infusion;
+import com.mojang.authlib.GameProfile;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class DebugCommand implements ICommand {
 
@@ -145,9 +149,7 @@ public class DebugCommand implements ICommand {
             }
             final List<EntityPlayer> i = new ArrayList<>();
             final Iterator<EntityPlayerMP> iterator = MinecraftServer.getServer()
-                    .getConfigurationManager()
-                    .playerEntityList
-                    .iterator();
+                    .getConfigurationManager().playerEntityList.iterator();
             while (iterator.hasNext()) {
                 i.add((iterator.next()));
             }
@@ -158,8 +160,7 @@ public class DebugCommand implements ICommand {
                     return temp;
                 }
             }
-        } catch (final Throwable e) {
-        }
+        } catch (final Throwable e) {}
         return null;
     }
 }

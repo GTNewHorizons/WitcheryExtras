@@ -1,22 +1,29 @@
 package alkalus.main.nei;
 
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.*;
-import codechicken.nei.recipe.*;
-import com.emoniph.witchery.brewing.*;
-import com.emoniph.witchery.brewing.action.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.*;
+
 import net.minecraft.client.gui.inventory.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 
+import codechicken.lib.gui.GuiDraw;
+import codechicken.nei.*;
+import codechicken.nei.recipe.*;
+
+import com.emoniph.witchery.brewing.*;
+import com.emoniph.witchery.brewing.action.*;
+
 public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
+
     public void loadTransferRects() {
-        this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(92, 31, 24, 18), "witchery_brewing_plus", new Object[0]));
+        this.transferRects.add(
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(92, 31, 24, 18),
+                        "witchery_brewing_plus",
+                        new Object[0]));
     }
 
     public Class<? extends GuiContainer> getGuiClass() {
@@ -96,6 +103,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
     }
 
     public class CachedKettleRecipe extends TemplateRecipeHandler.CachedRecipe {
+
         PositionedStack result;
         PositionedStack[] inputs;
         int power;

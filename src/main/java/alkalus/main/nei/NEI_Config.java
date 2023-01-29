@@ -1,22 +1,24 @@
 package alkalus.main.nei;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+
 import alkalus.main.core.WitcheryExtras;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.api.IHighlightHandler;
+
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.integration.NEIHighlightHandler;
 import com.emoniph.witchery.util.Config;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 
 public class NEI_Config implements IConfigureNEI {
 
     public void loadConfig() {
-        if (Loader.isModLoaded("NotEnoughItems")
-                && Config.instance().allowModIntegration
+        if (Loader.isModLoaded("NotEnoughItems") && Config.instance().allowModIntegration
                 && Config.instance().allowNotEnoughItems) {
             WitcheryExtras.log(0, "Detected NEI, registering our own custom recipe handlers.");
             API.registerRecipeHandler(new NEI_Handler_Oven());
@@ -84,14 +86,18 @@ public class NEI_Config implements IConfigureNEI {
         API.hideItem(new ItemStack((Block) Witchery.Blocks.MIRROR));
         API.hideItem(new ItemStack((Block) Witchery.Blocks.MIRROR_UNBREAKABLE));
 
-        API.registerHighlightIdentifier(Witchery.Blocks.TRAPPED_PLANT, (IHighlightHandler)
-                new NEIHighlightHandler(Witchery.Blocks.TRAPPED_PLANT));
         API.registerHighlightIdentifier(
-                Witchery.Blocks.DOOR_ALDER, (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.DOOR_ALDER));
+                Witchery.Blocks.TRAPPED_PLANT,
+                (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.TRAPPED_PLANT));
         API.registerHighlightIdentifier(
-                Witchery.Blocks.PIT_DIRT, (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.PIT_DIRT));
+                Witchery.Blocks.DOOR_ALDER,
+                (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.DOOR_ALDER));
         API.registerHighlightIdentifier(
-                Witchery.Blocks.PIT_GRASS, (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.PIT_GRASS));
+                Witchery.Blocks.PIT_DIRT,
+                (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.PIT_DIRT));
+        API.registerHighlightIdentifier(
+                Witchery.Blocks.PIT_GRASS,
+                (IHighlightHandler) new NEIHighlightHandler(Witchery.Blocks.PIT_GRASS));
         WitcheryExtras.log(0, "Done handling NEI related content.");
     }
 

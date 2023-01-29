@@ -1,13 +1,16 @@
 package alkalus.main.core.util;
 
-import alkalus.main.asm.AsmConfig;
-import com.emoniph.witchery.Witchery;
-import com.emoniph.witchery.blocks.BlockPoppetShelf.TileEntityPoppetShelf;
-import com.emoniph.witchery.util.Log;
 import java.lang.reflect.Field;
+
 import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
+
+import alkalus.main.asm.AsmConfig;
+
+import com.emoniph.witchery.Witchery;
+import com.emoniph.witchery.blocks.BlockPoppetShelf.TileEntityPoppetShelf;
+import com.emoniph.witchery.util.Log;
 
 public class PoppetShelfUtils {
 
@@ -30,14 +33,11 @@ public class PoppetShelfUtils {
                     chunkTicket.getModData().setInteger("poppetZ", aShelf.zCoord);
                     aShelf.forceChunkLoading(chunkTicket);
                 } else {
-                    Log.instance()
-                            .warning(String.format(
+                    Log.instance().warning(
+                            String.format(
                                     "The poppet shelf at %d, %d, %d failed to register a chunk loader.",
-                                    new Object[] {
-                                        Integer.valueOf(aShelf.xCoord),
-                                        Integer.valueOf(aShelf.yCoord),
-                                        Integer.valueOf(aShelf.zCoord)
-                                    }));
+                                    new Object[] { Integer.valueOf(aShelf.xCoord), Integer.valueOf(aShelf.yCoord),
+                                            Integer.valueOf(aShelf.zCoord) }));
                 }
             }
         }
@@ -50,14 +50,11 @@ public class PoppetShelfUtils {
                 if (chunkTicket != null) {
                     ForgeChunkManager.releaseTicket(chunkTicket);
                 } else {
-                    Log.instance()
-                            .warning(String.format(
+                    Log.instance().warning(
+                            String.format(
                                     "Chunk loader ticket is null for poppet shelf at %d, %d, %d.",
-                                    new Object[] {
-                                        Integer.valueOf(aShelf.xCoord),
-                                        Integer.valueOf(aShelf.yCoord),
-                                        Integer.valueOf(aShelf.zCoord)
-                                    }));
+                                    new Object[] { Integer.valueOf(aShelf.xCoord), Integer.valueOf(aShelf.yCoord),
+                                            Integer.valueOf(aShelf.zCoord) }));
                 }
             }
         }

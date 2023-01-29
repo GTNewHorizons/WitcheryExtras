@@ -1,6 +1,7 @@
 package alkalus.main.mixinplugin;
 
 public enum TargetedMod {
+
     VANILLA("Minecraft", null),
     WITCHERY("Witchery", null, "witchery");
 

@@ -1,12 +1,15 @@
 package alkalus.main.mixins.witchery;
 
-import com.emoniph.witchery.crafting.SpinningRecipes;
 import java.util.ArrayList;
+
 import net.minecraft.item.ItemStack;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import com.emoniph.witchery.crafting.SpinningRecipes;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(SpinningRecipes.SpinningRecipe.class)

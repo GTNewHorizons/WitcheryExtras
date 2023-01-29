@@ -1,9 +1,10 @@
 package alkalus.main.asm;
 
+import java.util.Map;
+
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
-import java.util.Map;
 
 @SortingIndex(10097)
 @MCVersion(value = "1.7.10")
@@ -18,7 +19,7 @@ public class WE_CORE_FMLLoadingPlugin implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[] {WE_CORE_Handler.class.getName()};
+        return new String[] { WE_CORE_Handler.class.getName() };
     }
 
     @Override

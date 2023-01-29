@@ -2,12 +2,13 @@ package alkalus.main.asm.transformer;
 
 import static org.objectweb.asm.Opcodes.*;
 
-import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import org.apache.logging.log4j.Level;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
+
+import cpw.mods.fml.relauncher.FMLRelaunchLog;
 
 public abstract class BaseTransformer {
 
@@ -106,10 +107,11 @@ public abstract class BaseTransformer {
                 methodVisitor = null;
             }
             if (found) {
-                log("Found method " + name + ", removing. "
-                        + (checkDesc
-                                ? "Using matching method desc. '" + checkDesc + "'"
-                                : "Did not compare method desc."));
+                log(
+                        "Found method " + name
+                                + ", removing. "
+                                + (checkDesc ? "Using matching method desc. '" + checkDesc + "'"
+                                        : "Did not compare method desc."));
             }
             return methodVisitor;
         }

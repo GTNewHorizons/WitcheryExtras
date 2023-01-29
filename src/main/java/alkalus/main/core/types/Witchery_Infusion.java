@@ -1,9 +1,12 @@
 package alkalus.main.core.types;
 
-import alkalus.main.core.util.ReflectionUtils;
-import com.emoniph.witchery.infusion.Infusion;
 import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
+
+import alkalus.main.core.util.ReflectionUtils;
+
+import com.emoniph.witchery.infusion.Infusion;
 
 public class Witchery_Infusion {
 
@@ -37,8 +40,7 @@ public class Witchery_Infusion {
                     return mCachedLastRegistryValue = registry.size();
                 }
             }
-        } catch (Throwable t) {
-        }
+        } catch (Throwable t) {}
         return mCachedLastRegistryValue + 1;
     }
 
@@ -50,6 +52,7 @@ public class Witchery_Infusion {
     public static synchronized Infusion getInfusionOnPlayer(EntityPlayer entity) {
         return Infusion.Registry.instance().get(entity);
     }
+
     /**
      *
      * @param entity - The Infusion ID to use to find an Infusion.

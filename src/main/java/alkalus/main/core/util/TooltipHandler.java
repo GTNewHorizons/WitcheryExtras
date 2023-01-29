@@ -1,12 +1,13 @@
 package alkalus.main.core.util;
 
-import alkalus.main.asm.AsmConfig;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+
+import alkalus.main.asm.AsmConfig;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class TooltipHandler {
 

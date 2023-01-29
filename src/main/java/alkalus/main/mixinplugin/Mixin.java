@@ -1,11 +1,13 @@
 package alkalus.main.mixinplugin;
 
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import cpw.mods.fml.relauncher.FMLLaunchHandler;
+
 public enum Mixin {
+
     TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, TargetedMod.WITCHERY),
     SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, TargetedMod.WITCHERY),
     ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, TargetedMod.WITCHERY);
@@ -27,10 +29,8 @@ public enum Mixin {
     }
 
     public boolean shouldLoad(Set<String> loadedMods) {
-        return (side == Side.BOTH
-                        || side == Side.SERVER && FMLLaunchHandler.side().isServer()
-                        || side == Side.CLIENT && FMLLaunchHandler.side().isClient())
-                && allModsloaded(loadedMods);
+        return (side == Side.BOTH || side == Side.SERVER && FMLLaunchHandler.side().isServer()
+                || side == Side.CLIENT && FMLLaunchHandler.side().isClient()) && allModsloaded(loadedMods);
     }
 
     private boolean allModsloaded(Set<String> loadedMods) {

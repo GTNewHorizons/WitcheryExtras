@@ -1,9 +1,15 @@
 package alkalus.main.core.entities;
 
+import java.lang.reflect.Field;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+
 import alkalus.main.api.RecipeManager;
 import alkalus.main.asm.AsmConfig;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.ReflectionUtils;
+
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.predictions.PredictionAlwaysForced;
 import com.emoniph.witchery.predictions.PredictionArrow;
@@ -15,9 +21,6 @@ import com.emoniph.witchery.predictions.PredictionMultiMine;
 import com.emoniph.witchery.predictions.PredictionNetherTrip;
 import com.emoniph.witchery.predictions.PredictionRescue;
 import com.emoniph.witchery.predictions.PredictionWet;
-import java.lang.reflect.Field;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 
 public class PredictionHandler {
 
@@ -54,44 +57,36 @@ public class PredictionHandler {
         mRegularFulfillmentProbability = ReflectionUtils.getField(
                 ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionAlwaysForced"),
                 "regularFulfillmentProbability");
-        mRescueEntityClass = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionRescue"), "entityClass");
+        mRescueEntityClass = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionRescue"), "entityClass");
         mChestGenHook = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionBuriedTreasure"), "chestGenHook");
-        mBlock = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "block");
+                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionBuriedTreasure"),
+                "chestGenHook");
+        mBlock = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "block");
         mItem = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "itemPrototype");
-        mMinExtra = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "minExtra");
-        mMaxExtra = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "maxExtra");
-        mFightEntityClass = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "entityClass");
-        mBindTameable = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "bindTameable");
+                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"),
+                "itemPrototype");
+        mMinExtra = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "minExtra");
+        mMaxExtra = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "maxExtra");
+        mFightEntityClass = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "entityClass");
+        mBindTameable = ReflectionUtils
+                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "bindTameable");
     }
 
     public static void adjustPredictions() {
-        int[] aNewValues = new int[] {
-            AsmConfig.chancePredictionSpawnZombie,
-            AsmConfig.chancePredictionSpawnSkeleton,
-            AsmConfig.chancePredictionSpawnEnt,
-            AsmConfig.chancePredictionStumbleAndFall,
-            AsmConfig.chancePredictionExtraIron,
-            AsmConfig.chancePredictionFindShinies,
-            AsmConfig.chancePredictionFindShinies,
-            AsmConfig.chancePredictionSpawnBuriedTreasure,
-            AsmConfig.chancePredictionVillagerLove,
-            AsmConfig.chancePredictionSpawnBabaYagaBad,
-            AsmConfig.chancePredictionSpawnBabaYagaGood,
-            AsmConfig.chancePredictionSpawnFriendlyWolf,
-            AsmConfig.chancePredictionSpawnProtectiveAnimal,
-            AsmConfig.chancePredictionSpawnProtectiveAnimal,
-            AsmConfig.chancePredictionGetWet,
-            AsmConfig.chancePredictionTeleportNether,
-            AsmConfig.chancePredictionExtraCoal,
-        };
+        int[] aNewValues = new int[] { AsmConfig.chancePredictionSpawnZombie, AsmConfig.chancePredictionSpawnSkeleton,
+                AsmConfig.chancePredictionSpawnEnt, AsmConfig.chancePredictionStumbleAndFall,
+                AsmConfig.chancePredictionExtraIron, AsmConfig.chancePredictionFindShinies,
+                AsmConfig.chancePredictionFindShinies, AsmConfig.chancePredictionSpawnBuriedTreasure,
+                AsmConfig.chancePredictionVillagerLove, AsmConfig.chancePredictionSpawnBabaYagaBad,
+                AsmConfig.chancePredictionSpawnBabaYagaGood, AsmConfig.chancePredictionSpawnFriendlyWolf,
+                AsmConfig.chancePredictionSpawnProtectiveAnimal, AsmConfig.chancePredictionSpawnProtectiveAnimal,
+                AsmConfig.chancePredictionGetWet, AsmConfig.chancePredictionTeleportNether,
+                AsmConfig.chancePredictionExtraCoal, };
         for (int i = 0; i < 18; i++) {
             Prediction aOld = RecipeManager.Predictions.getPrediction(i);
             if (aOld != null) {
@@ -99,8 +94,12 @@ public class PredictionHandler {
                     RecipeManager.Predictions.remove(aOld);
                     WitcheryExtras.log(
                             0,
-                            "Adjusting weight of " + aOld.getTranslationKey() + " from " + aOld.itemWeight + " to "
-                                    + aNewValues[i - 1] + ".");
+                            "Adjusting weight of " + aOld.getTranslationKey()
+                                    + " from "
+                                    + aOld.itemWeight
+                                    + " to "
+                                    + aNewValues[i - 1]
+                                    + ".");
                     RecipeManager.Predictions.add(generateNewPrediction(aOld, aNewValues[i - 1]));
                 }
             }
@@ -111,13 +110,13 @@ public class PredictionHandler {
         Prediction aNewPrediction = null;
         int predictionID = aOldPrediction.predictionID;
         String translationKey = aOldPrediction.getTranslationKey();
-        double selfFulfillmentProbabilityPerSec =
-                (double) ReflectionUtils.getFieldValue(mSelfFulfillmentProbabilityPerSec, aOldPrediction);
+        double selfFulfillmentProbabilityPerSec = (double) ReflectionUtils
+                .getFieldValue(mSelfFulfillmentProbabilityPerSec, aOldPrediction);
         if (aOldPrediction instanceof PredictionAlwaysForced) {
-            final int regularFulfillmentDurationInTicks =
-                    (int) ReflectionUtils.getFieldValue(mRegularFulfillmentDurationInTicks, aOldPrediction);
-            final double regularFulfillmentProbability =
-                    (double) ReflectionUtils.getFieldValue(mRegularFulfillmentProbability, aOldPrediction);
+            final int regularFulfillmentDurationInTicks = (int) ReflectionUtils
+                    .getFieldValue(mRegularFulfillmentDurationInTicks, aOldPrediction);
+            final double regularFulfillmentProbability = (double) ReflectionUtils
+                    .getFieldValue(mRegularFulfillmentProbability, aOldPrediction);
             if (aOldPrediction instanceof PredictionMultiMine) {
                 final Block block = (Block) ReflectionUtils.getFieldValue(mBlock, aOldPrediction);
                 final ItemStack itemPrototype = (ItemStack) ReflectionUtils.getFieldValue(mItem, aOldPrediction);
@@ -174,17 +173,29 @@ public class PredictionHandler {
                     aEntityClass,
                     aBindTameable);
         } else if (aOldPrediction instanceof PredictionArrow) {
-            aNewPrediction =
-                    new PredictionArrow(predictionID, aNewWeight, selfFulfillmentProbabilityPerSec, translationKey);
+            aNewPrediction = new PredictionArrow(
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey);
         } else if (aOldPrediction instanceof PredictionFall) {
-            aNewPrediction =
-                    new PredictionFall(predictionID, aNewWeight, selfFulfillmentProbabilityPerSec, translationKey);
+            aNewPrediction = new PredictionFall(
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey);
         } else if (aOldPrediction instanceof PredictionWet) {
-            aNewPrediction =
-                    new PredictionWet(predictionID, aNewWeight, selfFulfillmentProbabilityPerSec, translationKey);
+            aNewPrediction = new PredictionWet(
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey);
         } else if (aOldPrediction instanceof PredictionNetherTrip) {
             aNewPrediction = new PredictionNetherTrip(
-                    predictionID, aNewWeight, selfFulfillmentProbabilityPerSec, translationKey);
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey);
         }
 
         return aNewPrediction;

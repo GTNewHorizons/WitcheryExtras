@@ -1,5 +1,9 @@
 package alkalus.main.core;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import alkalus.main.api.plugin.base.BasePluginWitchery;
 import alkalus.main.core.command.DebugCommand;
 import alkalus.main.core.entities.PredictionHandler;
@@ -13,9 +17,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Mod(
         modid = WitcheryExtras.MODID,

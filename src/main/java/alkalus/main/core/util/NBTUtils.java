@@ -1,11 +1,13 @@
 package alkalus.main.core.util;
 
-import alkalus.main.core.WitcheryExtras;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
+
+import alkalus.main.core.WitcheryExtras;
 
 public class NBTUtils {
 
@@ -165,7 +167,10 @@ public class NBTUtils {
                         for (Map.Entry<?, ?> e : mInternalMap.entrySet()) {
                             WitcheryExtras.log(
                                     0,
-                                    "Key: " + e.getKey().toString() + " | Value: " + e.getValue() + " | Type: "
+                                    "Key: " + e.getKey().toString()
+                                            + " | Value: "
+                                            + e.getValue()
+                                            + " | Type: "
                                             + e.getValue().getClass().getName());
                         }
                         return true;
@@ -175,8 +180,7 @@ public class NBTUtils {
                     }
                 }
             }
-        } catch (Throwable t) {
-        }
+        } catch (Throwable t) {}
         return false;
     }
 

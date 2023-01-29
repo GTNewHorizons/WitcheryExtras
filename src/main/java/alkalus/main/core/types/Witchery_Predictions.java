@@ -1,9 +1,11 @@
 package alkalus.main.core.types;
 
+import java.util.Hashtable;
+
 import alkalus.main.core.util.ReflectionUtils;
+
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.predictions.PredictionManager;
-import java.util.Hashtable;
 
 public class Witchery_Predictions {
 
@@ -18,8 +20,7 @@ public class Witchery_Predictions {
                     return registry;
                 }
             }
-        } catch (Throwable t) {
-        }
+        } catch (Throwable t) {}
         return new Hashtable<Integer, Prediction>();
     }
 }

@@ -1,9 +1,11 @@
 package alkalus.main.core.types;
 
+import java.util.ArrayList;
+
 import alkalus.main.core.util.ReflectionUtils;
+
 import com.emoniph.witchery.ritual.RiteRegistry;
 import com.emoniph.witchery.ritual.RiteRegistry.Ritual;
-import java.util.ArrayList;
 
 public class Witchery_Rite {
 
@@ -19,8 +21,7 @@ public class Witchery_Rite {
                     return mCachedLastRegistryValue = registry.size();
                 }
             }
-        } catch (Throwable t) {
-        }
+        } catch (Throwable t) {}
         return mCachedLastRegistryValue + 1;
     }
 }

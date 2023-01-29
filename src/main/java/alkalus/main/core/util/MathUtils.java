@@ -5,12 +5,11 @@ import java.util.Random;
 public class MathUtils {
 
     /**
-     * Returns a psuedo-random number between min and max, inclusive.
-     * The difference between min and max can be at most
+     * Returns a psuedo-random number between min and max, inclusive. The difference between min and max can be at most
      * Integer.MAX_VALUE - 1.
      *
      * @param min Minimim value
-     * @param max Maximim value.  Must be greater than min.
+     * @param max Maximim value. Must be greater than min.
      * @return Integer between min and max, inclusive.
      * @see java.util.Random#nextInt(int)
      */
@@ -27,12 +26,11 @@ public class MathUtils {
     }
 
     /**
-     * Returns a psuedo-random number between min and max, inclusive.
-     * The difference between min and max can be at most
+     * Returns a psuedo-random number between min and max, inclusive. The difference between min and max can be at most
      * Long.MAX_VALUE - 1.
      *
      * @param min Minimim value
-     * @param max Maximim value.  Must be greater than min.
+     * @param max Maximim value. Must be greater than min.
      * @return Long between min and max, inclusive.
      * @see java.util.Random#nextLong(long)
      */
@@ -53,12 +51,11 @@ public class MathUtils {
     }
 
     /**
-     * Returns a psuedo-random number between min and max, inclusive.
-     * The difference between min and max can be at most
+     * Returns a psuedo-random number between min and max, inclusive. The difference between min and max can be at most
      * Double.MAX_VALUE - 1.
      *
      * @param min Minimim value
-     * @param max Maximim value.  Must be greater than min.
+     * @param max Maximim value. Must be greater than min.
      * @return Double between min and max, inclusive.
      * @see java.util.Random#nextDouble(double)
      */
@@ -79,12 +76,11 @@ public class MathUtils {
     }
 
     /**
-     * Returns a psuedo-random number between min and max, inclusive.
-     * The difference between min and max can be at most
+     * Returns a psuedo-random number between min and max, inclusive. The difference between min and max can be at most
      * Float.MAX_VALUE - 1.
      *
      * @param min Minimim value
-     * @param max Maximim value.  Must be greater than min.
+     * @param max Maximim value. Must be greater than min.
      * @return Float between min and max, inclusive.
      * @see java.util.Random#nextFloat(float)
      */
@@ -105,12 +101,10 @@ public class MathUtils {
     }
 
     /**
-     * Returns a percentage.
-     * The returned number is the % of X in Y.
-     * Supports Doubles.
+     * Returns a percentage. The returned number is the % of X in Y. Supports Doubles.
      *
      * @param current Current value.
-     * @param max Maximim value.  Must be greater than min.
+     * @param max     Maximim value. Must be greater than min.
      * @return double between min and max, inclusive.
      */
     public static double findPercentage(final double current, final double max) {
@@ -123,9 +117,7 @@ public class MathUtils {
 
     // Smooth Rounding Function
     /**
-     * Returns a double.
-     * The returned number is d rounded to the nearest d.01.
-     * Supports Doubles.
+     * Returns a double. The returned number is d rounded to the nearest d.01. Supports Doubles.
      *
      * @param current Current value.
      * @return double Rounded value.
@@ -136,9 +128,7 @@ public class MathUtils {
 
     // Smooth Rounding Function (Nearest 5)
     /**
-     * Returns a double.
-     * The returned number is d rounded to the nearest d.5.
-     * Supports Doubles.
+     * Returns a double. The returned number is d rounded to the nearest d.5. Supports Doubles.
      *
      * @param current Current value.
      * @return double Rounded value.
@@ -149,9 +139,7 @@ public class MathUtils {
 
     // Smooth Rounding Function
     /**
-     * Returns a integer.
-     * The returned number is d rounded to the nearest flat integer.
-     * Supports Doubles as input.
+     * Returns a integer. The returned number is d rounded to the nearest flat integer. Supports Doubles as input.
      *
      * @param current Current value.
      * @return integer Rounded value.
@@ -175,9 +163,7 @@ public class MathUtils {
 
     // Smooth Rounding Function
     /**
-     * Returns a long.
-     * The returned number is d rounded to the nearest flat long.
-     * Supports Doubles as input.
+     * Returns a long. The returned number is d rounded to the nearest flat long. Supports Doubles as input.
      *
      * @param current Current value.
      * @return long Rounded value.
@@ -187,12 +173,10 @@ public class MathUtils {
     }
 
     /**
-     * Returns a boolean.
-     * The returned boolean is wether or not X evenly fits in to Y.
-     * Supports ints.
+     * Returns a boolean. The returned boolean is wether or not X evenly fits in to Y. Supports ints.
      *
      * @param x Value A.
-     * @param y Value B.  Must be greater than min.
+     * @param y Value B. Must be greater than min.
      * @return boolean Whether or not it divides evenly.
      */
     public static boolean divideXintoY(final int x, final int y) {
@@ -203,9 +187,7 @@ public class MathUtils {
     }
 
     /**
-     * Returns a boolean.
-     * The returned boolean is based on the odd/eveness of the input.
-     * Supports ints.
+     * Returns a boolean. The returned boolean is based on the odd/eveness of the input. Supports ints.
      *
      * @param x Value A.
      * @return boolean Whether or not it divides evenly.
@@ -218,9 +200,7 @@ public class MathUtils {
     }
 
     /**
-     * Returns an int.
-     * The returned number is the value on i + 273.15F.
-     * Supports ints.
+     * Returns an int. The returned number is the value on i + 273.15F. Supports ints.
      *
      * @param i Temp in Celcius.
      * @return int The celcius temp returned as Kelvin, rounded to the readest whole.
@@ -231,9 +211,7 @@ public class MathUtils {
     }
 
     /**
-     * Returns a hexInteger.
-     * The returned number is the hex value of the input.
-     * Supports ints.
+     * Returns a hexInteger. The returned number is the hex value of the input. Supports ints.
      *
      * @param input Current value.
      * @return hexInteger.
@@ -245,12 +223,10 @@ public class MathUtils {
     }
 
     /**
-     * Returns a hexInteger.
-     * The returned value is between min and max.
-     * Supports ints.
+     * Returns a hexInteger. The returned value is between min and max. Supports ints.
      *
      * @param min Minimum value.
-     * @param max Maximium value.  Must be greater than min.
+     * @param max Maximium value. Must be greater than min.
      * @return hexInteger between min and max, inclusive.
      */
     public static int generateRandomHexValue(final int min, final int max) {

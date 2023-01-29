@@ -24,9 +24,7 @@ public class ClassTransformer_Witchery_NEIWitcheryConfig extends BaseTransformer
 
     @Override
     public String[] getMethodNamesToStrip() {
-        return new String[] {
-            "loadConfig",
-        };
+        return new String[] { "loadConfig", };
     }
 
     @Override
@@ -52,8 +50,8 @@ public class ClassTransformer_Witchery_NEIWitcheryConfig extends BaseTransformer
         }
 
         @Override
-        public void visit(
-                int version, int access, String name, String signature, String superName, String[] interfaces) {
+        public void visit(int version, int access, String name, String signature, String superName,
+                String[] interfaces) {
             if (interfaces != null && interfaces.length > 0) {
                 String[] aNewInterfaces = new String[interfaces.length > 1 ? interfaces.length - 1 : 1];
                 int aIndex = 0;

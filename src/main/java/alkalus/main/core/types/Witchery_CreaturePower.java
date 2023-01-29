@@ -1,9 +1,12 @@
 package alkalus.main.core.types;
 
-import alkalus.main.core.util.ReflectionUtils;
-import com.emoniph.witchery.infusion.infusions.creature.CreaturePower;
 import java.util.ArrayList;
+
 import net.minecraft.entity.EntityLiving;
+
+import alkalus.main.core.util.ReflectionUtils;
+
+import com.emoniph.witchery.infusion.infusions.creature.CreaturePower;
 
 public class Witchery_CreaturePower {
 
@@ -19,12 +22,12 @@ public class Witchery_CreaturePower {
 
     /**
      *
-     * @param mID - The Unique ID for this new CreaturePower
+     * @param mID          - The Unique ID for this new CreaturePower
      * @param creatureType - An Entity that Extends EntityLiving.
      * @return - CreaturePower object.
      */
-    public static synchronized CreaturePower createNewCreaturePower(
-            final int mID, final Class<? extends EntityLiving> creatureType) {
+    public static synchronized CreaturePower createNewCreaturePower(final int mID,
+            final Class<? extends EntityLiving> creatureType) {
         CreaturePower h = new CreaturePower(mID, creatureType);
         return h != null ? h : null;
     }
@@ -42,8 +45,7 @@ public class Witchery_CreaturePower {
                     return mCachedLastRegistryValue = registry.size();
                 }
             }
-        } catch (Throwable t) {
-        }
+        } catch (Throwable t) {}
         return mCachedLastRegistryValue + 1;
     }
 
@@ -55,6 +57,7 @@ public class Witchery_CreaturePower {
     public static synchronized CreaturePower getCreaturePower(EntityLiving entity) {
         return CreaturePower.Registry.instance().get(entity);
     }
+
     /**
      *
      * @param entity - The Entity ID to use to find a CreaturePower.

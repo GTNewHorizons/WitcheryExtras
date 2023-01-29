@@ -1,7 +1,8 @@
 package alkalus.main.core.util;
 
-import alkalus.main.core.WitcheryExtras;
 import org.apache.logging.log4j.LogManager;
+
+import alkalus.main.core.WitcheryExtras;
 
 public class Logger {
 

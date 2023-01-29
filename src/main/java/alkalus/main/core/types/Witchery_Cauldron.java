@@ -1,15 +1,18 @@
 package alkalus.main.core.types;
 
+import java.util.Hashtable;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
 import alkalus.main.core.util.ReflectionUtils;
+
 import com.emoniph.witchery.brewing.BrewItemKey;
 import com.emoniph.witchery.brewing.WitcheryBrewRegistry;
 import com.emoniph.witchery.brewing.action.BrewAction;
 import com.emoniph.witchery.brewing.action.BrewActionRitualRecipe;
 import com.emoniph.witchery.crafting.DistilleryRecipes;
 import com.emoniph.witchery.crafting.DistilleryRecipes.DistilleryRecipe;
-import java.util.Hashtable;
-import java.util.List;
-import net.minecraft.item.ItemStack;
 
 public class Witchery_Cauldron {
 
@@ -19,7 +22,8 @@ public class Witchery_Cauldron {
 
     public static Hashtable<BrewItemKey, BrewAction> getIngredients() {
         return (Hashtable<BrewItemKey, BrewAction>) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"), WitcheryBrewRegistry.INSTANCE);
+                ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"),
+                WitcheryBrewRegistry.INSTANCE);
     }
 
     public BrewAction getActionForItemStack(final ItemStack stack) {
@@ -51,8 +55,8 @@ public class Witchery_Cauldron {
         return null;
     }
 
-    public static synchronized DistilleryRecipe getDistillingResult(
-            ItemStack input1, ItemStack intput2, ItemStack jars) {
+    public static synchronized DistilleryRecipe getDistillingResult(ItemStack input1, ItemStack intput2,
+            ItemStack jars) {
         return DistilleryRecipes.instance().getDistillingResult(input1, intput2, jars);
     }
 

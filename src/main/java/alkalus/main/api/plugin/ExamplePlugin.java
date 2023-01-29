@@ -1,17 +1,19 @@
 package alkalus.main.api.plugin;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
 import alkalus.main.api.RecipeManager;
 import alkalus.main.api.plugin.base.BasePluginWitchery;
+
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.util.Dye;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 public class ExamplePlugin extends BasePluginWitchery {
 
     public ExamplePlugin() {
-        super(new LoadPhase[] {LoadPhase.INIT, LoadPhase.POSTINIT});
+        super(new LoadPhase[] { LoadPhase.INIT, LoadPhase.POSTINIT });
     }
 
     @Override
@@ -36,11 +38,9 @@ public class ExamplePlugin extends BasePluginWitchery {
                 0, // Dimension ID Required (Best left 0)
                 true, // Does this show in the Kettle Recipes book?
                 new ItemStack[] { // Inputs
-                    Dye.CACTUS_GREEN.createStack(),
-                    Witchery.Items.GENERIC.itemDiamondVapour.createStack(),
-                    Witchery.Items.GENERIC.itemOdourOfPurity.createStack(),
-                    Witchery.Items.GENERIC.itemMandrakeRoot.createStack()
-                });
+                        Dye.CACTUS_GREEN.createStack(), Witchery.Items.GENERIC.itemDiamondVapour.createStack(),
+                        Witchery.Items.GENERIC.itemOdourOfPurity.createStack(),
+                        Witchery.Items.GENERIC.itemMandrakeRoot.createStack() });
 
         RecipeManager.Distillery.addRecipe(
                 new ItemStack(Items.diamond), // Input A
@@ -57,8 +57,8 @@ public class ExamplePlugin extends BasePluginWitchery {
     public boolean postInit() {
         // Remove Recipes Here
         RecipeManager.Kettle.removeRecipe(Witchery.Items.GENERIC.itemHappenstanceOil.createStack());
-        RecipeManager.Distillery.removeRecipe(
-                RecipeManager.Distillery.findRecipeUsingIngredient(new ItemStack(Items.diamond)));
+        RecipeManager.Distillery
+                .removeRecipe(RecipeManager.Distillery.findRecipeUsingIngredient(new ItemStack(Items.diamond)));
         RecipeManager.RitesAndRituals.remove((byte) 1);
         RecipeManager.Infusions.remove(RecipeManager.Infusions.getInfusion(3));
         for (Prediction H : RecipeManager.Predictions.getPredictions().values()) {

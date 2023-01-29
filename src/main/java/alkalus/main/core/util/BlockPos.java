@@ -3,6 +3,7 @@ package alkalus.main.core.util;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
@@ -62,8 +63,7 @@ public class BlockPos implements Serializable {
             return false;
         }
         BlockPos otherPoint = (BlockPos) other;
-        return this.xPos == otherPoint.xPos
-                && this.yPos == otherPoint.yPos
+        return this.xPos == otherPoint.xPos && this.yPos == otherPoint.yPos
                 && this.zPos == otherPoint.zPos
                 && this.dim == otherPoint.dim;
     }

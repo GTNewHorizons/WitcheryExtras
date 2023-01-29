@@ -69,7 +69,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l2 = new Label();
         mv.visitLabel(l2);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l2, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l2,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -95,7 +100,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -124,7 +134,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l2 = new Label();
         mv.visitLabel(l2);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l2, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l2,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -150,7 +165,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -180,7 +200,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitLocalVariable("xCoord", "I", null, l0, l1, 1);
         mv.visitLocalVariable("yCoord", "I", null, l0, l1, 2);
         mv.visitLocalVariable("zCoord", "I", null, l0, l1, 3);
@@ -210,7 +235,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitMaxs(2, 1);
         mv.visitEnd();
 
@@ -228,13 +258,22 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         mv.visitVarInsn(ALOAD, 0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitFieldInsn(
-                GETFIELD, "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven", "xCoord", "I");
+                GETFIELD,
+                "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven",
+                "xCoord",
+                "I");
         mv.visitVarInsn(ALOAD, 0);
         mv.visitFieldInsn(
-                GETFIELD, "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven", "yCoord", "I");
+                GETFIELD,
+                "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven",
+                "yCoord",
+                "I");
         mv.visitVarInsn(ALOAD, 0);
         mv.visitFieldInsn(
-                GETFIELD, "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven", "zCoord", "I");
+                GETFIELD,
+                "com/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven",
+                "zCoord",
+                "I");
         mv.visitVarInsn(ILOAD, 4);
         mv.visitMethodInsn(
                 INVOKESTATIC,
@@ -246,7 +285,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitLocalVariable("x", "I", null, l0, l1, 1);
         mv.visitLocalVariable("y", "I", null, l0, l1, 2);
         mv.visitLocalVariable("z", "I", null, l0, l1, 3);
@@ -276,7 +320,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l1 = new Label();
         mv.visitLabel(l1);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l1, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l1,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -306,7 +355,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l2 = new Label();
         mv.visitLabel(l2);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l2, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l2,
+                0);
         mv.visitLocalVariable("itemstack", "L" + mItemStack + ";", null, l0, l2, 1);
         mv.visitMaxs(2, 2);
         mv.visitEnd();
@@ -337,7 +391,12 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
         Label l2 = new Label();
         mv.visitLabel(l2);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;", null, l0, l2, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockWitchesOven$TileEntityWitchesOven;",
+                null,
+                l0,
+                l2,
+                0);
         mv.visitLocalVariable("byProduct", "L" + mItemStack + ";", null, l0, l2, 1);
         mv.visitMaxs(2, 2);
         mv.visitEnd();
@@ -347,19 +406,8 @@ public class ClassTransformer_Witchery_TileEntityWitchesOven extends BaseTransfo
 
     @Override
     public String[] getMethodNamesToStrip() {
-        return new String[] {
-            "getCookTime",
-            "updateEntity",
-            "canSmelt",
-            "smeltItem",
-            "getFumeFunnels",
-            "isFumeFunnel",
-            "getFumeFunnelsChance",
-            "getFumeFunnelChance",
-            "getCookTime",
-            "generateByProduct",
-            "createByProduct",
-        };
+        return new String[] { "getCookTime", "updateEntity", "canSmelt", "smeltItem", "getFumeFunnels", "isFumeFunnel",
+                "getFumeFunnelsChance", "getFumeFunnelChance", "getCookTime", "generateByProduct", "createByProduct", };
     }
 
     @Override

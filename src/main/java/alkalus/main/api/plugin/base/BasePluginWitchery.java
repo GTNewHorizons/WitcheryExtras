@@ -1,20 +1,24 @@
 package alkalus.main.api.plugin.base;
 
-import alkalus.main.api.RecipeManager;
-import alkalus.main.api.plugin.interfaces.WitcheryPlugin;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import alkalus.main.api.RecipeManager;
+import alkalus.main.api.plugin.interfaces.WitcheryPlugin;
+
 /**
- * This class should be extended, then the three phase methods should be {@link Override}n as required.
- * Constructor takes {@link LoadPhase}s, Feel free to leave {@link Override}n methods empty if they're not being use.
+ * This class should be extended, then the three phase methods should be {@link Override}n as required. Constructor
+ * takes {@link LoadPhase}s, Feel free to leave {@link Override}n methods empty if they're not being use.
+ * 
  * @author Alkalus
  *
  */
 public abstract class BasePluginWitchery implements WitcheryPlugin {
 
-    /** Just a simple {@link Enum} containing the three main Forge load phases.
+    /**
+     * Just a simple {@link Enum} containing the three main Forge load phases.
+     * 
      * @author Alkalus
      */
     public static enum LoadPhase {
@@ -24,18 +28,22 @@ public abstract class BasePluginWitchery implements WitcheryPlugin {
     }
 
     /**
-     *  Small Field used to maintain validation of the plugin.
+     * Small Field used to maintain validation of the plugin.
      */
     private volatile boolean isValid = true;
 
-    /** Dictates which stages your plugin will load in.
+    /**
+     * Dictates which stages your plugin will load in.
+     * 
      * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
      */
     public BasePluginWitchery(Set<LoadPhase> phases) {
         this(phases, true);
     }
 
-    /** Dictates which stages your plugin will load in.
+    /**
+     * Dictates which stages your plugin will load in.
+     * 
      * @param initStage - Multiple {@link LoadPhase}s. Maximum 3.
      */
     public BasePluginWitchery(LoadPhase[] phases) {
@@ -44,9 +52,10 @@ public abstract class BasePluginWitchery implements WitcheryPlugin {
 
     /**
      * Internal Constructor for Plugins.
-     * @param phases - Multiple {@link LoadPhase}s. Maximum 3.
-     * @param internal - {@link boolean that dictates whether or not this was an internal call.
-     * Please use false if you reflectively call this, for future compatibility.}
+     * 
+     * @param phases   - Multiple {@link LoadPhase}s. Maximum 3.
+     * @param internal - {@link boolean that dictates whether or not this was an internal call. Please use false if you
+     *                 reflectively call this, for future compatibility.}
      */
     private BasePluginWitchery(Set<LoadPhase> phases, boolean internal) {
         if (phases == null || phases.size() <= 0 || phases.size() >= 4) {
@@ -65,17 +74,26 @@ public abstract class BasePluginWitchery implements WitcheryPlugin {
         }
     }
 
-    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+    /**
+     * If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during
+     * {@link WitcheryPlugin} construction.
+     * 
      * @return - You should return True/False depending upon if the code completes as expected or not.
      */
     public abstract boolean preInit();
 
-    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+    /**
+     * If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during
+     * {@link WitcheryPlugin} construction.
+     * 
      * @return - You should return True/False depending upon if the code completes as expected or not.
      */
     public abstract boolean init();
 
-    /** If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during {@link WitcheryPlugin} construction.
+    /**
+     * If you wish to utilize this phase, {@link Override} the behaviour. Be sure to enable this load phase during
+     * {@link WitcheryPlugin} construction.
+     * 
      * @return - You should return True/False depending upon if the code completes as expected or not.
      */
     public abstract boolean postInit();

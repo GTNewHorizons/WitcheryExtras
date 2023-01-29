@@ -1,15 +1,18 @@
 package alkalus.main.core.crafting;
 
-import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.util.AutoMap;
-import alkalus.main.core.util.Pair;
-import alkalus.main.core.util.Utils;
-import com.emoniph.witchery.Witchery;
 import java.util.ArrayList;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+
+import alkalus.main.core.WitcheryExtras;
+import alkalus.main.core.util.AutoMap;
+import alkalus.main.core.util.Pair;
+import alkalus.main.core.util.Utils;
+
+import com.emoniph.witchery.Witchery;
 
 public class OvenRecipes {
 
@@ -100,9 +103,10 @@ public class OvenRecipes {
 
     private OvenRecipes() {}
 
-    /** @param input1 - The Input Item.
-     * @param jars - The required amount of Jars.
-     * @param jarOutput - The type of Jar output.
+    /**
+     * @param input1       - The Input Item.
+     * @param jars         - The required amount of Jars.
+     * @param jarOutput    - The type of Jar output.
      * @param outputAmount - Amount of outputs, output item is based on furnace recipe of input item.
      * @return - A new {@link OverRecipe} object.
      */
@@ -110,21 +114,23 @@ public class OvenRecipes {
         return addRecipe(input1, "", jars, null, 0, jarOutput, jars);
     }
 
-    /** @param input1 - The Input Item.
-     * @param jars - The required amount of Jars.
+    /**
+     * @param input1       - The Input Item.
+     * @param jars         - The required amount of Jars.
      * @param customOutput - A Custom output, output size reflect Itemstack size passed in.
-     * @param jarOutput - The type of Jar output.
+     * @param jarOutput    - The type of Jar output.
      * @param outputAmount - Amount of outputs, output item is based on furnace recipe of input item.
      * @return - A new {@link OverRecipe} object.
      */
-    public static OvenRecipe addRecipe(
-            final ItemStack input1, final int jars, final ItemStack customOutput, final ItemStack jarOutput) {
+    public static OvenRecipe addRecipe(final ItemStack input1, final int jars, final ItemStack customOutput,
+            final ItemStack jarOutput) {
         return addRecipe(input1, "", jars, customOutput, customOutput.stackSize, jarOutput, jars);
     }
 
-    /** @param input1 - A Valid Oredict String.
-     * @param jars - The required amount of Jars.
-     * @param jarOutput - The type of Jar output.
+    /**
+     * @param input1       - A Valid Oredict String.
+     * @param jars         - The required amount of Jars.
+     * @param jarOutput    - The type of Jar output.
      * @param outputAmount - Amount of outputs, output item is based on furnace recipe of input item.
      * @return - A new {@link OverRecipe} object.
      */
@@ -134,43 +140,32 @@ public class OvenRecipes {
 
     /**
      *
-     * @param input1 - The Input Item.
-     * @param jars - The required amount of Jars.
+     * @param input1  - The Input Item.
+     * @param jars    - The required amount of Jars.
      * @param output0 - A custom ItemStack output.
-     * @param amt0 - The amount of custom outputs.
+     * @param amt0    - The amount of custom outputs.
      * @param output1 - The type of Jar output.
-     * @param amt1 - The amount of Jars output
+     * @param amt1    - The amount of Jars output
      * @return - A new {@link OverRecipe} object.
      */
-    public static OvenRecipe addRecipe(
-            final ItemStack input1,
-            final int jars,
-            final ItemStack output0,
-            int amt0,
-            final ItemStack output1,
-            final int amt1) {
+    public static OvenRecipe addRecipe(final ItemStack input1, final int jars, final ItemStack output0, int amt0,
+            final ItemStack output1, final int amt1) {
         return addRecipe(input1, "", jars, output0, amt0, output1, amt1);
     }
 
     /**
      *
-     * @param input1 - The Input Item.
-     * @param inputString1 - A Valid Oredict String.
-     * @param jars - The required amount of Jars.
-     * @param customOutput - A custom ItemStack output.
-     * @param amt1 - The amount of custom outputs.
+     * @param input1         - The Input Item.
+     * @param inputString1   - A Valid Oredict String.
+     * @param jars           - The required amount of Jars.
+     * @param customOutput   - A custom ItemStack output.
+     * @param amt1           - The amount of custom outputs.
      * @param outputJarStack - The type of Jar output.
-     * @param amt2 - The amount of Jars output
+     * @param amt2           - The amount of Jars output
      * @return - A new {@link OverRecipe} object.
      */
-    public static OvenRecipe addRecipe(
-            final ItemStack input1,
-            final String inputString1,
-            final int jars,
-            final ItemStack customOutput,
-            final int amt1,
-            final ItemStack outputJarStack,
-            final int amt2) {
+    public static OvenRecipe addRecipe(final ItemStack input1, final String inputString1, final int jars,
+            final ItemStack customOutput, final int amt1, final ItemStack outputJarStack, final int amt2) {
 
         // Build Inputs
         ItemStack mInputStack = null;
@@ -272,8 +267,9 @@ public class OvenRecipes {
 
     /**
      * Returns an {@link OverRecipe} based on input item and an amount of jars.
+     * 
      * @param input1 - An ItemStack
-     * @param jars - Amount of Jars
+     * @param jars   - Amount of Jars
      * @return - The Closest Matching {@link OverRecipe}.
      */
     public static OvenRecipe getOvenResult(final ItemStack input1, final int jars) {
@@ -287,6 +283,7 @@ public class OvenRecipes {
 
     /**
      * Returns a {@link OverRecipe} based on an output item.
+     * 
      * @param result - The output item.
      * @return - The first Matching {@link OverRecipe}.
      */
@@ -298,8 +295,10 @@ public class OvenRecipes {
         }
         return null;
     }
+
     /**
      * Returns a {@link OverRecipe} based on an input item. This may not always return the same recipe.
+     * 
      * @param input1 - An ItemStack
      * @return - The first Matching {@link OverRecipe}.
      */
@@ -313,6 +312,7 @@ public class OvenRecipes {
     }
 
     public static class OvenRecipe {
+
         public final String validOreDictInput;
         public final ItemStack inputs;
         public final int jars;
@@ -324,59 +324,43 @@ public class OvenRecipes {
 
         /**
          *
-         * @param input1 - The {@link ItemStack} to be burned in the oven.
-         * @param jars - An {@link int} for the amount of Jars required.
+         * @param input1  - The {@link ItemStack} to be burned in the oven.
+         * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
          * @param amount1 - An {@link int} for the amount of {@link output1} given.
          * @param output2 - The {@link ItemStack} which is a filled Jar.
          * @param amount2 - An {@link int} for the amount of {@link output2} given.
          */
-        private OvenRecipe(
-                final String oreDictSub,
-                final int jars,
-                final ItemStack output1,
-                final int amount1,
-                final ItemStack output2,
-                final int amount2) {
+        private OvenRecipe(final String oreDictSub, final int jars, final ItemStack output1, final int amount1,
+                final ItemStack output2, final int amount2) {
             this(null, oreDictSub, jars, output1, amount1, output2, amount2);
         }
 
         /**
          *
-         * @param input1 - The {@link ItemStack} to be burned in the oven.
-         * @param jars - An {@link int} for the amount of Jars required.
+         * @param input1  - The {@link ItemStack} to be burned in the oven.
+         * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
          * @param amount1 - An {@link int} for the amount of {@link output1} given.
          * @param output2 - The {@link ItemStack} which is a filled Jar.
          * @param amount2 - An {@link int} for the amount of {@link output2} given.
          */
-        private OvenRecipe(
-                final ItemStack input1,
-                final int jars,
-                final ItemStack output1,
-                final int amount1,
-                final ItemStack output2,
-                final int amount2) {
+        private OvenRecipe(final ItemStack input1, final int jars, final ItemStack output1, final int amount1,
+                final ItemStack output2, final int amount2) {
             this(input1, "", jars, output1, amount1, output2, amount2);
         }
 
         /**
          *
-         * @param input1 - The {@link ItemStack} to be burned in the oven.
-         * @param jars - An {@link int} for the amount of Jars required.
+         * @param input1  - The {@link ItemStack} to be burned in the oven.
+         * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
          * @param amount1 - An {@link int} for the amount of {@link output1} given.
          * @param output2 - The {@link ItemStack} which is a filled Jar.
          * @param amount2 - An {@link int} for the amount of {@link output2} given.
          */
-        private OvenRecipe(
-                final ItemStack input1,
-                String oreDict,
-                final int jars,
-                final ItemStack output1,
-                final int amount1,
-                final ItemStack output2,
-                final int amount2) {
+        private OvenRecipe(final ItemStack input1, String oreDict, final int jars, final ItemStack output1,
+                final int amount1, final ItemStack output2, final int amount2) {
             this.inputs = input1;
             this.validOreDictInput = oreDict;
             this.jars = jars;
@@ -391,32 +375,27 @@ public class OvenRecipes {
         }
 
         private boolean isInputMatch(final ItemStack intput1, int amt1) {
-            return (this.jars == 0
-                    || ((isMatch(intput1, this.inputs) && amt1 >= this.jars))
+            return (this.jars == 0 || ((isMatch(intput1, this.inputs) && amt1 >= this.jars))
                     || (!this.validOreDictInput.equals("")
                             && Utils.hasValidOreDictTag(this.validOreDictInput, intput1)));
         }
 
         @SuppressWarnings("unused")
         private boolean isMatch(final ItemStack output1, int amt1, final ItemStack output2, int amt2) {
-            return (this.jars == 0
-                    || ((amt1 == this.outputAmount1 && amt2 == this.outputAmountJar)
-                            && (OvenRecipe.isMatch(output1, this.output) && OvenRecipe.isMatch(output2, outputJar))));
+            return (this.jars == 0 || ((amt1 == this.outputAmount1 && amt2 == this.outputAmountJar)
+                    && (OvenRecipe.isMatch(output1, this.output) && OvenRecipe.isMatch(output2, outputJar))));
         }
 
         public static boolean isMatch(final ItemStack a, final ItemStack b) {
-            return (a == null && b == null)
-                    || (a != null
-                            && b != null
-                            && a.getItem() == b.getItem()
-                            && (!a.getHasSubtypes() || a.getItemDamage() == b.getItemDamage()));
+            return (a == null && b == null) || (a != null && b != null
+                    && a.getItem() == b.getItem()
+                    && (!a.getHasSubtypes() || a.getItemDamage() == b.getItemDamage()));
         }
 
         public static boolean isMatch(final ItemStack a, final ItemStack b, String oreName) {
             return ((Utils.hasValidOreDictTag(oreName, a) && Utils.hasValidOreDictTag(oreName, b))
-                            || a == null && b == null)
-                    || (a != null
-                            && b != null
+                    || a == null && b == null)
+                    || (a != null && b != null
                             && a.getItem() == b.getItem()
                             && (!a.getHasSubtypes() || a.getItemDamage() == b.getItemDamage()));
         }
@@ -435,16 +414,16 @@ public class OvenRecipes {
         }
 
         public String getDescription() {
-            String[] y = new String[] {
-                "descriptor",
-                ("Input: " + (inputs != null ? this.inputs.getDisplayName() : "No Item") + " x"
-                        + (inputs != null ? inputs.stackSize : 0)),
-                ("Jars Required: " + this.jars),
-                ("Output: " + (output != null ? this.output.getDisplayName() : "No Item") + " x"
-                        + (output != null ? output.stackSize : 0)),
-                ("Jar Output: " + this.outputJar.getDisplayName() + " x" + jars),
-                ("OreDict: " + this.validOreDictInput)
-            };
+            String[] y = new String[] { "descriptor",
+                    ("Input: " + (inputs != null ? this.inputs.getDisplayName() : "No Item")
+                            + " x"
+                            + (inputs != null ? inputs.stackSize : 0)),
+                    ("Jars Required: " + this.jars),
+                    ("Output: " + (output != null ? this.output.getDisplayName() : "No Item")
+                            + " x"
+                            + (output != null ? output.stackSize : 0)),
+                    ("Jar Output: " + this.outputJar.getDisplayName() + " x" + jars),
+                    ("OreDict: " + this.validOreDictInput) };
             String z = "";
             for (String x : y) {
                 WitcheryExtras.log(0, x);

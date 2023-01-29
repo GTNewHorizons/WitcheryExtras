@@ -1,11 +1,13 @@
 package alkalus.main.asm;
 
-import alkalus.main.core.util.Logger;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 import org.apache.commons.io.IOUtils;
+
+import alkalus.main.core.util.Logger;
 
 public class AsmUtils {
 
@@ -15,8 +17,7 @@ public class AsmUtils {
         Logger.ASM("Using resource path: " + aResourcePath);
         byte[] aData = null;
         try {
-            aData = Files.readAllBytes(Paths.get(
-                    AsmUtils.class.getClassLoader().getResource(aResourcePath).toURI()));
+            aData = Files.readAllBytes(Paths.get(AsmUtils.class.getClassLoader().getResource(aResourcePath).toURI()));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
             try {

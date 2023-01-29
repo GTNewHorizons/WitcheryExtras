@@ -1,22 +1,26 @@
 package alkalus.main.nei;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
 import alkalus.main.core.util.Utils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.FurnaceRecipeHandler;
 import codechicken.nei.recipe.TemplateRecipeHandler;
+
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.blocks.BlockWitchesOvenGUI;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 
 public class NEI_Handler_Oven extends TemplateRecipeHandler {
+
     public Class<? extends GuiContainer> getGuiClass() {
         return BlockWitchesOvenGUI.class;
     }
@@ -82,9 +86,8 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
                 final ItemStack input = recipe.inputs.copy();
                 final ItemStack output = recipe.output.copy();
                 final ItemStack outputJar = recipe.outputJar.copy();
-                if (!Utils.areStacksEqual(ingredient, input, true)
-                        && !Utils.areStacksEqual(
-                                ingredient, Witchery.Items.GENERIC.itemEmptyClayJar.createStack(), true)) {
+                if (!Utils.areStacksEqual(ingredient, input, true) && !Utils
+                        .areStacksEqual(ingredient, Witchery.Items.GENERIC.itemEmptyClayJar.createStack(), true)) {
                     continue;
                 }
                 final SmeltingPair rec = new SmeltingPair(input, output, outputJar);
@@ -100,8 +103,11 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
     public void loadTransferRects() {
         this.transferRects.add(
                 new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(50, 23, 18, 18), "fuel", new Object[0]));
-        this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(74, 9, 24, 18), "witchery_cooking", new Object[0]));
+        this.transferRects.add(
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(74, 9, 24, 18),
+                        "witchery_cooking",
+                        new Object[0]));
     }
 
     @Override
@@ -123,6 +129,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
     }
 
     public class SmeltingPair extends TemplateRecipeHandler.CachedRecipe {
+
         PositionedStack ingred;
         PositionedStack result;
         PositionedStack byproduct;
@@ -138,8 +145,8 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
         }
 
         public List<PositionedStack> getIngredients() {
-            return (List<PositionedStack>)
-                    this.getCycledIngredients(NEI_Handler_Oven.this.cycleticks / 48, (List) Arrays.asList(this.ingred));
+            return (List<PositionedStack>) this
+                    .getCycledIngredients(NEI_Handler_Oven.this.cycleticks / 48, (List) Arrays.asList(this.ingred));
         }
 
         public PositionedStack getResult() {
@@ -148,9 +155,8 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
 
         public PositionedStack getOtherStack() {
             if (FurnaceRecipeHandler.afuels != null && FurnaceRecipeHandler.afuels.size() > 0) {
-                return FurnaceRecipeHandler.afuels.get(
-                                NEI_Handler_Oven.this.cycleticks / 48 % FurnaceRecipeHandler.afuels.size())
-                        .stack;
+                return FurnaceRecipeHandler.afuels
+                        .get(NEI_Handler_Oven.this.cycleticks / 48 % FurnaceRecipeHandler.afuels.size()).stack;
             }
             return null;
         }
@@ -168,6 +174,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
     }
 
     public static class FuelPair {
+
         public PositionedStack stack;
         public int burnTime;
 

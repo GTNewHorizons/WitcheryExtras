@@ -1,14 +1,16 @@
 package alkalus.main.asm;
 
+import java.io.File;
+import java.io.IOException;
+
+import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraft.launchwrapper.Launch;
+
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_NEIWitcheryConfig;
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityPoppetShelf;
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityWitchesOven;
 import cpw.mods.fml.relauncher.CoreModManager;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import java.io.File;
-import java.io.IOException;
-import net.minecraft.launchwrapper.IClassTransformer;
-import net.minecraft.launchwrapper.Launch;
 
 @SuppressWarnings("static-access")
 public class WE_CORE_Handler implements IClassTransformer {
@@ -17,8 +19,8 @@ public class WE_CORE_Handler implements IClassTransformer {
 
     static {
         mConfig = new AsmConfig(new File("config/WitcheryExtras/asm.cfg"));
-        System.out.println("[Witchery++][ASM] Asm Config Location: "
-                + mConfig.config.getConfigFile().getAbsolutePath());
+        System.out
+                .println("[Witchery++][ASM] Asm Config Location: " + mConfig.config.getConfigFile().getAbsolutePath());
     }
 
     private static Boolean mObf = null;
@@ -56,8 +58,7 @@ public class WE_CORE_Handler implements IClassTransformer {
 
         // Fix Bad NEI Handling, by patching it out entirely.
         if (transformedName.equals("com.emoniph.witchery.integration.NEIWitcheryConfig") && mConfig.enablePatchNEI) {
-            return new ClassTransformer_Witchery_NEIWitcheryConfig(transformedName, basicClass, obfuscated)
-                    .getWriter()
+            return new ClassTransformer_Witchery_NEIWitcheryConfig(transformedName, basicClass, obfuscated).getWriter()
                     .toByteArray();
             // return AsmUtils.getClassBytes("com.emoniph.witchery.integration.NEIWitcheryConfig");
         }
@@ -65,15 +66,13 @@ public class WE_CORE_Handler implements IClassTransformer {
         // Patch witches oven to support recipe maps.
         if (transformedName.equals("com.emoniph.witchery.blocks.BlockWitchesOven$TileEntityWitchesOven")) {
             return new ClassTransformer_Witchery_TileEntityWitchesOven(transformedName, basicClass, obfuscated)
-                    .getWriter()
-                    .toByteArray();
+                    .getWriter().toByteArray();
         }
 
         // Patch Poppet Shelf to enable/disable chunk loading
         if (transformedName.equals("com.emoniph.witchery.blocks.BlockPoppetShelf$TileEntityPoppetShelf")) {
             return new ClassTransformer_Witchery_TileEntityPoppetShelf(transformedName, basicClass, obfuscated)
-                    .getWriter()
-                    .toByteArray();
+                    .getWriter().toByteArray();
         }
 
         return basicClass;

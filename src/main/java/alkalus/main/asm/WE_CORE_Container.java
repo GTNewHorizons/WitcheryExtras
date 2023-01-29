@@ -1,9 +1,14 @@
 package alkalus.main.asm;
 
+import java.util.Arrays;
+import java.util.List;
+
 import alkalus.main.core.util.Logger;
 import alkalus.main.core.util.ReflectionUtils;
+
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -13,8 +18,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.versioning.ArtifactVersion;
-import java.util.Arrays;
-import java.util.List;
 
 public class WE_CORE_Container extends DummyModContainer {
 

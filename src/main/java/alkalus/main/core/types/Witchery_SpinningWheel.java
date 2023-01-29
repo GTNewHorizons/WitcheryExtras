@@ -1,8 +1,9 @@
 package alkalus.main.core.types;
 
+import net.minecraft.item.ItemStack;
+
 import com.emoniph.witchery.crafting.SpinningRecipes;
 import com.emoniph.witchery.crafting.SpinningRecipes.SpinningRecipe;
-import net.minecraft.item.ItemStack;
 
 public class Witchery_SpinningWheel {
 

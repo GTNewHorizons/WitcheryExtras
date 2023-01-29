@@ -61,7 +61,12 @@ public class ClassTransformer_Witchery_TileEntityPoppetShelf extends BaseTransfo
         Label l3 = new Label();
         mv.visitLabel(l3);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockPoppetShelf$TileEntityPoppetShelf;", null, l0, l3, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockPoppetShelf$TileEntityPoppetShelf;",
+                null,
+                l0,
+                l3,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -95,7 +100,12 @@ public class ClassTransformer_Witchery_TileEntityPoppetShelf extends BaseTransfo
         Label l3 = new Label();
         mv.visitLabel(l3);
         mv.visitLocalVariable(
-                "this", "Lcom/emoniph/witchery/blocks/BlockPoppetShelf$TileEntityPoppetShelf;", null, l0, l3, 0);
+                "this",
+                "Lcom/emoniph/witchery/blocks/BlockPoppetShelf$TileEntityPoppetShelf;",
+                null,
+                l0,
+                l3,
+                0);
         mv.visitMaxs(1, 1);
         mv.visitEnd();
 
@@ -104,9 +114,7 @@ public class ClassTransformer_Witchery_TileEntityPoppetShelf extends BaseTransfo
 
     @Override
     public String[] getMethodNamesToStrip() {
-        return new String[] {
-            "initiate", "invalidate",
-        };
+        return new String[] { "initiate", "invalidate", };
     }
 
     @Override

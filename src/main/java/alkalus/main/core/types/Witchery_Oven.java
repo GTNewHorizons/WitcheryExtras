@@ -1,8 +1,9 @@
 package alkalus.main.core.types;
 
+import net.minecraft.item.ItemStack;
+
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
-import net.minecraft.item.ItemStack;
 
 public class Witchery_Oven {
 

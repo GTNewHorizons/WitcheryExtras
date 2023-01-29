@@ -1,13 +1,16 @@
 package alkalus.main.mixins.witchery;
 
-import com.emoniph.witchery.blocks.BlockSpinningWheel;
 import java.util.ArrayList;
+
 import net.minecraft.item.ItemStack;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.emoniph.witchery.blocks.BlockSpinningWheel;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(value = BlockSpinningWheel.TileEntitySpinningWheel.class)

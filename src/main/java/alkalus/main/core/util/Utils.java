@@ -1,8 +1,8 @@
 package alkalus.main.core.util;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import java.util.HashSet;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,6 +12,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+
+import cpw.mods.fml.common.FMLCommonHandler;
 
 public class Utils {
 
@@ -75,9 +77,8 @@ public class Utils {
             return false;
         }
         List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-        return recipes.removeIf(s -> (s != null)
-                && (s.getRecipeOutput() != null)
-                && (s.getRecipeOutput().isItemEqual(I)));
+        return recipes
+                .removeIf(s -> (s != null) && (s.getRecipeOutput() != null) && (s.getRecipeOutput().isItemEqual(I)));
     }
 
     public static void registerEvent(Object o) {
@@ -119,13 +120,11 @@ public class Utils {
     }
 
     public static boolean areStacksEqual(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-        return aStack1 != null
-                && aStack2 != null
+        return aStack1 != null && aStack2 != null
                 && aStack1.getItem() == aStack2.getItem()
-                && (aIgnoreNBT
-                        || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
-                                && (aStack1.getTagCompound() == null
-                                        || aStack1.getTagCompound().equals(aStack2.getTagCompound())))
+                && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
+                        && (aStack1.getTagCompound() == null
+                                || aStack1.getTagCompound().equals(aStack2.getTagCompound())))
                 && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
                         || Items.feather.getDamage(aStack1) == W
                         || Items.feather.getDamage(aStack2) == W);

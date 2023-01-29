@@ -1,12 +1,5 @@
 package alkalus.main.core.util;
 
-import alkalus.main.core.crafting.OvenRecipes;
-import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
-import com.emoniph.witchery.Witchery;
-import com.emoniph.witchery.blocks.BlockWitchesOven;
-import com.emoniph.witchery.blocks.BlockWitchesOven.TileEntityWitchesOven;
-import com.emoniph.witchery.util.Config;
-import com.emoniph.witchery.util.Log;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -16,6 +9,15 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
+
+import alkalus.main.core.crafting.OvenRecipes;
+import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
+
+import com.emoniph.witchery.Witchery;
+import com.emoniph.witchery.blocks.BlockWitchesOven;
+import com.emoniph.witchery.blocks.BlockWitchesOven.TileEntityWitchesOven;
+import com.emoniph.witchery.util.Config;
+import com.emoniph.witchery.util.Log;
 
 @SuppressWarnings("unused")
 public class WitchesOvenUtils {
@@ -29,28 +31,28 @@ public class WitchesOvenUtils {
     private static final int SLOT_COOKED = 2;
     private static final int SLOT_BY_PRODUCT = 3;
     private static final int SLOT_JARS = 4;
-    private static final int[] slots_top = new int[] {0, 4};
-    private static final int[] slots_bottom = new int[] {4, 1};
-    private static final int[] slots_sides = new int[] {3, 2, 4, 1};
+    private static final int[] slots_top = new int[] { 0, 4 };
+    private static final int[] slots_bottom = new int[] { 4, 1 };
+    private static final int[] slots_sides = new int[] { 3, 2, 4, 1 };
 
     public static ItemStack[] getFurnaceItemStacks(TileEntityWitchesOven aTile) {
-        return (ItemStack[]) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(TileEntityWitchesOven.class, "furnaceItemStacks"), aTile);
+        return (ItemStack[]) ReflectionUtils
+                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "furnaceItemStacks"), aTile);
     }
 
     public static int[] getSlotsTop(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_top"), aTile);
+        return (int[]) ReflectionUtils
+                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_top"), aTile);
     }
 
     public static int[] getSlotsBottom(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_bottom"), aTile);
+        return (int[]) ReflectionUtils
+                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_bottom"), aTile);
     }
 
     public static int[] getSlotsSides(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_sides"), aTile);
+        return (int[]) ReflectionUtils
+                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_sides"), aTile);
     }
 
     public static void updateEntity(TileEntityWitchesOven aTile) {
@@ -96,7 +98,11 @@ public class WitchesOvenUtils {
             if (flag != aTile.furnaceBurnTime > 0) {
                 aDoBlockUpdate = true;
                 BlockWitchesOven.updateWitchesOvenBlockState(
-                        aTile.furnaceBurnTime > 0, aTile.getWorldObj(), aTile.xCoord, aTile.yCoord, aTile.zCoord);
+                        aTile.furnaceBurnTime > 0,
+                        aTile.getWorldObj(),
+                        aTile.xCoord,
+                        aTile.yCoord,
+                        aTile.zCoord);
             }
         }
         if (aDoBlockUpdate) {
@@ -275,8 +281,8 @@ public class WitchesOvenUtils {
         return funnels;
     }
 
-    public static boolean isFumeFunnel(
-            TileEntityWitchesOven aTile, final int xCoord, final int yCoord, final int zCoord, final int meta) {
+    public static boolean isFumeFunnel(TileEntityWitchesOven aTile, final int xCoord, final int yCoord,
+            final int zCoord, final int meta) {
         final Block block = aTile.getWorldObj().getBlock(xCoord, yCoord, zCoord);
         return (block == Witchery.Blocks.OVEN_FUMEFUNNEL || block == Witchery.Blocks.OVEN_FUMEFUNNEL_FILTERED)
                 && aTile.getWorldObj().getBlockMetadata(xCoord, yCoord, zCoord) == meta;
@@ -309,8 +315,8 @@ public class WitchesOvenUtils {
         return funnels;
     }
 
-    public static double getFumeFunnelChance(
-            TileEntityWitchesOven aTile, final int x, final int y, final int z, final int meta) {
+    public static double getFumeFunnelChance(TileEntityWitchesOven aTile, final int x, final int y, final int z,
+            final int meta) {
         final Block block = aTile.getWorldObj().getBlock(x, y, z);
         if (block == Witchery.Blocks.OVEN_FUMEFUNNEL) {
             if (aTile.getWorldObj().getBlockMetadata(x, y, z) == meta) {
@@ -318,8 +324,8 @@ public class WitchesOvenUtils {
             }
         } else if (block == Witchery.Blocks.OVEN_FUMEFUNNEL_FILTERED
                 && aTile.getWorldObj().getBlockMetadata(x, y, z) == meta) {
-            return Config.instance().doubleFumeFilterChance ? 0.8 : 0.3;
-        }
+                    return Config.instance().doubleFumeFilterChance ? 0.8 : 0.3;
+                }
         return 0.0;
     }
 
@@ -332,9 +338,7 @@ public class WitchesOvenUtils {
         try {
             final double BASE_CHANCE = 0.3;
             final double funnels = getFumeFunnelsChance(aTile);
-            Log.instance()
-                    .debug("" + getInputSlot(aTile) + ": "
-                            + getInputSlot(aTile).getItem().getUnlocalizedName());
+            Log.instance().debug("" + getInputSlot(aTile) + ": " + getInputSlot(aTile).getItem().getUnlocalizedName());
             if (aTile.getWorldObj().rand.nextDouble() <= Math.min(0.3 + funnels, 1.0)
                     && getEmptyJarSlot(aTile) != null) {
                 if (getInputSlot(aTile).getItem() == Item.getItemFromBlock(Blocks.sapling)
@@ -370,42 +374,47 @@ public class WitchesOvenUtils {
                     }
                 } else if (getInputSlot(aTile).getUnlocalizedName().equals("tile.bop.saplings")
                         && getInputSlot(aTile).getItemDamage() == 6) {
-                    createByProduct(aTile, Witchery.Items.GENERIC.itemHintOfRebirth.createStack(1));
-                } else if (isForestrySapling(getInputSlot(aTile))) {
-                    final NBTBase tag = getInputSlot(aTile).getTagCompound().getTag("Genome");
-                    if (tag != null && tag instanceof NBTTagCompound) {
-                        final NBTTagCompound compound = (NBTTagCompound) tag;
-                        if (compound.hasKey("Chromosomes") && compound.getTag("Chromosomes") instanceof NBTTagList) {
-                            final NBTTagList list = compound.getTagList("Chromosomes", 10);
-                            if (list != null && list.tagCount() > 0) {
-                                final NBTBase chromoBase = (NBTBase) list.getCompoundTagAt(0);
-                                if (chromoBase != null && chromoBase instanceof NBTTagCompound) {
-                                    final NBTTagCompound chromosome = (NBTTagCompound) chromoBase;
-                                    if (chromosome.hasKey("UID0")) {
-                                        final String treeType = chromosome.getString("UID0");
-                                        if (treeType != null) {
-                                            Log.instance().debug("Forestry tree: " + treeType);
-                                            if (treeType.equals("forestry.treeOak")) {
-                                                createByProduct(
-                                                        aTile,
-                                                        Witchery.Items.GENERIC.itemExhaleOfTheHornedOne.createStack(1));
-                                            } else if (treeType.equals("forestry.treeSpruce")) {
-                                                createByProduct(
-                                                        aTile, Witchery.Items.GENERIC.itemHintOfRebirth.createStack(1));
-                                            } else if (treeType.equals("forestry.treeBirch")) {
-                                                createByProduct(
-                                                        aTile,
-                                                        Witchery.Items.GENERIC.itemBreathOfTheGoddess.createStack(1));
+                            createByProduct(aTile, Witchery.Items.GENERIC.itemHintOfRebirth.createStack(1));
+                        } else
+                    if (isForestrySapling(getInputSlot(aTile))) {
+                        final NBTBase tag = getInputSlot(aTile).getTagCompound().getTag("Genome");
+                        if (tag != null && tag instanceof NBTTagCompound) {
+                            final NBTTagCompound compound = (NBTTagCompound) tag;
+                            if (compound.hasKey("Chromosomes")
+                                    && compound.getTag("Chromosomes") instanceof NBTTagList) {
+                                final NBTTagList list = compound.getTagList("Chromosomes", 10);
+                                if (list != null && list.tagCount() > 0) {
+                                    final NBTBase chromoBase = (NBTBase) list.getCompoundTagAt(0);
+                                    if (chromoBase != null && chromoBase instanceof NBTTagCompound) {
+                                        final NBTTagCompound chromosome = (NBTTagCompound) chromoBase;
+                                        if (chromosome.hasKey("UID0")) {
+                                            final String treeType = chromosome.getString("UID0");
+                                            if (treeType != null) {
+                                                Log.instance().debug("Forestry tree: " + treeType);
+                                                if (treeType.equals("forestry.treeOak")) {
+                                                    createByProduct(
+                                                            aTile,
+                                                            Witchery.Items.GENERIC.itemExhaleOfTheHornedOne
+                                                                    .createStack(1));
+                                                } else if (treeType.equals("forestry.treeSpruce")) {
+                                                    createByProduct(
+                                                            aTile,
+                                                            Witchery.Items.GENERIC.itemHintOfRebirth.createStack(1));
+                                                } else if (treeType.equals("forestry.treeBirch")) {
+                                                    createByProduct(
+                                                            aTile,
+                                                            Witchery.Items.GENERIC.itemBreathOfTheGoddess
+                                                                    .createStack(1));
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                    } else {
+                        createByProduct(aTile, Witchery.Items.GENERIC.itemFoulFume.createStack(1));
                     }
-                } else {
-                    createByProduct(aTile, Witchery.Items.GENERIC.itemFoulFume.createStack(1));
-                }
             }
         } catch (Throwable e) {
             Log.instance().warning(e, "Exception occured while generating a by product from a witches oven");
@@ -423,13 +432,13 @@ public class WitchesOvenUtils {
         } else if (getFumeOutputSlot(aTile).isItemEqual(byProduct)
                 && getFumeOutputSlot(aTile).stackSize + byProduct.stackSize
                         < getFumeOutputSlot(aTile).getMaxStackSize()) {
-            final ItemStack itemStack2 = getFumeOutputSlot(aTile);
-            itemStack2.stackSize += byProduct.stackSize;
-            final ItemStack itemStack3 = getEmptyJarSlot(aTile);
-            if (--itemStack3.stackSize <= 0) {
-                setEmptyJarSlot(aTile, null);
-            }
-        }
+                            final ItemStack itemStack2 = getFumeOutputSlot(aTile);
+                            itemStack2.stackSize += byProduct.stackSize;
+                            final ItemStack itemStack3 = getEmptyJarSlot(aTile);
+                            if (--itemStack3.stackSize <= 0) {
+                                setEmptyJarSlot(aTile, null);
+                            }
+                        }
     }
 
     private static boolean isForestrySapling(ItemStack aSap) {

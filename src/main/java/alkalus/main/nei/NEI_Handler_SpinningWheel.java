@@ -1,16 +1,20 @@
 package alkalus.main.nei;
 
-import codechicken.nei.*;
-import codechicken.nei.recipe.*;
-import com.emoniph.witchery.blocks.*;
-import com.emoniph.witchery.crafting.*;
 import java.awt.*;
 import java.util.*;
+
 import net.minecraft.client.gui.inventory.*;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 
+import codechicken.nei.*;
+import codechicken.nei.recipe.*;
+
+import com.emoniph.witchery.blocks.*;
+import com.emoniph.witchery.crafting.*;
+
 public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler {
+
     public Class<? extends GuiContainer> getGuiClass() {
         return BlockSpinningWheelGUI.class;
     }
@@ -20,8 +24,11 @@ public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler {
     }
 
     public void loadTransferRects() {
-        this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(74, 9, 24, 18), "witchery_spinning", new Object[0]));
+        this.transferRects.add(
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(74, 9, 24, 18),
+                        "witchery_spinning",
+                        new Object[0]));
     }
 
     public void loadCraftingRecipes(final String outputId, final Object... results) {
@@ -61,6 +68,7 @@ public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler {
     }
 
     public class CachedSpinningRecipe extends TemplateRecipeHandler.CachedRecipe {
+
         PositionedStack fibre;
         PositionedStack output;
         PositionedStack add1;

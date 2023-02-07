@@ -49,7 +49,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
     public void loadCraftingRecipes(final ItemStack result) {
         for (final BrewActionRitualRecipe ritual : WitcheryBrewRegistry.INSTANCE.getRecipes()) {
             for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
-                if (result.isItemEqual(recipe.result)) {
+                if (NEIServerUtils.areStacksSameTypeCrafting(result, recipe.result)) {
                     this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
                 }
             }
@@ -61,7 +61,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
             try {
                 for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
                     for (final ItemStack stack : recipe.ingredients) {
-                        if (stack.isItemEqual(ingredient)) {
+                        if (NEIServerUtils.areStacksSameTypeCrafting(stack, ingredient)) {
                             this.arecipes.add(
                                     new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
                         }

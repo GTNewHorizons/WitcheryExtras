@@ -7,10 +7,10 @@ import net.minecraft.client.gui.inventory.*;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 
+import com.emoniph.witchery.crafting.*;
+
 import codechicken.nei.*;
 import codechicken.nei.recipe.*;
-
-import com.emoniph.witchery.crafting.*;
 
 public class NEI_Handler_Kettle extends TemplateRecipeHandler {
 

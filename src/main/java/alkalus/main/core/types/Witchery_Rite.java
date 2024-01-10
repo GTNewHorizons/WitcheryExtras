@@ -2,10 +2,10 @@ package alkalus.main.core.types;
 
 import java.util.ArrayList;
 
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.ritual.RiteRegistry;
 import com.emoniph.witchery.ritual.RiteRegistry.Ritual;
+
+import alkalus.main.core.util.ReflectionUtils;
 
 public class Witchery_Rite {
 

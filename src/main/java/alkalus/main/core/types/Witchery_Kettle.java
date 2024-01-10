@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import net.minecraft.item.ItemStack;
 
-import alkalus.main.core.util.AutoMap;
-
 import com.emoniph.witchery.crafting.KettleRecipes;
 import com.emoniph.witchery.crafting.KettleRecipes.KettleRecipe;
+
+import alkalus.main.core.util.AutoMap;
 
 public class Witchery_Kettle {
 

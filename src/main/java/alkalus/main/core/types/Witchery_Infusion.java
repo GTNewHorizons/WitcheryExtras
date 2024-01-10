@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.infusion.Infusion;
+
+import alkalus.main.core.util.ReflectionUtils;
 
 public class Witchery_Infusion {
 

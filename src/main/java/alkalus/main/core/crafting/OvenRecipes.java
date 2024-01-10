@@ -7,12 +7,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
+import com.emoniph.witchery.Witchery;
+
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.AutoMap;
 import alkalus.main.core.util.Pair;
 import alkalus.main.core.util.Utils;
-
-import com.emoniph.witchery.Witchery;
 
 public class OvenRecipes {
 

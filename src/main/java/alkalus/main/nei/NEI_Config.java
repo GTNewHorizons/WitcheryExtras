@@ -3,15 +3,14 @@ package alkalus.main.nei;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import alkalus.main.core.WitcheryExtras;
-import codechicken.nei.api.API;
-import codechicken.nei.api.IConfigureNEI;
-import codechicken.nei.api.IHighlightHandler;
-
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.integration.NEIHighlightHandler;
 import com.emoniph.witchery.util.Config;
 
+import alkalus.main.core.WitcheryExtras;
+import codechicken.nei.api.API;
+import codechicken.nei.api.IConfigureNEI;
+import codechicken.nei.api.IHighlightHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 

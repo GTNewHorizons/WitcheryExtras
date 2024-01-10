@@ -3,12 +3,11 @@ package alkalus.main.asm;
 import java.util.Arrays;
 import java.util.List;
 
-import alkalus.main.core.util.Logger;
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
+import alkalus.main.core.util.Logger;
+import alkalus.main.core.util.ReflectionUtils;
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Mod.EventHandler;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.EntityLiving;
 
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.infusion.infusions.creature.CreaturePower;
+
+import alkalus.main.core.util.ReflectionUtils;
 
 public class Witchery_CreaturePower {
 

@@ -5,11 +5,6 @@ import java.lang.reflect.Field;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import alkalus.main.api.RecipeManager;
-import alkalus.main.asm.AsmConfig;
-import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.predictions.PredictionAlwaysForced;
 import com.emoniph.witchery.predictions.PredictionArrow;
@@ -21,6 +16,11 @@ import com.emoniph.witchery.predictions.PredictionMultiMine;
 import com.emoniph.witchery.predictions.PredictionNetherTrip;
 import com.emoniph.witchery.predictions.PredictionRescue;
 import com.emoniph.witchery.predictions.PredictionWet;
+
+import alkalus.main.api.RecipeManager;
+import alkalus.main.asm.AsmConfig;
+import alkalus.main.core.WitcheryExtras;
+import alkalus.main.core.util.ReflectionUtils;
 
 public class PredictionHandler {
 

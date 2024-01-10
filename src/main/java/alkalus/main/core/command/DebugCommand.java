@@ -16,12 +16,11 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.infusion.Infusion;
 import com.mojang.authlib.GameProfile;
 
+import alkalus.main.core.WitcheryExtras;
+import alkalus.main.core.util.ReflectionUtils;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

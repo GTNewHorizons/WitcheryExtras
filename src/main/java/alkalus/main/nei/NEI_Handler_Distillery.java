@@ -8,13 +8,13 @@ import net.minecraft.client.gui.inventory.*;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 
-import alkalus.main.core.types.Witchery_Distillery;
-import codechicken.nei.*;
-import codechicken.nei.recipe.*;
-
 import com.emoniph.witchery.*;
 import com.emoniph.witchery.blocks.*;
 import com.emoniph.witchery.crafting.*;
+
+import alkalus.main.core.types.Witchery_Distillery;
+import codechicken.nei.*;
+import codechicken.nei.recipe.*;
 
 public class NEI_Handler_Distillery extends TemplateRecipeHandler {
 

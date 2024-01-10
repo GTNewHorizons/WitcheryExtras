@@ -3,12 +3,12 @@ package alkalus.main.api.plugin;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import alkalus.main.api.RecipeManager;
-import alkalus.main.api.plugin.base.BasePluginWitchery;
-
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.util.Dye;
+
+import alkalus.main.api.RecipeManager;
+import alkalus.main.api.plugin.base.BasePluginWitchery;
 
 public class ExamplePlugin extends BasePluginWitchery {
 

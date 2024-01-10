@@ -10,14 +10,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
 
-import alkalus.main.core.crafting.OvenRecipes;
-import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
-
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.blocks.BlockWitchesOven;
 import com.emoniph.witchery.blocks.BlockWitchesOven.TileEntityWitchesOven;
 import com.emoniph.witchery.util.Config;
 import com.emoniph.witchery.util.Log;
+
+import alkalus.main.core.crafting.OvenRecipes;
+import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
 
 @SuppressWarnings("unused")
 public class WitchesOvenUtils {

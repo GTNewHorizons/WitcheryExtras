@@ -6,11 +6,11 @@ import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
 
-import alkalus.main.asm.AsmConfig;
-
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.blocks.BlockPoppetShelf.TileEntityPoppetShelf;
 import com.emoniph.witchery.util.Log;
+
+import alkalus.main.asm.AsmConfig;
 
 public class PoppetShelfUtils {
 

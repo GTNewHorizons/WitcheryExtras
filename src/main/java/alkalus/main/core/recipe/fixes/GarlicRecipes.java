@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
+import com.emoniph.witchery.Witchery;
+
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.Utils;
-
-import com.emoniph.witchery.Witchery;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class GarlicRecipes {

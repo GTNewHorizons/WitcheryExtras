@@ -9,12 +9,12 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 
+import com.emoniph.witchery.brewing.*;
+import com.emoniph.witchery.brewing.action.*;
+
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.*;
 import codechicken.nei.recipe.*;
-
-import com.emoniph.witchery.brewing.*;
-import com.emoniph.witchery.brewing.action.*;
 
 public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
 

@@ -9,15 +9,15 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import com.emoniph.witchery.Witchery;
+import com.emoniph.witchery.blocks.BlockWitchesOvenGUI;
+
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
 import alkalus.main.core.util.Utils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.FurnaceRecipeHandler;
 import codechicken.nei.recipe.TemplateRecipeHandler;
-
-import com.emoniph.witchery.Witchery;
-import com.emoniph.witchery.blocks.BlockWitchesOvenGUI;
 
 public class NEI_Handler_Oven extends TemplateRecipeHandler {
 

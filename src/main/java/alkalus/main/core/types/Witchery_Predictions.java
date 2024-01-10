@@ -2,10 +2,10 @@ package alkalus.main.core.types;
 
 import java.util.Hashtable;
 
-import alkalus.main.core.util.ReflectionUtils;
-
 import com.emoniph.witchery.predictions.Prediction;
 import com.emoniph.witchery.predictions.PredictionManager;
+
+import alkalus.main.core.util.ReflectionUtils;
 
 public class Witchery_Predictions {
 

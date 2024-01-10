@@ -7,19 +7,6 @@ import java.util.Hashtable;
 
 import net.minecraft.item.ItemStack;
 
-import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.crafting.OvenRecipes;
-import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
-import alkalus.main.core.types.Witchery_Cauldron;
-import alkalus.main.core.types.Witchery_CreaturePower;
-import alkalus.main.core.types.Witchery_Distillery;
-import alkalus.main.core.types.Witchery_Infusion;
-import alkalus.main.core.types.Witchery_Kettle;
-import alkalus.main.core.types.Witchery_Oven;
-import alkalus.main.core.types.Witchery_Predictions;
-import alkalus.main.core.types.Witchery_Rite;
-import alkalus.main.core.types.Witchery_SpinningWheel;
-
 import com.emoniph.witchery.crafting.DistilleryRecipes;
 import com.emoniph.witchery.crafting.DistilleryRecipes.DistilleryRecipe;
 import com.emoniph.witchery.crafting.KettleRecipes;
@@ -36,6 +23,19 @@ import com.emoniph.witchery.ritual.RiteRegistry;
 import com.emoniph.witchery.ritual.RiteRegistry.Ritual;
 import com.emoniph.witchery.ritual.RitualTraits;
 import com.emoniph.witchery.ritual.Sacrifice;
+
+import alkalus.main.core.WitcheryExtras;
+import alkalus.main.core.crafting.OvenRecipes;
+import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
+import alkalus.main.core.types.Witchery_Cauldron;
+import alkalus.main.core.types.Witchery_CreaturePower;
+import alkalus.main.core.types.Witchery_Distillery;
+import alkalus.main.core.types.Witchery_Infusion;
+import alkalus.main.core.types.Witchery_Kettle;
+import alkalus.main.core.types.Witchery_Oven;
+import alkalus.main.core.types.Witchery_Predictions;
+import alkalus.main.core.types.Witchery_Rite;
+import alkalus.main.core.types.Witchery_SpinningWheel;
 
 public class WitcheryRecipeHandlerInternal {
 

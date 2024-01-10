@@ -8,7 +8,18 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-import scala.collection.mutable.HashTable;
+import com.emoniph.witchery.WitcheryRecipes;
+import com.emoniph.witchery.crafting.DistilleryRecipes.DistilleryRecipe;
+import com.emoniph.witchery.crafting.KettleRecipes.KettleRecipe;
+import com.emoniph.witchery.crafting.SpinningRecipes.SpinningRecipe;
+import com.emoniph.witchery.infusion.Infusion;
+import com.emoniph.witchery.infusion.infusions.creature.CreaturePower;
+import com.emoniph.witchery.predictions.Prediction;
+import com.emoniph.witchery.ritual.Circle;
+import com.emoniph.witchery.ritual.Rite;
+import com.emoniph.witchery.ritual.RitualTraits;
+import com.emoniph.witchery.ritual.Sacrifice;
+
 import alkalus.main.api.plugin.base.BasePluginWitchery;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
@@ -22,18 +33,7 @@ import alkalus.main.core.types.Witchery_Rite;
 import alkalus.main.core.types.Witchery_SpinningWheel;
 import alkalus.main.core.util.AutoMap;
 import alkalus.main.core.util.WitcheryRecipeHandlerInternal;
-
-import com.emoniph.witchery.WitcheryRecipes;
-import com.emoniph.witchery.crafting.DistilleryRecipes.DistilleryRecipe;
-import com.emoniph.witchery.crafting.KettleRecipes.KettleRecipe;
-import com.emoniph.witchery.crafting.SpinningRecipes.SpinningRecipe;
-import com.emoniph.witchery.infusion.Infusion;
-import com.emoniph.witchery.infusion.infusions.creature.CreaturePower;
-import com.emoniph.witchery.predictions.Prediction;
-import com.emoniph.witchery.ritual.Circle;
-import com.emoniph.witchery.ritual.Rite;
-import com.emoniph.witchery.ritual.RitualTraits;
-import com.emoniph.witchery.ritual.Sacrifice;
+import scala.collection.mutable.HashTable;
 
 /**
  *

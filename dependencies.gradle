@@ -3,5 +3,5 @@
 dependencies {
 	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.5.24-GTNH:dev')
 
-	api('curse.maven:witchery-69673:2234410')
+	api(deobfCurse('witchery-69673:2234410'))
 }

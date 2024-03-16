@@ -10,7 +10,7 @@ import com.emoniph.witchery.blocks.BlockDistillery;
 public class TileEntityDistilleryMixin {
 
     @ModifyConstant(method = "isItemValidForSlot", constant = @Constant(intValue = 3), remap = false)
-    private int witcheryextras$(int original) {
+    private int witcheryextras$fixSlotInsertion(int original) {
         return 2;
     }
 }

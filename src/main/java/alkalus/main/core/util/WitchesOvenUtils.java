@@ -205,7 +205,6 @@ public class WitchesOvenUtils {
             }
             final int result = getOutputSlot(aTile).stackSize + itemstack.stackSize;
 
-            // return result <= aTile.getInventoryStackLimit() && result <= itemstack.getMaxStackSize();
             return result <= aTile.getInventoryStackLimit() && result <= itemstack.getMaxStackSize();
         }
     }

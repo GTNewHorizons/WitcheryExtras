@@ -7,7 +7,6 @@ import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.launchwrapper.Launch;
 
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_NEIWitcheryConfig;
-import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityPoppetShelf;
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityWitchesOven;
 import cpw.mods.fml.relauncher.CoreModManager;
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -66,12 +65,6 @@ public class WE_CORE_Handler implements IClassTransformer {
         // Patch witches oven to support recipe maps.
         if (transformedName.equals("com.emoniph.witchery.blocks.BlockWitchesOven$TileEntityWitchesOven")) {
             return new ClassTransformer_Witchery_TileEntityWitchesOven(transformedName, basicClass, obfuscated)
-                    .getWriter().toByteArray();
-        }
-
-        // Patch Poppet Shelf to enable/disable chunk loading
-        if (transformedName.equals("com.emoniph.witchery.blocks.BlockPoppetShelf$TileEntityPoppetShelf")) {
-            return new ClassTransformer_Witchery_TileEntityPoppetShelf(transformedName, basicClass, obfuscated)
                     .getWriter().toByteArray();
         }
 

@@ -13,7 +13,8 @@ public enum Mixin {
     ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, TargetedMod.WITCHERY),
     TileEntityDistilleryMixin("witchery.TileEntityDistilleryMixin", Side.BOTH, TargetedMod.WITCHERY),
     ItemBrewMixin("witchery.ItemBrewMixin", Side.CLIENT, TargetedMod.WITCHERY),
-    ItemGeneral$3$1Mixin("witchery.ItemGeneral$3$1Mixin", Side.BOTH, TargetedMod.WITCHERY);
+    ItemGeneral$3$1Mixin("witchery.ItemGeneral$3$1Mixin", Side.BOTH, TargetedMod.WITCHERY),
+    TileEntityPoppetShelfMixin("witchery.TileEntityPoppetShelfMixin", Side.BOTH, TargetedMod.WITCHERY);
 
     public final String mixinClass;
     public final List<TargetedMod> targetedMods;

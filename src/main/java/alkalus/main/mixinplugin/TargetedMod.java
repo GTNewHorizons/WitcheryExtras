@@ -1,26 +1,23 @@
 package alkalus.main.mixinplugin;
 
-public enum TargetedMod {
+import javax.annotation.Nonnull;
 
-    VANILLA("Minecraft", null),
-    WITCHERY("Witchery", null, "witchery");
+import com.gtnewhorizon.gtnhmixins.builders.ITargetMod;
+import com.gtnewhorizon.gtnhmixins.builders.TargetModBuilder;
 
-    public final String modName;
-    public final String coreModClass;
-    public final String modId;
+public enum TargetedMod implements ITargetMod {
 
-    TargetedMod(String modName, String coreModClass) {
-        this(modName, coreModClass, null);
+    WITCHERY("witchery");
+
+    private final TargetModBuilder builder;
+
+    TargetedMod(String modId) {
+        this.builder = new TargetModBuilder().setModId(modId);
     }
 
-    TargetedMod(String modName, String coreModClass, String modId) {
-        this.modName = modName;
-        this.coreModClass = coreModClass;
-        this.modId = modId;
-    }
-
+    @Nonnull
     @Override
-    public String toString() {
-        return "TargetedMod{modName='" + modName + "', coreModClass='" + coreModClass + "', modId='" + modId + "'}";
+    public TargetModBuilder getBuilder() {
+        return builder;
     }
 }

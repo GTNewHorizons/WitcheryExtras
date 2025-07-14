@@ -1,55 +1,34 @@
 package alkalus.main.mixinplugin;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nonnull;
 
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
+import com.gtnewhorizon.gtnhmixins.builders.IMixins;
+import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
-public enum Mixin {
+public enum Mixin implements IMixins {
 
-    TileEntitySpinningWheelMixin("witchery.TileEntitySpinningWheelMixin", Side.BOTH, TargetedMod.WITCHERY),
-    SpinningRecipeMixin("witchery.SpinningRecipeMixin", Side.BOTH, TargetedMod.WITCHERY),
-    ShockwaveTaskMixin("witchery.ShockwaveTaskMixin", Side.BOTH, TargetedMod.WITCHERY),
-    TileEntityDistilleryMixin("witchery.TileEntityDistilleryMixin", Side.BOTH, TargetedMod.WITCHERY),
-    ItemBrewMixin("witchery.ItemBrewMixin", Side.CLIENT, TargetedMod.WITCHERY),
-    ItemGeneral$3$1Mixin("witchery.ItemGeneral$3$1Mixin", Side.BOTH, TargetedMod.WITCHERY);
+    // spotless:off
+    WITCHERY(new MixinBuilder()
+            .addCommonMixins(
+                    "witchery.TileEntitySpinningWheelMixin",
+                    "witchery.SpinningRecipeMixin",
+                    "witchery.ShockwaveTaskMixin",
+                    "witchery.TileEntityDistilleryMixin",
+                    "witchery.ItemGeneral$3$1Mixin")
+            .addClientMixins("witchery.ItemBrewMixin")
+            .addRequiredMod(TargetedMod.WITCHERY)
+            .setPhase(Phase.LATE));
+    // spotless:on
 
-    public final String mixinClass;
-    public final List<TargetedMod> targetedMods;
-    private final Side side;
+    private final MixinBuilder builder;
 
-    Mixin(String mixinClass, Side side, TargetedMod... targetedMods) {
-        this.mixinClass = mixinClass;
-        this.targetedMods = Arrays.asList(targetedMods);
-        this.side = side;
+    Mixin(MixinBuilder builder) {
+        this.builder = builder;
     }
 
-    Mixin(String mixinClass, TargetedMod... targetedMods) {
-        this.mixinClass = mixinClass;
-        this.targetedMods = Arrays.asList(targetedMods);
-        this.side = Side.BOTH;
+    @Nonnull
+    @Override
+    public MixinBuilder getBuilder() {
+        return this.builder;
     }
-
-    public boolean shouldLoad(Set<String> loadedMods) {
-        return (side == Side.BOTH || side == Side.SERVER && FMLLaunchHandler.side().isServer()
-                || side == Side.CLIENT && FMLLaunchHandler.side().isClient()) && allModsloaded(loadedMods);
-    }
-
-    private boolean allModsloaded(Set<String> loadedMods) {
-        if (targetedMods.isEmpty()) return true;
-
-        for (TargetedMod target : targetedMods) {
-            if (target == TargetedMod.VANILLA) continue;
-            if (!loadedMods.isEmpty() && target.modId != null && !loadedMods.contains(target.modId)) return false;
-        }
-
-        return true;
-    }
-}
-
-enum Side {
-    BOTH,
-    CLIENT,
-    SERVER;
 }

@@ -4,5 +4,10 @@
     "package": "alkalus.main.mixins",
     "refmap": "mixins.WitcheryExtras.refmap.json",
     "target": "@env(DEFAULT)",
-    "compatibilityLevel": "JAVA_8"
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "witchery.BlockAltarMixin"
+    ],
+    "client": [],
+    "server": []
 }

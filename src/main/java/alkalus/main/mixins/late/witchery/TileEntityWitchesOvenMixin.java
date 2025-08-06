@@ -1,5 +1,6 @@
 package alkalus.main.mixins.late.witchery;
 
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
@@ -17,12 +18,12 @@ import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.util.Utils;
 
 @Mixin(TileEntityWitchesOven.class)
-public abstract class TileEntityWitchesOvenMixin extends TileEntity {
+public abstract class TileEntityWitchesOvenMixin extends TileEntity implements ISidedInventory {
 
     @Shadow(remap = false)
     private ItemStack[] furnaceItemStacks;
 
-    @Shadow(remap = false)
+    @Shadow
     public abstract int getInventoryStackLimit();
 
     @Shadow(remap = false)

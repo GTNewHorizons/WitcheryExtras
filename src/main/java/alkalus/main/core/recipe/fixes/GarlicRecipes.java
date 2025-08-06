@@ -13,7 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class GarlicRecipes {
 
-    private final ItemStack mGarlics[];
+    private final ItemStack[] mGarlics;
 
     public GarlicRecipes() {
         WitcheryExtras.log(0, "Attempting to fix Witchery recipes that don't use OreDict for Garlic.");

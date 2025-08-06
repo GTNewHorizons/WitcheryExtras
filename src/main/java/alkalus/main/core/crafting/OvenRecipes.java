@@ -191,7 +191,7 @@ public class OvenRecipes {
         int mOutputAmount = 0;
         ItemStack mJarOutputStack = null;
         int mJarOutputAmount = 0;
-        boolean y[] = new boolean[2];
+        boolean[] y = new boolean[2];
 
         // Furnace Output
         if (customOutput != null && amt1 > 0) {
@@ -405,7 +405,7 @@ public class OvenRecipes {
         }
 
         public ItemStack[] getOutputs() {
-            ItemStack x[] = new ItemStack[2];
+            ItemStack[] x = new ItemStack[2];
             Pair<ItemStack, Integer> a1 = outputs.get(0);
             Pair<ItemStack, Integer> a2 = outputs.get(1);
             x[0] = Utils.getSimpleStack(a1.getKey(), a1.getValue());

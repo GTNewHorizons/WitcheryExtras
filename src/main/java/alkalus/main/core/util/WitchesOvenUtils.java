@@ -19,40 +19,17 @@ import com.emoniph.witchery.util.Log;
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
 
-@SuppressWarnings("unused")
 public class WitchesOvenUtils {
 
-    private static final int COOK_TIME = 180;
-    private static final double FUNNEL_CHANCE = 0.25;
-    private static final double FILTERED_FUNNEL_CHANCE = 0.3;
-    private static final double DOUBLED_FILTERED_FUNNEL_CHANCE = 0.8;
     private static final int SLOT_TO_COOK = 0;
     private static final int SLOT_FUEL = 1;
     private static final int SLOT_COOKED = 2;
     private static final int SLOT_BY_PRODUCT = 3;
     private static final int SLOT_JARS = 4;
-    private static final int[] slots_top = new int[] { 0, 4 };
-    private static final int[] slots_bottom = new int[] { 4, 1 };
-    private static final int[] slots_sides = new int[] { 3, 2, 4, 1 };
 
     public static ItemStack[] getFurnaceItemStacks(TileEntityWitchesOven aTile) {
         return (ItemStack[]) ReflectionUtils
                 .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "furnaceItemStacks"), aTile);
-    }
-
-    public static int[] getSlotsTop(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils
-                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_top"), aTile);
-    }
-
-    public static int[] getSlotsBottom(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils
-                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_bottom"), aTile);
-    }
-
-    public static int[] getSlotsSides(TileEntityWitchesOven aTile) {
-        return (int[]) ReflectionUtils
-                .getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "slots_sides"), aTile);
     }
 
     public static void updateEntity(TileEntityWitchesOven aTile) {
@@ -329,8 +306,7 @@ public class WitchesOvenUtils {
     }
 
     public static int getCookTime(TileEntityWitchesOven aTile) {
-        final int time = 180 - 20 * getFumeFunnels(aTile);
-        return time;
+        return 180 - 20 * getFumeFunnels(aTile);
     }
 
     public static void generateByProduct(TileEntityWitchesOven aTile, final ItemStack itemstack) {
@@ -447,35 +423,4 @@ public class WitchesOvenUtils {
         return false;
     }
 
-    public static ItemStack getVanillaEquivForForestrySapling(ItemStack aSap) {
-        if (isForestrySapling(aSap)) {
-            final NBTBase tag = aSap.getTagCompound().getTag("Genome");
-            if (tag != null && tag instanceof NBTTagCompound) {
-                final NBTTagCompound compound = (NBTTagCompound) tag;
-                if (compound.hasKey("Chromosomes") && compound.getTag("Chromosomes") instanceof NBTTagList) {
-                    final NBTTagList list = compound.getTagList("Chromosomes", 10);
-                    if (list != null && list.tagCount() > 0) {
-                        final NBTBase chromoBase = (NBTBase) list.getCompoundTagAt(0);
-                        if (chromoBase != null && chromoBase instanceof NBTTagCompound) {
-                            final NBTTagCompound chromosome = (NBTTagCompound) chromoBase;
-                            if (chromosome.hasKey("UID0")) {
-                                final String treeType = chromosome.getString("UID0");
-                                if (treeType != null) {
-                                    Log.instance().debug("Forestry tree: " + treeType);
-                                    if (treeType.equals("forestry.treeOak")) {
-                                        return new ItemStack(Blocks.sapling, 1, 0);
-                                    } else if (treeType.equals("forestry.treeSpruce")) {
-                                        return new ItemStack(Blocks.sapling, 1, 1);
-                                    } else if (treeType.equals("forestry.treeBirch")) {
-                                        return new ItemStack(Blocks.sapling, 1, 2);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
 }

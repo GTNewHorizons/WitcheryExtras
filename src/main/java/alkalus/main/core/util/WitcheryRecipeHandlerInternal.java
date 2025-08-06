@@ -35,10 +35,7 @@ public class WitcheryRecipeHandlerInternal {
      */
     public static synchronized boolean addOvenRecipe(final ItemStack input1, final String inputString1, final int jars,
             final ItemStack customOutput, final int amt1, final ItemStack outputJarStack, final int amt2) {
-        if (OvenRecipes.addRecipe(input1, inputString1, jars, customOutput, amt1, outputJarStack, amt2) != null) {
-            return true;
-        }
-        return false;
+        return OvenRecipes.addRecipe(input1, inputString1, jars, customOutput, amt1, outputJarStack, amt2) != null;
     }
 
     public static synchronized boolean removeOvenRecipe(OvenRecipe mRecipe) {
@@ -69,10 +66,7 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean addDistilleryRecipe(ItemStack input1, ItemStack input2, int jars,
             ItemStack output1, ItemStack output2, ItemStack output3, ItemStack output4) {
-        if (DistilleryRecipes.instance().addRecipe(input1, input2, jars, output1, output2, output3, output4) != null) {
-            return true;
-        }
-        return false;
+        return DistilleryRecipes.instance().addRecipe(input1, input2, jars, output1, output2, output3, output4) != null;
     }
 
     public static synchronized boolean removeDistilleryRecipe(DistilleryRecipe mRecipe) {
@@ -102,11 +96,8 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean addKettleRecipe(ItemStack output, int hatBonus, int familiarType,
             float powerRequired, int color, int dimension, boolean inBook, ItemStack... inputs) {
-        if (KettleRecipes.instance()
-                .addRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs) != null) {
-            return true;
-        }
-        return false;
+        return KettleRecipes.instance()
+                       .addRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs) != null;
     }
 
     public static synchronized boolean removeKettleRecipe(ItemStack mOutput) {
@@ -191,10 +182,7 @@ public class WitcheryRecipeHandlerInternal {
                             + ".");
             return false;
         }
-        if (RiteRegistry.addRecipe((byte) ritualID, bookIndex, rite, initialSacrifice, traits, circles) != null) {
-            return true;
-        }
-        return false;
+        return RiteRegistry.addRecipe((byte) ritualID, bookIndex, rite, initialSacrifice, traits, circles) != null;
     }
 
     public static synchronized boolean removeRiteFromRiteRegistry(int ritualID) {

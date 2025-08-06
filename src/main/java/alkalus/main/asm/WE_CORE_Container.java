@@ -7,7 +7,6 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
 import alkalus.main.core.util.Logger;
-import alkalus.main.core.util.ReflectionUtils;
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -58,10 +57,6 @@ public class WE_CORE_Container extends DummyModContainer {
     @Subscribe
     public void preInit(FMLPreInitializationEvent event) {
         Logger.ASM("Loading " + WE_CORE.MODID + " V" + WE_CORE.VERSION);
-        if (AsmConfig.enablePatchNEI) {
-            // Pre-load this class so it can be transformed into an empty class. Fixes NEI catching and registering it.
-            ReflectionUtils.doesClassExist("com.emoniph.witchery.integration.NEIWitcheryConfig");
-        }
     }
 
     @Subscribe

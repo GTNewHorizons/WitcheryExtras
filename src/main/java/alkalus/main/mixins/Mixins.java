@@ -5,6 +5,8 @@ import javax.annotation.Nonnull;
 import com.gtnewhorizon.gtnhmixins.builders.IMixins;
 import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
+import alkalus.main.asm.AsmConfig;
+
 public enum Mixins implements IMixins {
 
     // spotless:off
@@ -19,6 +21,11 @@ public enum Mixins implements IMixins {
                     "witchery.ItemGeneral$3$1Mixin",
                     "witchery.BlockAltarMixin")
             .addClientMixins("witchery.ItemBrewMixin")
+            .addRequiredMod(TargetedMod.WITCHERY)
+            .setPhase(Phase.LATE)),
+    WITCHERY_NEI_CONFIG(new MixinBuilder()
+            .addCommonMixins("witchery.NEIWitcheryConfigMixin")
+            .setApplyIf(()-> AsmConfig.enablePatchNEI)
             .addRequiredMod(TargetedMod.WITCHERY)
             .setPhase(Phase.LATE));
     // spotless:on

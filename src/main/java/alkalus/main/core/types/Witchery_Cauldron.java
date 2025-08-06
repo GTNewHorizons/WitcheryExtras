@@ -40,9 +40,7 @@ public class Witchery_Cauldron {
             return false;
         }
         if (getIngredients().containsKey(ingredient.ITEM_KEY)) {
-            if (getIngredients().remove(ingredient.ITEM_KEY) != null) {
-                return true;
-            }
+            return getIngredients().remove(ingredient.ITEM_KEY) != null;
         }
         return false;
     }

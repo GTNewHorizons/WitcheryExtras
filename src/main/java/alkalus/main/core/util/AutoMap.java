@@ -26,11 +26,7 @@ public class AutoMap<V> implements Iterable<V>, Cloneable, Serializable {
     public synchronized boolean setValue(V object) {
         int mOriginalID = this.mInternalID;
         put(object);
-        if (this.mInternalMap.get(mOriginalID).equals(object) || mOriginalID > this.mInternalID) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.mInternalMap.get(mOriginalID).equals(object) || mOriginalID > this.mInternalID;
     }
 
     public synchronized V put(V object) {

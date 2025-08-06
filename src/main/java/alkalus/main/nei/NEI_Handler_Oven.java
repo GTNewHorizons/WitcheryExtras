@@ -154,7 +154,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
         }
 
         public PositionedStack getOtherStack() {
-            if (FurnaceRecipeHandler.afuels != null && FurnaceRecipeHandler.afuels.size() > 0) {
+            if (FurnaceRecipeHandler.afuels != null && !FurnaceRecipeHandler.afuels.isEmpty()) {
                 return FurnaceRecipeHandler.afuels
                         .get(NEI_Handler_Oven.this.cycleticks / 48 % FurnaceRecipeHandler.afuels.size()).stack;
             }

@@ -71,7 +71,7 @@ public class DebugCommand implements ICommand {
         EntityPlayer aPlayer = getPlayer(S.getCommandSenderName());
         if (aPlayer != null) {
             if (argString != null) {
-                if (argString[0] != null && argString[0].length() > 0) {
+                if (argString[0] != null && !argString[0].isEmpty()) {
                     if (argString[0].equalsIgnoreCase("name")) {
                         GameProfile aProfile = aPlayer.getGameProfile();
                         if (!aPlayer.getCommandSenderName().equalsIgnoreCase("emoniph")) {

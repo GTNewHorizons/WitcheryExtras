@@ -11,6 +11,7 @@ public enum Mixins implements IMixins {
     WITCHERY(new MixinBuilder()
             .addCommonMixins(
                     "witchery.TileEntityPoppetShelfMixin",
+                    "witchery.TileEntityWitchesOvenMixin",
                     "witchery.TileEntitySpinningWheelMixin",
                     "witchery.SpinningRecipeMixin",
                     "witchery.ShockwaveTaskMixin",

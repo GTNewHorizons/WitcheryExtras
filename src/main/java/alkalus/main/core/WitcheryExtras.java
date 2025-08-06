@@ -27,7 +27,6 @@ public class WitcheryExtras {
     public static final String MODID = "WitcheryExtras";
     public static final String NAME = "Witchery++";
     public static final String VERSION = "GRADLETOKEN_VERSION";
-    private static final Logger log4j = new Logger();
 
     private static final Map<Integer, BasePluginWitchery> mPreInitEvents = new HashMap<>();
     private static final Map<Integer, BasePluginWitchery> mInitEvents = new HashMap<>();
@@ -69,11 +68,11 @@ public class WitcheryExtras {
 
     public static void log(int level, String text) {
         if (level <= 0) {
-            log4j.INFO(text);
+            Logger.INFO(text);
         } else if (level == 1) {
-            log4j.WARNING(text);
+            Logger.WARNING(text);
         } else {
-            log4j.ERROR(text);
+            Logger.ERROR(text);
         }
     }
 

@@ -2,9 +2,7 @@ package alkalus.main.core.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 
-import com.emoniph.witchery.blocks.BlockWitchesOven;
 import com.emoniph.witchery.blocks.BlockWitchesOven.TileEntityWitchesOven;
 
 import alkalus.main.core.crafting.OvenRecipes;
@@ -20,57 +18,6 @@ public class WitchesOvenUtils {
 
     public static ItemStack[] getFurnaceItemStacks(TileEntityWitchesOven aTile) {
         return (ItemStack[]) ReflectionUtils.getFieldValue(ReflectionUtils.getField(TileEntityWitchesOven.class, "furnaceItemStacks"), aTile);
-    }
-
-    public static void updateEntity(TileEntityWitchesOven aTile) {
-        final boolean flag = aTile.furnaceBurnTime > 0;
-        boolean aDoBlockUpdate = false;
-        if (aTile.furnaceBurnTime > 0) {
-            --aTile.furnaceBurnTime;
-        }
-        if (!aTile.getWorldObj().isRemote) {
-
-            if (canSmelt(aTile)) {
-
-                // Add Fuel
-                if (aTile.furnaceBurnTime == 0) {
-                    final int itemBurnTime = TileEntityFurnace.getItemBurnTime(getFuelSlot(aTile));
-                    aTile.furnaceBurnTime = itemBurnTime;
-                    aTile.currentItemBurnTime = itemBurnTime;
-                    if (aTile.furnaceBurnTime > 0) {
-                        aDoBlockUpdate = true;
-                        if (getFuelSlot(aTile) != null) {
-                            final ItemStack itemStack = getFuelSlot(aTile);
-                            --itemStack.stackSize;
-                            if (getFuelSlot(aTile).stackSize == 0) {
-                                setFuelSlot(aTile, getFuelSlot(aTile).getItem().getContainerItem(getFuelSlot(aTile)));
-                            }
-                        }
-                    }
-                }
-
-                // Try do recipe
-                if (aTile.isBurning()) {
-                    ++aTile.furnaceCookTime;
-                    if (aTile.furnaceCookTime >= getCookTime(aTile)) {
-                        aTile.furnaceCookTime = 0;
-                        smeltItem(aTile);
-                        aDoBlockUpdate = true;
-                    }
-                } else {
-                    aTile.furnaceCookTime = 0;
-                }
-            }
-
-            if (flag != aTile.furnaceBurnTime > 0) {
-                aDoBlockUpdate = true;
-                BlockWitchesOven.updateWitchesOvenBlockState(aTile.furnaceBurnTime > 0, aTile.getWorldObj(), aTile.xCoord, aTile.yCoord, aTile.zCoord);
-            }
-        }
-        if (aDoBlockUpdate) {
-            aTile.markDirty();
-            aTile.getWorldObj().markBlockForUpdate(aTile.xCoord, aTile.yCoord, aTile.zCoord);
-        }
     }
 
     public static int getEmptyJarCount(TileEntityWitchesOven aTile) {

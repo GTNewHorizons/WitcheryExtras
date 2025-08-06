@@ -1,4 +1,4 @@
-package alkalus.main.asm;
+package alkalus.main.config;
 
 import java.io.File;
 import java.util.ArrayList;

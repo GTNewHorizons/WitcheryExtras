@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
-import alkalus.main.asm.AsmConfig;
+import alkalus.main.config.AsmConfig;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class TooltipHandler {

@@ -18,7 +18,7 @@ import com.emoniph.witchery.predictions.PredictionRescue;
 import com.emoniph.witchery.predictions.PredictionWet;
 
 import alkalus.main.api.RecipeManager;
-import alkalus.main.asm.AsmConfig;
+import alkalus.main.config.AsmConfig;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.ReflectionUtils;
 

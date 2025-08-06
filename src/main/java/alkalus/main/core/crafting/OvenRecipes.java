@@ -11,7 +11,6 @@ import com.emoniph.witchery.Witchery;
 
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.AutoMap;
-import alkalus.main.core.util.Pair;
 import alkalus.main.core.util.Utils;
 
 public class OvenRecipes {
@@ -139,7 +138,6 @@ public class OvenRecipes {
     }
 
     /**
-     *
      * @param input1  - The Input Item.
      * @param jars    - The required amount of Jars.
      * @param output0 - A custom ItemStack output.
@@ -154,7 +152,6 @@ public class OvenRecipes {
     }
 
     /**
-     *
      * @param input1         - The Input Item.
      * @param inputString1   - A Valid Oredict String.
      * @param jars           - The required amount of Jars.
@@ -267,7 +264,7 @@ public class OvenRecipes {
 
     /**
      * Returns an {@link OverRecipe} based on input item and an amount of jars.
-     * 
+     *
      * @param input1 - An ItemStack
      * @param jars   - Amount of Jars
      * @return - The Closest Matching {@link OverRecipe}.
@@ -283,7 +280,7 @@ public class OvenRecipes {
 
     /**
      * Returns a {@link OverRecipe} based on an output item.
-     * 
+     *
      * @param result - The output item.
      * @return - The first Matching {@link OverRecipe}.
      */
@@ -298,7 +295,7 @@ public class OvenRecipes {
 
     /**
      * Returns a {@link OverRecipe} based on an input item. This may not always return the same recipe.
-     * 
+     *
      * @param input1 - An ItemStack
      * @return - The first Matching {@link OverRecipe}.
      */
@@ -320,10 +317,9 @@ public class OvenRecipes {
         public final ItemStack outputJar;
         public final int outputAmount1;
         public final int outputAmountJar;
-        public final AutoMap<Pair<ItemStack, Integer>> outputs = new AutoMap<Pair<ItemStack, Integer>>();
+        public final AutoMap<OvenOutputs> outputs = new AutoMap<>();
 
         /**
-         *
          * @param input1  - The {@link ItemStack} to be burned in the oven.
          * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
@@ -337,7 +333,6 @@ public class OvenRecipes {
         }
 
         /**
-         *
          * @param input1  - The {@link ItemStack} to be burned in the oven.
          * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
@@ -351,7 +346,6 @@ public class OvenRecipes {
         }
 
         /**
-         *
          * @param input1  - The {@link ItemStack} to be burned in the oven.
          * @param jars    - An {@link int} for the amount of Jars required.
          * @param output1 - The {@link ItemStack} which is a result of using the Oven.
@@ -368,8 +362,8 @@ public class OvenRecipes {
             this.outputJar = output2;
             this.outputAmount1 = amount1;
             this.outputAmountJar = amount2;
-            Pair<ItemStack, Integer> a1 = new Pair<ItemStack, Integer>(output1, amount1);
-            Pair<ItemStack, Integer> a2 = new Pair<ItemStack, Integer>(output1, amount1);
+            OvenOutputs a1 = new OvenOutputs(output1, amount1);
+            OvenOutputs a2 = new OvenOutputs(output1, amount1);
             this.outputs.put(a1);
             this.outputs.put(a2);
         }
@@ -406,10 +400,10 @@ public class OvenRecipes {
 
         public ItemStack[] getOutputs() {
             ItemStack[] x = new ItemStack[2];
-            Pair<ItemStack, Integer> a1 = outputs.get(0);
-            Pair<ItemStack, Integer> a2 = outputs.get(1);
-            x[0] = Utils.getSimpleStack(a1.getKey(), a1.getValue());
-            x[1] = Utils.getSimpleStack(a2.getKey(), a2.getValue());
+            OvenOutputs a1 = outputs.get(0);
+            OvenOutputs a2 = outputs.get(1);
+            x[0] = Utils.getSimpleStack(a1.stack, a1.amount);
+            x[1] = Utils.getSimpleStack(a2.stack, a2.amount);
             return x;
         }
 
@@ -452,6 +446,17 @@ public class OvenRecipes {
 
         public boolean isValid() {
             return inputs != null && output != null;
+        }
+
+        public static class OvenOutputs {
+
+            public final ItemStack stack;
+            public final int amount;
+
+            public OvenOutputs(ItemStack stack, int amount) {
+                this.stack = stack;
+                this.amount = amount;
+            }
         }
     }
 }

@@ -1,23 +1,21 @@
 package alkalus.main.core.types;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
 import com.emoniph.witchery.crafting.KettleRecipes;
 import com.emoniph.witchery.crafting.KettleRecipes.KettleRecipe;
 
-import alkalus.main.core.util.AutoMap;
-
 public class Witchery_Kettle {
 
-    public static AutoMap<KettleRecipe> findRecipesFor(final ItemStack result) {
-        AutoMap<KettleRecipe> recipesOld = new AutoMap<KettleRecipe>();
-        ArrayList<KettleRecipe> recipes = new ArrayList<KettleRecipe>();
-        recipes = KettleRecipes.instance().recipes;
+    public static List<KettleRecipe> findRecipesFor(final ItemStack result) {
+        List<KettleRecipe> recipesOld = new ArrayList<>();
+        List<KettleRecipe> recipes = KettleRecipes.instance().recipes;
         for (final KettleRecipe recipe : recipes) {
             if (recipe.output.isItemEqual(result)) {
-                recipesOld.put(recipe);
+                recipesOld.add(recipe);
             }
         }
         return recipesOld;
@@ -27,8 +25,8 @@ public class Witchery_Kettle {
         if (inputs == null || inputs.length < 1 || output == null) {
             return null;
         }
-        AutoMap<KettleRecipe> recipesWithMatchingOutput = findRecipesFor(output);
-        AutoMap<ItemStack> mMatchingItems = new AutoMap<ItemStack>();
+        List<KettleRecipe> recipesWithMatchingOutput = findRecipesFor(output);
+        ArrayList<ItemStack> mMatchingItems = new ArrayList<>();
         KettleRecipe result = null;
         // Cycle Recipes
         loop1: for (KettleRecipe K : recipesWithMatchingOutput) {
@@ -37,7 +35,7 @@ public class Witchery_Kettle {
                 // Cycle through the recipes inputs
                 for (ItemStack I : K.inputs) {
                     if (I.isItemEqual(M)) {
-                        mMatchingItems.put(M);
+                        mMatchingItems.add(M);
                         continue loop2;
                     }
                 }

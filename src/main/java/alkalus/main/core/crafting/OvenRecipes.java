@@ -10,7 +10,6 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import com.emoniph.witchery.Witchery;
 
 import alkalus.main.core.WitcheryExtras;
-import alkalus.main.core.util.AutoMap;
 import alkalus.main.core.util.Utils;
 
 public class OvenRecipes {
@@ -317,7 +316,7 @@ public class OvenRecipes {
         public final ItemStack outputJar;
         public final int outputAmount1;
         public final int outputAmountJar;
-        public final AutoMap<OvenOutputs> outputs = new AutoMap<>();
+        public final ArrayList<OvenOutputs> outputs = new ArrayList<>();
 
         /**
          * @param input1  - The {@link ItemStack} to be burned in the oven.
@@ -364,8 +363,8 @@ public class OvenRecipes {
             this.outputAmountJar = amount2;
             OvenOutputs a1 = new OvenOutputs(output1, amount1);
             OvenOutputs a2 = new OvenOutputs(output1, amount1);
-            this.outputs.put(a1);
-            this.outputs.put(a2);
+            this.outputs.add(a1);
+            this.outputs.add(a2);
         }
 
         private boolean isInputMatch(final ItemStack intput1, int amt1) {

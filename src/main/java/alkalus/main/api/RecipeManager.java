@@ -3,6 +3,7 @@ package alkalus.main.api;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +32,6 @@ import alkalus.main.core.types.Witchery_Oven;
 import alkalus.main.core.types.Witchery_Predictions;
 import alkalus.main.core.types.Witchery_Rite;
 import alkalus.main.core.types.Witchery_SpinningWheel;
-import alkalus.main.core.util.AutoMap;
 import alkalus.main.core.util.WitcheryRecipeHandlerInternal;
 import scala.collection.mutable.HashTable;
 
@@ -345,9 +345,9 @@ public class RecipeManager {
         /**
          * @param result - An {@link ItemStack}, used to find a {@link HashMap} full of all {@link KettleRecipe}s with
          *               this output.
-         * @return - An {@link AutoMap} Which holds all matching recipes containing {@code 'result'} as an output.
+         * @return - A {@link List} Which holds all matching recipes containing {@code 'result'} as an output.
          */
-        public static AutoMap<KettleRecipe> findRecipesFor(final ItemStack result) {
+        public static List<KettleRecipe> findRecipesFor(final ItemStack result) {
             return Witchery_Kettle.findRecipesFor(result);
         }
     }

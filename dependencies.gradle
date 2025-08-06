@@ -1,7 +1,7 @@
 // Add your dependencies here
 
 dependencies {
-	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.7.64-GTNH:dev')
+	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev')
 
 	api(deobfCurse('witchery-69673:2234410'))
 }

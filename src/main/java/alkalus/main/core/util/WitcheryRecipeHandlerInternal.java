@@ -27,27 +27,8 @@ import com.emoniph.witchery.ritual.Sacrifice;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.crafting.OvenRecipes.OvenRecipe;
-import alkalus.main.core.types.Witchery_Cauldron;
-import alkalus.main.core.types.Witchery_CreaturePower;
-import alkalus.main.core.types.Witchery_Distillery;
-import alkalus.main.core.types.Witchery_Infusion;
-import alkalus.main.core.types.Witchery_Kettle;
-import alkalus.main.core.types.Witchery_Oven;
-import alkalus.main.core.types.Witchery_Predictions;
-import alkalus.main.core.types.Witchery_Rite;
-import alkalus.main.core.types.Witchery_SpinningWheel;
 
 public class WitcheryRecipeHandlerInternal {
-
-    public static final Witchery_Cauldron mCauldronHandler = new Witchery_Cauldron();
-    public static final Witchery_CreaturePower mCreaturePowerHandler = new Witchery_CreaturePower();
-    public static final Witchery_Distillery mDistilleryHandler = new Witchery_Distillery();
-    public static final Witchery_Infusion mInfusionHandler = new Witchery_Infusion();
-    public static final Witchery_Kettle mKettleHandler = new Witchery_Kettle();
-    public static final Witchery_Oven mOvenHandler = new Witchery_Oven();
-    public static final Witchery_Predictions mPredictionsHandler = new Witchery_Predictions();
-    public static final Witchery_Rite mRitesHandler = new Witchery_Rite();
-    public static final Witchery_SpinningWheel mSpinningWheelHandler = new Witchery_SpinningWheel();
 
     /*
      * Oven Recipes

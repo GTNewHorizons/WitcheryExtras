@@ -26,15 +26,15 @@ public class Witchery_Cauldron {
                 WitcheryBrewRegistry.INSTANCE);
     }
 
-    public BrewAction getActionForItemStack(final ItemStack stack) {
+    public static BrewAction getActionForItemStack(final ItemStack stack) {
         return getIngredients().get(BrewItemKey.fromStack(stack));
     }
 
-    private boolean removeCauldronBrewAction(final ItemStack ingredient) {
+    private static boolean removeCauldronBrewAction(final ItemStack ingredient) {
         return removeCauldronBrewAction(getActionForItemStack(ingredient));
     }
 
-    private boolean removeCauldronBrewAction(final BrewAction ingredient) {
+    private static boolean removeCauldronBrewAction(final BrewAction ingredient) {
         // Bad Recipe to remove
         if (ingredient == null || ingredient.ITEM_KEY == null) {
             return false;

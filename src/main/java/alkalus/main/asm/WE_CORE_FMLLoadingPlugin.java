@@ -3,19 +3,13 @@ package alkalus.main.asm;
 import java.util.Map;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 
-@SortingIndex(10097)
-@MCVersion(value = "1.7.10")
+@SuppressWarnings("unused")
+@IFMLLoadingPlugin.SortingIndex(10097)
+@IFMLLoadingPlugin.MCVersion("1.7.10")
 public class WE_CORE_FMLLoadingPlugin implements IFMLLoadingPlugin {
 
-    // -Dfml.coreMods.load=alkalus.main.asm.WE_CORE_FMLLoadingPlugin
-
-    @Override
-    public String getAccessTransformerClass() {
-        return null;
-    }
+    private static boolean isObf;
 
     @Override
     public String[] getASMTransformerClass() {
@@ -33,5 +27,16 @@ public class WE_CORE_FMLLoadingPlugin implements IFMLLoadingPlugin {
     }
 
     @Override
-    public void injectData(Map<String, Object> data) {}
+    public void injectData(Map<String, Object> data) {
+        isObf = (boolean) data.get("runtimeDeobfuscationEnabled");
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
+    }
+
+    public static boolean isIsObf() {
+        return isObf;
+    }
 }

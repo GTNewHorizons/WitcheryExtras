@@ -9,7 +9,7 @@ public class CustomRecipeLoader {
         run();
     }
 
-    private final void run() {
+    private void run() {
         // Fixes recipes that hardcode Witchery Garlic types.
         new GarlicRecipes();
         OvenRecipes.generateDefaultOvenRecipes();

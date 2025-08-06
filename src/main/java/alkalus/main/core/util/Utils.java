@@ -9,7 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -127,9 +126,5 @@ public class Utils {
                 && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
                         || Items.feather.getDamage(aStack1) == W
                         || Items.feather.getDamage(aStack2) == W);
-    }
-
-    public static boolean isDevEnv() {
-        return (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     }
 }

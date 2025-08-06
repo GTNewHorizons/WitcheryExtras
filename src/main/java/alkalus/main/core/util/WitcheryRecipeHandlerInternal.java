@@ -97,7 +97,7 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean addKettleRecipe(ItemStack output, int hatBonus, int familiarType,
             float powerRequired, int color, int dimension, boolean inBook, ItemStack... inputs) {
         return KettleRecipes.instance()
-                       .addRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs) != null;
+                .addRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs) != null;
     }
 
     public static synchronized boolean removeKettleRecipe(ItemStack mOutput) {

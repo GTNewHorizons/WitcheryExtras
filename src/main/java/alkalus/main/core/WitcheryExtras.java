@@ -5,18 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alkalus.main.api.plugin.base.BasePluginWitchery;
-import alkalus.main.core.command.DebugCommand;
 import alkalus.main.core.entities.PredictionHandler;
 import alkalus.main.core.proxy.Proxy_Common;
 import alkalus.main.core.util.Logger;
-import alkalus.main.core.util.Utils;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
         modid = WitcheryExtras.MODID,
@@ -77,13 +73,6 @@ public class WitcheryExtras {
             bwp.postInit();
         }
         PredictionHandler.adjustPredictions();
-    }
-
-    @EventHandler
-    public synchronized void serverStarting(final FMLServerStartingEvent event) {
-        if (Utils.isDevEnv()) {
-            event.registerServerCommand(new DebugCommand());
-        }
     }
 
     public static void log(int level, String text) {

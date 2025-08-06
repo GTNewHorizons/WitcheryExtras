@@ -5,7 +5,6 @@ import java.io.File;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_NEIWitcheryConfig;
-import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityPoppetShelf;
 import alkalus.main.asm.transformer.ClassTransformer_Witchery_TileEntityWitchesOven;
 
 @SuppressWarnings("static-access")
@@ -19,6 +18,7 @@ public class WE_CORE_Handler implements IClassTransformer {
                 .println("[Witchery++][ASM] Asm Config Location: " + mConfig.config.getConfigFile().getAbsolutePath());
     }
 
+    @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
         // Fix Bad NEI Handling, by patching it out entirely.
         if (transformedName.equals("com.emoniph.witchery.integration.NEIWitcheryConfig") && mConfig.enablePatchNEI) {
@@ -32,14 +32,6 @@ public class WE_CORE_Handler implements IClassTransformer {
         // Patch witches oven to support recipe maps.
         if (transformedName.equals("com.emoniph.witchery.blocks.BlockWitchesOven$TileEntityWitchesOven")) {
             return new ClassTransformer_Witchery_TileEntityWitchesOven(
-                    transformedName,
-                    basicClass,
-                    WE_CORE_FMLLoadingPlugin.isIsObf()).getWriter().toByteArray();
-        }
-
-        // Patch Poppet Shelf to enable/disable chunk loading
-        if (transformedName.equals("com.emoniph.witchery.blocks.BlockPoppetShelf$TileEntityPoppetShelf")) {
-            return new ClassTransformer_Witchery_TileEntityPoppetShelf(
                     transformedName,
                     basicClass,
                     WE_CORE_FMLLoadingPlugin.isIsObf()).getWriter().toByteArray();

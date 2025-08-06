@@ -86,7 +86,7 @@ public class WitcheryExtras {
         }
     }
 
-    public static final void log(int level, String text) {
+    public static void log(int level, String text) {
         if (level <= 0) {
             log4j.INFO(text);
         } else if (level == 1) {
@@ -97,33 +97,33 @@ public class WitcheryExtras {
     }
 
     // Custom Content Loader
-    public static final synchronized Collection<BasePluginWitchery> getMpreinitevents() {
+    public static synchronized Collection<BasePluginWitchery> getMpreinitevents() {
         return mPreInitEvents.values();
     }
 
-    public static final synchronized Collection<BasePluginWitchery> getMinitevents() {
+    public static synchronized Collection<BasePluginWitchery> getMinitevents() {
         return mInitEvents.values();
     }
 
-    public static final synchronized Collection<BasePluginWitchery> getMpostinitevents() {
+    public static synchronized Collection<BasePluginWitchery> getMpostinitevents() {
         return mPostInitEvents.values();
     }
 
     private static int mID_1 = 0;
 
-    public static final synchronized void addEventPreInit(BasePluginWitchery basePluginWitchery) {
+    public static synchronized void addEventPreInit(BasePluginWitchery basePluginWitchery) {
         mPreInitEvents.put(mID_1++, basePluginWitchery);
     }
 
     private static int mID_2 = 0;
 
-    public static final synchronized void addEventInit(BasePluginWitchery minitevents) {
+    public static synchronized void addEventInit(BasePluginWitchery minitevents) {
         mInitEvents.put(mID_2++, minitevents);
     }
 
     private static int mID_3 = 0;
 
-    public static final synchronized void addEventPostInit(BasePluginWitchery mpostinitevents) {
+    public static synchronized void addEventPostInit(BasePluginWitchery mpostinitevents) {
         mPostInitEvents.put(mID_3++, mpostinitevents);
     }
 }

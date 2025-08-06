@@ -18,7 +18,7 @@ public class OvenRecipes {
 
     private static final ArrayList<OvenRecipe> mRecipeMap = new ArrayList<OvenRecipe>();
 
-    public static final ArrayList<OvenRecipe> getRecipeMap() {
+    public static ArrayList<OvenRecipe> getRecipeMap() {
         return mRecipeMap;
     }
 
@@ -89,7 +89,7 @@ public class OvenRecipes {
         // Witchery.Items.GENERIC.itemRedstoneSoup.createStack(1)); //Dark Oak - 5
     }
 
-    private static final ItemStack createStack(final int stackSize) {
+    private static ItemStack createStack(final int stackSize) {
         return new ItemStack((Item) Witchery.Items.GENERIC, stackSize, 27);
     }
 

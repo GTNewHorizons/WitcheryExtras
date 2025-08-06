@@ -21,7 +21,7 @@ public abstract class BasePluginWitchery implements WitcheryPlugin {
      * 
      * @author Alkalus
      */
-    public static enum LoadPhase {
+    public enum LoadPhase {
         PREINIT,
         INIT,
         POSTINIT

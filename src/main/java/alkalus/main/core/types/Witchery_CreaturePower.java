@@ -16,8 +16,7 @@ public class Witchery_CreaturePower {
      * @return - CreaturePower object.
      */
     public static synchronized CreaturePower createNewCreaturePower(final Class<? extends EntityLiving> creatureType) {
-        CreaturePower h = new CreaturePower(getLastUsedCreaturePowerID() + 1, creatureType);
-        return h != null ? h : null;
+        return new CreaturePower(getLastUsedCreaturePowerID() + 1, creatureType);
     }
 
     /**
@@ -28,8 +27,7 @@ public class Witchery_CreaturePower {
      */
     public static synchronized CreaturePower createNewCreaturePower(final int mID,
             final Class<? extends EntityLiving> creatureType) {
-        CreaturePower h = new CreaturePower(mID, creatureType);
-        return h != null ? h : null;
+        return new CreaturePower(mID, creatureType);
     }
 
     private static int mCachedLastRegistryValue;

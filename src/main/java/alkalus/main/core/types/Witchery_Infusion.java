@@ -24,8 +24,7 @@ public class Witchery_Infusion {
      * @return - Infusion object.
      */
     public static synchronized Infusion createNewInfusion(final int mID) {
-        Infusion h = new Infusion(mID);
-        return h != null ? h : null;
+        return new Infusion(mID);
     }
 
     private static int mCachedLastRegistryValue;

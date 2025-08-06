@@ -10,7 +10,7 @@ import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.blocks.BlockPoppetShelf.TileEntityPoppetShelf;
 import com.emoniph.witchery.util.Log;
 
-import alkalus.main.asm.AsmConfig;
+import alkalus.main.config.AsmConfig;
 
 public class PoppetShelfUtils {
 

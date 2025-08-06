@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import com.gtnewhorizon.gtnhmixins.builders.IMixins;
 import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
-import alkalus.main.asm.AsmConfig;
+import alkalus.main.config.AsmConfig;
 
 public enum Mixins implements IMixins {
 

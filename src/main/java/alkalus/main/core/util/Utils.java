@@ -62,7 +62,7 @@ public class Utils {
 
         ItemStack[] V = new ItemStack[] {};
         int mSlot = 0;
-        if (Q.size() > 0) {
+        if (!Q.isEmpty()) {
             V = new ItemStack[Q.size()];
             for (ItemStack w : Q) {
                 V[mSlot++] = w;

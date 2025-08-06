@@ -121,8 +121,7 @@ public class DebugCommand implements ICommand {
 
     @Override
     public List<?> addTabCompletionOptions(final ICommandSender var1, final String[] var2) {
-        ArrayList<String> aTabCompletes = new ArrayList<String>();
-        return aTabCompletes;
+        return new ArrayList<String>();
     }
 
     @Override

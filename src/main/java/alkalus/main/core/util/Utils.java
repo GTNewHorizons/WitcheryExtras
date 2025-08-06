@@ -103,8 +103,7 @@ public class Utils {
             if (item == null) {
                 return null;
             }
-            final ItemStack metaStack = new ItemStack(item, size, meta);
-            return metaStack;
+            return new ItemStack(item, size, meta);
 
         } catch (final NullPointerException e) {
             return null;

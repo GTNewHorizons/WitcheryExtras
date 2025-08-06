@@ -9,8 +9,7 @@ public class Logger {
     public static final org.apache.logging.log4j.Logger modLogger = Logger.makeLogger();
 
     public static org.apache.logging.log4j.Logger makeLogger() {
-        final org.apache.logging.log4j.Logger loggers = LogManager.getLogger(WitcheryExtras.NAME);
-        return loggers;
+        return LogManager.getLogger(WitcheryExtras.NAME);
     }
 
     public static org.apache.logging.log4j.Logger getLogger() {

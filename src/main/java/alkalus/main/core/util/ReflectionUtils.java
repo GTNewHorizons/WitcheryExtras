@@ -467,10 +467,9 @@ public class ReflectionUtils {
                 : method.getDeclaringClass().getCanonicalName();
         Logger.REFLECTION("Trying to invoke " + methodName + " on an instance of " + classname + ".");
         try {
-            Method mInvokingMethod = method;
-            if (mInvokingMethod != null) {
+            if (method != null) {
                 Logger.REFLECTION(methodName + " was not null.");
-                if ((boolean) mInvokingMethod.invoke(objectInstance, values)) {
+                if ((boolean) method.invoke(objectInstance, values)) {
                     Logger.REFLECTION("Successfully invoked " + methodName + ".");
                     return true;
                 } else {

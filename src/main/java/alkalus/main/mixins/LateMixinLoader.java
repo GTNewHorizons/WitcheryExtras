@@ -17,6 +17,6 @@ public class LateMixinLoader implements ILateMixinLoader {
 
     @Override
     public List<String> getMixins(Set<String> loadedMods) {
-        return IMixins.getLateMixins(Mixin.class, loadedMods);
+        return IMixins.getLateMixins(Mixins.class, loadedMods);
     }
 }

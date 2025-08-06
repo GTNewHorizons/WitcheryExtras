@@ -5,11 +5,12 @@ import javax.annotation.Nonnull;
 import com.gtnewhorizon.gtnhmixins.builders.IMixins;
 import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
-public enum Mixin implements IMixins {
+public enum Mixins implements IMixins {
 
     // spotless:off
     WITCHERY(new MixinBuilder()
             .addCommonMixins(
+                    "witchery.TileEntityPoppetShelfMixin",
                     "witchery.TileEntitySpinningWheelMixin",
                     "witchery.SpinningRecipeMixin",
                     "witchery.ShockwaveTaskMixin",
@@ -23,7 +24,7 @@ public enum Mixin implements IMixins {
 
     private final MixinBuilder builder;
 
-    Mixin(MixinBuilder builder) {
+    Mixins(MixinBuilder builder) {
         this.builder = builder;
     }
 

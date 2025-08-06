@@ -19,13 +19,13 @@ import alkalus.main.core.util.Utils;
 @Mixin(TileEntityWitchesOven.class)
 public abstract class TileEntityWitchesOvenMixin extends TileEntity {
 
-    @Shadow
+    @Shadow(remap = false)
     private ItemStack[] furnaceItemStacks;
 
-    @Shadow
+    @Shadow(remap = false)
     public abstract int getInventoryStackLimit();
 
-    @Shadow
+    @Shadow(remap = false)
     protected abstract void generateByProduct(ItemStack itemstack);
 
     @Inject(

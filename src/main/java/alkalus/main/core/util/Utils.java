@@ -9,10 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
-
-import cpw.mods.fml.common.FMLCommonHandler;
 
 public class Utils {
 
@@ -78,11 +75,6 @@ public class Utils {
         List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
         return recipes
                 .removeIf(s -> (s != null) && (s.getRecipeOutput() != null) && (s.getRecipeOutput().isItemEqual(I)));
-    }
-
-    public static void registerEvent(Object o) {
-        MinecraftForge.EVENT_BUS.register(o);
-        FMLCommonHandler.instance().bus().register(o);
     }
 
     public static boolean hasValidOreDictTag(String validTag, ItemStack hasTag) {

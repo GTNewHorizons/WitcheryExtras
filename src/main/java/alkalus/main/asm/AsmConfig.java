@@ -12,7 +12,6 @@ import cpw.mods.fml.common.FMLLog;
 
 public class AsmConfig {
 
-    public static boolean loaded;
     public static Configuration config;
 
     public static boolean enablePatchNEI;
@@ -35,16 +34,14 @@ public class AsmConfig {
     public static int chancePredictionFindShinies;
     public static int chancePredictionVillagerLove;
 
-    public AsmConfig(File file) {
-        if (!loaded) {
-            config = new Configuration(file);
-            syncConfig(true);
-        }
+    static {
+        config = new Configuration(new File("config/WitcheryExtras/asm.cfg"));
+        syncConfig(true);
     }
 
     public static void syncConfig(boolean load) {
-        ArrayList<String> propOrder = new ArrayList<String>();
-        ArrayList<String> propOrderDebug = new ArrayList<String>();
+        ArrayList<String> propOrder = new ArrayList<>();
+        ArrayList<String> propOrderDebug = new ArrayList<>();
         try {
             if (!config.isChild && load) {
                 config.load();

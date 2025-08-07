@@ -51,27 +51,14 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
         OvenRecipes.OvenRecipe aValidRecipe = null;
         ItemStack aJarStack = this.furnaceItemStacks[4];
         int aJarCount = aJarStack != null ? aJarStack.stackSize : 0;
-        // Do we have any recipes without jar usage?
-        if (aJarCount == 0) {
-            for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
-                if (r.jars <= 0) {
-                    if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
-                        aValidRecipe = r;
-                        break;
-                    }
-                }
-            }
-        } else {
-            for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
-                if (r.jars <= aJarCount) {
-                    if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
-                        aValidRecipe = r;
-                        break;
-                    }
+        for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
+            if (r.jars <= aJarCount) {
+                if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
+                    aValidRecipe = r;
+                    break;
                 }
             }
         }
-
         if (aValidRecipe == null) {
             return false;
         } else {
@@ -97,27 +84,14 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
         OvenRecipes.OvenRecipe aValidRecipe = null;
         ItemStack aJarStack = this.furnaceItemStacks[4];
         int aJarCount = aJarStack != null ? aJarStack.stackSize : 0;
-        // Do we have any recipes without jar usage?
-        if (aJarCount == 0) {
-            for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
-                if (r.jars <= 0) {
-                    if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
-                        aValidRecipe = r;
-                        break;
-                    }
-                }
-            }
-        } else {
-            for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
-                if (r.jars <= aJarCount) {
-                    if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
-                        aValidRecipe = r;
-                        break;
-                    }
+        for (OvenRecipes.OvenRecipe r : OvenRecipes.getRecipeMap()) {
+            if (r.jars <= aJarCount) {
+                if (Utils.areStacksEqual(r.inputs, this.furnaceItemStacks[0])) {
+                    aValidRecipe = r;
+                    break;
                 }
             }
         }
-
         if (aValidRecipe != null) {
             if (this.canSmelt()) {
                 final ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);

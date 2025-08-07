@@ -17,7 +17,8 @@ public class TooltipHandler {
     public void onItemTooltip(ItemTooltipEvent event) {
         if (POPPET_SHELF_ITEM == null) {
             POPPET_SHELF_ITEM = Item.getItemFromBlock(Witchery.Blocks.POPPET_SHELF);
-        } else {
+        }
+        if (POPPET_SHELF_ITEM != null) {
             if (event.itemStack != null && event.itemStack.getItem() == POPPET_SHELF_ITEM) {
                 if (!AsmConfig.allowPoppetShelfChunkLoading) {
                     event.toolTip.add(EnumChatFormatting.RED + "This block has chunkloading disabled");

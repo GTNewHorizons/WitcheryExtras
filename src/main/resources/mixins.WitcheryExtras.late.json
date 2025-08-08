@@ -1,7 +1,7 @@
 {
     "required": true,
-    "minVersion": "0.8.3-GTNH",
-    "package": "alkalus.main.mixins",
+    "minVersion": "0.8.5-GTNH",
+    "package": "alkalus.main.mixins.late",
     "refmap": "mixins.WitcheryExtras.refmap.json",
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_8"

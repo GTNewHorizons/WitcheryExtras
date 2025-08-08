@@ -1,4 +1,4 @@
-package alkalus.main.mixins.witchery;
+package alkalus.main.mixins.late.witchery;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;

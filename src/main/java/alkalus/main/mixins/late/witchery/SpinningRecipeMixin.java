@@ -20,7 +20,8 @@ public class SpinningRecipeMixin {
         for (int i = 0; i < list.size(); ++i) {
             /* - */
             // if (list.get(i).isItemEqual(item)) {
-            /* + */ if (list.get(i).isItemEqual(item) && list.get(i).stackSize >= item.stackSize) {
+            /* + */ if (list.get(i)
+                .isItemEqual(item) && list.get(i).stackSize >= item.stackSize) {
                 cir.setReturnValue(i); // return i;
                 return;
             }

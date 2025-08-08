@@ -18,10 +18,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(
-        modid = WitcheryExtras.MODID,
-        name = WitcheryExtras.NAME,
-        version = WitcheryExtras.VERSION,
-        dependencies = "required-after:witchery;required-after:spongemixins;")
+    modid = WitcheryExtras.MODID,
+    name = WitcheryExtras.NAME,
+    version = WitcheryExtras.VERSION,
+    dependencies = "required-after:witchery;required-after:spongemixins;")
 public class WitcheryExtras {
 
     public static final String MODID = "WitcheryExtras";
@@ -56,7 +56,8 @@ public class WitcheryExtras {
 
     @Mod.EventHandler
     public synchronized void postInit(final FMLPostInitializationEvent event) {
-        if (event.getSide().isClient()) {
+        if (event.getSide()
+            .isClient()) {
             MinecraftForge.EVENT_BUS.register(new TooltipHandler());
         }
         for (BasePluginWitchery bwp : getMpostinitevents()) {

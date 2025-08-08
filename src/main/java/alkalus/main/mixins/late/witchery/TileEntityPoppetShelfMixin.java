@@ -16,13 +16,13 @@ import alkalus.main.config.AsmConfig;
 public class TileEntityPoppetShelfMixin extends TileEntityBase {
 
     @Inject(
-            method = "initiate",
-            cancellable = true,
-            remap = false,
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/emoniph/witchery/blocks/TileEntityBase;initiate()V",
-                    shift = At.Shift.AFTER))
+        method = "initiate",
+        cancellable = true,
+        remap = false,
+        at = @At(
+            value = "INVOKE",
+            target = "Lcom/emoniph/witchery/blocks/TileEntityBase;initiate()V",
+            shift = At.Shift.AFTER))
     private void checkConfig(CallbackInfo ci) {
         if (!AsmConfig.allowPoppetShelfChunkLoading) {
             ci.cancel();
@@ -30,11 +30,11 @@ public class TileEntityPoppetShelfMixin extends TileEntityBase {
     }
 
     @WrapWithCondition(
-            method = "invalidate",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/emoniph/witchery/util/Log;warning(Ljava/lang/String;)V",
-                    remap = false))
+        method = "invalidate",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcom/emoniph/witchery/util/Log;warning(Ljava/lang/String;)V",
+            remap = false))
     private boolean muteWarning(Log log, String message) {
         return AsmConfig.allowPoppetShelfChunkLoading;
     }

@@ -49,7 +49,8 @@ public class Witchery_Infusion {
      * @return
      */
     public static synchronized Infusion getInfusionOnPlayer(EntityPlayer entity) {
-        return Infusion.Registry.instance().get(entity);
+        return Infusion.Registry.instance()
+            .get(entity);
     }
 
     /**
@@ -58,6 +59,7 @@ public class Witchery_Infusion {
      * @return
      */
     public static synchronized Infusion getInfusion(int infusionID) {
-        return Infusion.Registry.instance().get(infusionID);
+        return Infusion.Registry.instance()
+            .get(infusionID);
     }
 }

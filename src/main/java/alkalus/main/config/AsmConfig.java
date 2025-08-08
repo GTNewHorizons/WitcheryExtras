@@ -51,14 +51,16 @@ public class AsmConfig {
             // Fixes NEI handling
             prop = config.get("general", "enablePatchNEI", true);
             prop.comment = "Patch NEI for good recipe support.";
-            prop.setLanguageKey("enablePatchNEI").setRequiresMcRestart(true);
+            prop.setLanguageKey("enablePatchNEI")
+                .setRequiresMcRestart(true);
             enablePatchNEI = prop.getBoolean(true);
             propOrder.add(prop.getName());
 
             // Toggles Chunk Loading for Poppet Shelves
             prop = config.get("general", "allowPoppetShelfChunkLoading", true);
             prop.comment = "Enables Chunk Loading by Poppet Shelves.";
-            prop.setLanguageKey("allowPoppetShelfChunkLoading").setRequiresMcRestart(true);
+            prop.setLanguageKey("allowPoppetShelfChunkLoading")
+                .setRequiresMcRestart(true);
             allowPoppetShelfChunkLoading = prop.getBoolean(true);
             propOrder.add(prop.getName());
 

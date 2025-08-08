@@ -21,30 +21,30 @@ import codechicken.nei.recipe.IUsageHandler;
 public class NEIWitcheryConfigMixin {
 
     @Redirect(
-            method = "loadConfig",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcodechicken/nei/api/API;registerRecipeHandler(Lcodechicken/nei/recipe/ICraftingHandler;)V"))
+        method = "loadConfig",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcodechicken/nei/api/API;registerRecipeHandler(Lcodechicken/nei/recipe/ICraftingHandler;)V"))
     private void cancelRecipeHandlerRegister(ICraftingHandler handler) {
         // do nothing
     }
 
     @Redirect(
-            method = "loadConfig",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcodechicken/nei/api/API;registerUsageHandler(Lcodechicken/nei/recipe/IUsageHandler;)V"))
+        method = "loadConfig",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcodechicken/nei/api/API;registerUsageHandler(Lcodechicken/nei/recipe/IUsageHandler;)V"))
     private void cancelUsageHandlerRegister(IUsageHandler handler) {
         // do nothing
     }
 
     @Inject(
-            method = "loadConfig",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcodechicken/nei/api/API;registerHighlightIdentifier(Lnet/minecraft/block/Block;Lcodechicken/nei/api/IHighlightHandler;)V",
-                    shift = At.Shift.BEFORE,
-                    ordinal = 0))
+        method = "loadConfig",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcodechicken/nei/api/API;registerHighlightIdentifier(Lnet/minecraft/block/Block;Lcodechicken/nei/api/IHighlightHandler;)V",
+            shift = At.Shift.BEFORE,
+            ordinal = 0))
     private void registerHandler(CallbackInfo ci) {
         API.registerRecipeHandler(new NEI_Handler_Oven());
         API.registerUsageHandler(new NEI_Handler_Oven());

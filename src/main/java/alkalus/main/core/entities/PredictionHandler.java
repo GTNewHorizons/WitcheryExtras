@@ -49,57 +49,53 @@ public class PredictionHandler {
 
     static {
         mSelfFulfillmentProbabilityPerSec = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.Prediction"),
-                "selfFulfillmentProbabilityPerSec");
+            ReflectionUtils.getClass("com.emoniph.witchery.predictions.Prediction"),
+            "selfFulfillmentProbabilityPerSec");
         mRegularFulfillmentDurationInTicks = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionAlwaysForced"),
-                "regularFulfillmentDurationInTicks");
+            ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionAlwaysForced"),
+            "regularFulfillmentDurationInTicks");
         mRegularFulfillmentProbability = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionAlwaysForced"),
-                "regularFulfillmentProbability");
+            ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionAlwaysForced"),
+            "regularFulfillmentProbability");
         mRescueEntityClass = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionRescue"), "entityClass");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionRescue"), "entityClass");
         mChestGenHook = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionBuriedTreasure"),
-                "chestGenHook");
+            ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionBuriedTreasure"),
+            "chestGenHook");
         mBlock = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "block");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "block");
         mItem = ReflectionUtils.getField(
-                ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"),
-                "itemPrototype");
+            ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"),
+            "itemPrototype");
         mMinExtra = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "minExtra");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "minExtra");
         mMaxExtra = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "maxExtra");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionMultiMine"), "maxExtra");
         mFightEntityClass = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "entityClass");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "entityClass");
         mBindTameable = ReflectionUtils
-                .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "bindTameable");
+            .getField(ReflectionUtils.getClass("com.emoniph.witchery.predictions.PredictionFight"), "bindTameable");
     }
 
     public static void adjustPredictions() {
         int[] aNewValues = new int[] { AsmConfig.chancePredictionSpawnZombie, AsmConfig.chancePredictionSpawnSkeleton,
-                AsmConfig.chancePredictionSpawnEnt, AsmConfig.chancePredictionStumbleAndFall,
-                AsmConfig.chancePredictionExtraIron, AsmConfig.chancePredictionFindShinies,
-                AsmConfig.chancePredictionFindShinies, AsmConfig.chancePredictionSpawnBuriedTreasure,
-                AsmConfig.chancePredictionVillagerLove, AsmConfig.chancePredictionSpawnBabaYagaBad,
-                AsmConfig.chancePredictionSpawnBabaYagaGood, AsmConfig.chancePredictionSpawnFriendlyWolf,
-                AsmConfig.chancePredictionSpawnProtectiveAnimal, AsmConfig.chancePredictionSpawnProtectiveAnimal,
-                AsmConfig.chancePredictionGetWet, AsmConfig.chancePredictionTeleportNether,
-                AsmConfig.chancePredictionExtraCoal, };
+            AsmConfig.chancePredictionSpawnEnt, AsmConfig.chancePredictionStumbleAndFall,
+            AsmConfig.chancePredictionExtraIron, AsmConfig.chancePredictionFindShinies,
+            AsmConfig.chancePredictionFindShinies, AsmConfig.chancePredictionSpawnBuriedTreasure,
+            AsmConfig.chancePredictionVillagerLove, AsmConfig.chancePredictionSpawnBabaYagaBad,
+            AsmConfig.chancePredictionSpawnBabaYagaGood, AsmConfig.chancePredictionSpawnFriendlyWolf,
+            AsmConfig.chancePredictionSpawnProtectiveAnimal, AsmConfig.chancePredictionSpawnProtectiveAnimal,
+            AsmConfig.chancePredictionGetWet, AsmConfig.chancePredictionTeleportNether,
+            AsmConfig.chancePredictionExtraCoal, };
         for (int i = 0; i < 18; i++) {
             Prediction aOld = RecipeManager.Predictions.getPrediction(i);
             if (aOld != null) {
                 if (aOld.itemWeight != aNewValues[i - 1]) {
                     RecipeManager.Predictions.remove(aOld);
                     WitcheryExtras.log(
-                            0,
-                            "Adjusting weight of " + aOld.getTranslationKey()
-                                    + " from "
-                                    + aOld.itemWeight
-                                    + " to "
-                                    + aNewValues[i - 1]
-                                    + ".");
+                        0,
+                        "Adjusting weight of " + aOld
+                            .getTranslationKey() + " from " + aOld.itemWeight + " to " + aNewValues[i - 1] + ".");
                     RecipeManager.Predictions.add(generateNewPrediction(aOld, aNewValues[i - 1]));
                 }
             }
@@ -111,91 +107,91 @@ public class PredictionHandler {
         int predictionID = aOldPrediction.predictionID;
         String translationKey = aOldPrediction.getTranslationKey();
         double selfFulfillmentProbabilityPerSec = (double) ReflectionUtils
-                .getFieldValue(mSelfFulfillmentProbabilityPerSec, aOldPrediction);
+            .getFieldValue(mSelfFulfillmentProbabilityPerSec, aOldPrediction);
         if (aOldPrediction instanceof PredictionAlwaysForced) {
             final int regularFulfillmentDurationInTicks = (int) ReflectionUtils
-                    .getFieldValue(mRegularFulfillmentDurationInTicks, aOldPrediction);
+                .getFieldValue(mRegularFulfillmentDurationInTicks, aOldPrediction);
             final double regularFulfillmentProbability = (double) ReflectionUtils
-                    .getFieldValue(mRegularFulfillmentProbability, aOldPrediction);
+                .getFieldValue(mRegularFulfillmentProbability, aOldPrediction);
             if (aOldPrediction instanceof PredictionMultiMine) {
                 final Block block = (Block) ReflectionUtils.getFieldValue(mBlock, aOldPrediction);
                 final ItemStack itemPrototype = (ItemStack) ReflectionUtils.getFieldValue(mItem, aOldPrediction);
                 final int minExtra = (int) ReflectionUtils.getFieldValue(mMinExtra, aOldPrediction);
                 final int maxExtra = (int) ReflectionUtils.getFieldValue(mMaxExtra, aOldPrediction);
                 aNewPrediction = new PredictionMultiMine(
-                        predictionID,
-                        aNewWeight,
-                        selfFulfillmentProbabilityPerSec,
-                        translationKey,
-                        regularFulfillmentDurationInTicks,
-                        regularFulfillmentProbability,
-                        block,
-                        itemPrototype,
-                        minExtra,
-                        maxExtra);
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey,
+                    regularFulfillmentDurationInTicks,
+                    regularFulfillmentProbability,
+                    block,
+                    itemPrototype,
+                    minExtra,
+                    maxExtra);
             } else if (aOldPrediction instanceof PredictionBuriedTreasure) {
                 final String chestGenHook = (String) ReflectionUtils.getFieldValue(mChestGenHook, aOldPrediction);
                 aNewPrediction = new PredictionBuriedTreasure(
-                        predictionID,
-                        aNewWeight,
-                        selfFulfillmentProbabilityPerSec,
-                        translationKey,
-                        regularFulfillmentDurationInTicks,
-                        regularFulfillmentProbability,
-                        chestGenHook);
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey,
+                    regularFulfillmentDurationInTicks,
+                    regularFulfillmentProbability,
+                    chestGenHook);
             } else if (aOldPrediction instanceof PredictionFallInLove) {
                 aNewPrediction = new PredictionFallInLove(
-                        predictionID,
-                        aNewWeight,
-                        selfFulfillmentProbabilityPerSec,
-                        translationKey,
-                        regularFulfillmentDurationInTicks,
-                        regularFulfillmentProbability);
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey,
+                    regularFulfillmentDurationInTicks,
+                    regularFulfillmentProbability);
             } else if (aOldPrediction instanceof PredictionRescue) {
                 Class aEntityClass = (Class) ReflectionUtils.getFieldValue(mRescueEntityClass, aOldPrediction);
                 aNewPrediction = new PredictionRescue(
-                        predictionID,
-                        aNewWeight,
-                        selfFulfillmentProbabilityPerSec,
-                        translationKey,
-                        regularFulfillmentDurationInTicks,
-                        regularFulfillmentProbability,
-                        aEntityClass);
+                    predictionID,
+                    aNewWeight,
+                    selfFulfillmentProbabilityPerSec,
+                    translationKey,
+                    regularFulfillmentDurationInTicks,
+                    regularFulfillmentProbability,
+                    aEntityClass);
             }
         } else if (aOldPrediction instanceof PredictionFight) {
             Class aEntityClass = (Class) ReflectionUtils.getFieldValue(mFightEntityClass, aOldPrediction);
             boolean aBindTameable = (boolean) ReflectionUtils.getFieldValue(mBindTameable, aOldPrediction);
             aNewPrediction = new PredictionFight(
-                    predictionID,
-                    aNewWeight,
-                    selfFulfillmentProbabilityPerSec,
-                    translationKey,
-                    aEntityClass,
-                    aBindTameable);
+                predictionID,
+                aNewWeight,
+                selfFulfillmentProbabilityPerSec,
+                translationKey,
+                aEntityClass,
+                aBindTameable);
         } else if (aOldPrediction instanceof PredictionArrow) {
             aNewPrediction = new PredictionArrow(
-                    predictionID,
-                    aNewWeight,
-                    selfFulfillmentProbabilityPerSec,
-                    translationKey);
+                predictionID,
+                aNewWeight,
+                selfFulfillmentProbabilityPerSec,
+                translationKey);
         } else if (aOldPrediction instanceof PredictionFall) {
             aNewPrediction = new PredictionFall(
-                    predictionID,
-                    aNewWeight,
-                    selfFulfillmentProbabilityPerSec,
-                    translationKey);
+                predictionID,
+                aNewWeight,
+                selfFulfillmentProbabilityPerSec,
+                translationKey);
         } else if (aOldPrediction instanceof PredictionWet) {
             aNewPrediction = new PredictionWet(
-                    predictionID,
-                    aNewWeight,
-                    selfFulfillmentProbabilityPerSec,
-                    translationKey);
+                predictionID,
+                aNewWeight,
+                selfFulfillmentProbabilityPerSec,
+                translationKey);
         } else if (aOldPrediction instanceof PredictionNetherTrip) {
             aNewPrediction = new PredictionNetherTrip(
-                    predictionID,
-                    aNewWeight,
-                    selfFulfillmentProbabilityPerSec,
-                    translationKey);
+                predictionID,
+                aNewWeight,
+                selfFulfillmentProbabilityPerSec,
+                translationKey);
         }
 
         return aNewPrediction;

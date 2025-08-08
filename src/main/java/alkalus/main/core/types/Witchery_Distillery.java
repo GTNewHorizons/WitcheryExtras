@@ -11,12 +11,14 @@ import com.emoniph.witchery.crafting.DistilleryRecipes.DistilleryRecipe;
 public class Witchery_Distillery {
 
     public static synchronized DistilleryRecipe getDistillingResult(ItemStack input1, ItemStack intput2,
-            ItemStack jars) {
-        return DistilleryRecipes.instance().getDistillingResult(input1, intput2, jars);
+        ItemStack jars) {
+        return DistilleryRecipes.instance()
+            .getDistillingResult(input1, intput2, jars);
     }
 
     public static synchronized DistilleryRecipe findRecipeFor(ItemStack result) {
-        return DistilleryRecipes.instance().findRecipeFor(result);
+        return DistilleryRecipes.instance()
+            .findRecipeFor(result);
     }
 
     public static synchronized List<DistilleryRecipes.DistilleryRecipe> findRecipesFor(ItemStack result) {
@@ -30,6 +32,7 @@ public class Witchery_Distillery {
     }
 
     public static synchronized DistilleryRecipe findRecipeUsing(ItemStack ingredient) {
-        return DistilleryRecipes.instance().findRecipeUsing(ingredient);
+        return DistilleryRecipes.instance()
+            .findRecipeUsing(ingredient);
     }
 }

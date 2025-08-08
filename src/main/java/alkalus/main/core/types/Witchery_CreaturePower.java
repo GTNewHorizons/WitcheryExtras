@@ -26,7 +26,7 @@ public class Witchery_CreaturePower {
      * @return - CreaturePower object.
      */
     public static synchronized CreaturePower createNewCreaturePower(final int mID,
-            final Class<? extends EntityLiving> creatureType) {
+        final Class<? extends EntityLiving> creatureType) {
         return new CreaturePower(mID, creatureType);
     }
 
@@ -53,7 +53,8 @@ public class Witchery_CreaturePower {
      * @return
      */
     public static synchronized CreaturePower getCreaturePower(EntityLiving entity) {
-        return CreaturePower.Registry.instance().get(entity);
+        return CreaturePower.Registry.instance()
+            .get(entity);
     }
 
     /**
@@ -62,6 +63,7 @@ public class Witchery_CreaturePower {
      * @return
      */
     public static synchronized CreaturePower getCreaturePower(int entityID) {
-        return CreaturePower.Registry.instance().get(entityID);
+        return CreaturePower.Registry.instance()
+            .get(entityID);
     }
 }

@@ -30,11 +30,11 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
     protected abstract void generateByProduct(ItemStack itemstack);
 
     @Inject(
-            method = "updateEntity",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/World;markBlockForUpdate(III)V",
-                    shift = At.Shift.AFTER))
+        method = "updateEntity",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/world/World;markBlockForUpdate(III)V",
+            shift = At.Shift.AFTER))
     private void saveTile(CallbackInfo ci) {
         this.markDirty();
     }
@@ -94,7 +94,8 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
         }
         if (aValidRecipe != null) {
             if (this.canSmelt()) {
-                final ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+                final ItemStack itemstack = FurnaceRecipes.smelting()
+                    .getSmeltingResult(this.furnaceItemStacks[0]);
                 if (this.furnaceItemStacks[2] == null) {
                     this.furnaceItemStacks[2] = itemstack.copy();
                 } else if (this.furnaceItemStacks[2].isItemEqual(itemstack)) {

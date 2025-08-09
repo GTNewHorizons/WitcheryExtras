@@ -9,11 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.launchwrapper.Launch;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
-
-import cpw.mods.fml.common.FMLCommonHandler;
 
 public class Utils {
 
@@ -62,7 +58,7 @@ public class Utils {
 
         ItemStack[] V = new ItemStack[] {};
         int mSlot = 0;
-        if (Q.size() > 0) {
+        if (!Q.isEmpty()) {
             V = new ItemStack[Q.size()];
             for (ItemStack w : Q) {
                 V[mSlot++] = w;
@@ -76,14 +72,12 @@ public class Utils {
         if (I == null) {
             return false;
         }
-        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-        return recipes
-                .removeIf(s -> (s != null) && (s.getRecipeOutput() != null) && (s.getRecipeOutput().isItemEqual(I)));
-    }
-
-    public static void registerEvent(Object o) {
-        MinecraftForge.EVENT_BUS.register(o);
-        FMLCommonHandler.instance().bus().register(o);
+        List<IRecipe> recipes = CraftingManager.getInstance()
+            .getRecipeList();
+        return recipes.removeIf(
+            s -> (s != null) && (s.getRecipeOutput() != null)
+                && (s.getRecipeOutput()
+                    .isItemEqual(I)));
     }
 
     public static boolean hasValidOreDictTag(String validTag, ItemStack hasTag) {
@@ -103,8 +97,7 @@ public class Utils {
             if (item == null) {
                 return null;
             }
-            final ItemStack metaStack = new ItemStack(item, size, meta);
-            return metaStack;
+            return new ItemStack(item, size, meta);
 
         } catch (final NullPointerException e) {
             return null;
@@ -121,16 +114,12 @@ public class Utils {
 
     public static boolean areStacksEqual(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
         return aStack1 != null && aStack2 != null
-                && aStack1.getItem() == aStack2.getItem()
-                && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
-                        && (aStack1.getTagCompound() == null
-                                || aStack1.getTagCompound().equals(aStack2.getTagCompound())))
-                && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
-                        || Items.feather.getDamage(aStack1) == W
-                        || Items.feather.getDamage(aStack2) == W);
-    }
-
-    public static boolean isDevEnv() {
-        return (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+            && aStack1.getItem() == aStack2.getItem()
+            && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
+                && (aStack1.getTagCompound() == null || aStack1.getTagCompound()
+                    .equals(aStack2.getTagCompound())))
+            && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
+                || Items.feather.getDamage(aStack1) == W
+                || Items.feather.getDamage(aStack2) == W);
     }
 }

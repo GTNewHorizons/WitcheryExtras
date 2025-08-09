@@ -1,4 +1,4 @@
-package alkalus.main.mixinplugin;
+package alkalus.main.mixins;
 
 import java.util.List;
 import java.util.Set;
@@ -17,6 +17,6 @@ public class LateMixinLoader implements ILateMixinLoader {
 
     @Override
     public List<String> getMixins(Set<String> loadedMods) {
-        return IMixins.getLateMixins(Mixin.class, loadedMods);
+        return IMixins.getLateMixins(Mixins.class, loadedMods);
     }
 }

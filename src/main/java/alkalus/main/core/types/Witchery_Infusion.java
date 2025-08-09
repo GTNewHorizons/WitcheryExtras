@@ -24,8 +24,7 @@ public class Witchery_Infusion {
      * @return - Infusion object.
      */
     public static synchronized Infusion createNewInfusion(final int mID) {
-        Infusion h = new Infusion(mID);
-        return h != null ? h : null;
+        return new Infusion(mID);
     }
 
     private static int mCachedLastRegistryValue;
@@ -50,7 +49,8 @@ public class Witchery_Infusion {
      * @return
      */
     public static synchronized Infusion getInfusionOnPlayer(EntityPlayer entity) {
-        return Infusion.Registry.instance().get(entity);
+        return Infusion.Registry.instance()
+            .get(entity);
     }
 
     /**
@@ -59,6 +59,7 @@ public class Witchery_Infusion {
      * @return
      */
     public static synchronized Infusion getInfusion(int infusionID) {
-        return Infusion.Registry.instance().get(infusionID);
+        return Infusion.Registry.instance()
+            .get(infusionID);
     }
 }

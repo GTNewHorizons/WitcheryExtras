@@ -1,4 +1,4 @@
-package alkalus.main.asm;
+package alkalus.main.config;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import cpw.mods.fml.common.FMLLog;
 
 public class AsmConfig {
 
-    public static boolean loaded;
     public static Configuration config;
 
     public static boolean enablePatchNEI;
@@ -35,16 +34,14 @@ public class AsmConfig {
     public static int chancePredictionFindShinies;
     public static int chancePredictionVillagerLove;
 
-    public AsmConfig(File file) {
-        if (!loaded) {
-            config = new Configuration(file);
-            syncConfig(true);
-        }
+    static {
+        config = new Configuration(new File("config/WitcheryExtras/asm.cfg"));
+        syncConfig(true);
     }
 
     public static void syncConfig(boolean load) {
-        ArrayList<String> propOrder = new ArrayList<String>();
-        ArrayList<String> propOrderDebug = new ArrayList<String>();
+        ArrayList<String> propOrder = new ArrayList<>();
+        ArrayList<String> propOrderDebug = new ArrayList<>();
         try {
             if (!config.isChild && load) {
                 config.load();
@@ -54,14 +51,16 @@ public class AsmConfig {
             // Fixes NEI handling
             prop = config.get("general", "enablePatchNEI", true);
             prop.comment = "Patch NEI for good recipe support.";
-            prop.setLanguageKey("enablePatchNEI").setRequiresMcRestart(true);
+            prop.setLanguageKey("enablePatchNEI")
+                .setRequiresMcRestart(true);
             enablePatchNEI = prop.getBoolean(true);
             propOrder.add(prop.getName());
 
             // Toggles Chunk Loading for Poppet Shelves
             prop = config.get("general", "allowPoppetShelfChunkLoading", true);
             prop.comment = "Enables Chunk Loading by Poppet Shelves.";
-            prop.setLanguageKey("allowPoppetShelfChunkLoading").setRequiresMcRestart(true);
+            prop.setLanguageKey("allowPoppetShelfChunkLoading")
+                .setRequiresMcRestart(true);
             allowPoppetShelfChunkLoading = prop.getBoolean(true);
             propOrder.add(prop.getName());
 

@@ -2,11 +2,11 @@ package alkalus.main.api.plugin.interfaces;
 
 public interface WitcheryPlugin {
 
-    public abstract String getPluginName();
+    String getPluginName();
 
-    public abstract boolean preInit();
+    boolean preInit();
 
-    public abstract boolean init();
+    boolean init();
 
-    public abstract boolean postInit();
+    boolean postInit();
 }

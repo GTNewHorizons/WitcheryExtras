@@ -3,6 +3,7 @@ package alkalus.main.api;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +32,6 @@ import alkalus.main.core.types.Witchery_Oven;
 import alkalus.main.core.types.Witchery_Predictions;
 import alkalus.main.core.types.Witchery_Rite;
 import alkalus.main.core.types.Witchery_SpinningWheel;
-import alkalus.main.core.util.AutoMap;
 import alkalus.main.core.util.WitcheryRecipeHandlerInternal;
 import scala.collection.mutable.HashTable;
 
@@ -116,9 +116,9 @@ public class RecipeManager {
          * @return - A new {@link OverRecipe} object.
          */
         public static synchronized boolean addRecipe(final ItemStack input1, final String inputString1, final int jars,
-                final ItemStack customOutput, final int amt1, final ItemStack outputJarStack, final int amt2) {
+            final ItemStack customOutput, final int amt1, final ItemStack outputJarStack, final int amt2) {
             return WitcheryRecipeHandlerInternal
-                    .addOvenRecipe(input1, inputString1, jars, customOutput, amt1, outputJarStack, amt2);
+                .addOvenRecipe(input1, inputString1, jars, customOutput, amt1, outputJarStack, amt2);
         }
 
         /**
@@ -254,9 +254,9 @@ public class RecipeManager {
          * @return - {@link boolean} representing whether or not the recipe was added.
          */
         public static synchronized boolean addRecipe(ItemStack input1, ItemStack input2, int jars, ItemStack output1,
-                ItemStack output2, ItemStack output3, ItemStack output4) {
+            ItemStack output2, ItemStack output3, ItemStack output4) {
             return WitcheryRecipeHandlerInternal
-                    .addDistilleryRecipe(input1, input2, jars, output1, output2, output3, output4);
+                .addDistilleryRecipe(input1, input2, jars, output1, output2, output3, output4);
         }
 
         /**
@@ -278,7 +278,7 @@ public class RecipeManager {
          * @return - An {@link DistilleryRecipe} representing the closest matching recipe.
          */
         public static synchronized DistilleryRecipe getDistillingResult(ItemStack input1, ItemStack input2,
-                ItemStack jars) {
+            ItemStack jars) {
             return Witchery_Distillery.getDistillingResult(input1, input2, jars);
         }
 
@@ -317,9 +317,9 @@ public class RecipeManager {
          * @return - {@link boolean} representing whether or not the recipe was added.
          */
         public static synchronized boolean addRecipe(ItemStack output, int hatBonus, int familiarType,
-                float powerRequired, int color, int dimension, boolean inBook, ItemStack... inputs) {
+            float powerRequired, int color, int dimension, boolean inBook, ItemStack... inputs) {
             return WitcheryRecipeHandlerInternal
-                    .addKettleRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs);
+                .addKettleRecipe(output, hatBonus, familiarType, powerRequired, color, dimension, inBook, inputs);
         }
 
         /**
@@ -345,9 +345,9 @@ public class RecipeManager {
         /**
          * @param result - An {@link ItemStack}, used to find a {@link HashMap} full of all {@link KettleRecipe}s with
          *               this output.
-         * @return - An {@link AutoMap} Which holds all matching recipes containing {@code 'result'} as an output.
+         * @return - A {@link List} Which holds all matching recipes containing {@code 'result'} as an output.
          */
-        public static AutoMap<KettleRecipe> findRecipesFor(final ItemStack result) {
+        public static List<KettleRecipe> findRecipesFor(final ItemStack result) {
             return Witchery_Kettle.findRecipesFor(result);
         }
     }
@@ -403,9 +403,9 @@ public class RecipeManager {
          * @return - A {@link boolean} reflecting the addition of the new Rite to the Registry.
          */
         public static synchronized boolean add(int ritualID, int bookIndex, Rite rite, Sacrifice initialSacrifice,
-                EnumSet<RitualTraits> traits, Circle... circles) {
+            EnumSet<RitualTraits> traits, Circle... circles) {
             return WitcheryRecipeHandlerInternal
-                    .addNewRiteToRiteRegistry(ritualID, bookIndex, rite, initialSacrifice, traits, circles);
+                .addNewRiteToRiteRegistry(ritualID, bookIndex, rite, initialSacrifice, traits, circles);
         }
 
         /**

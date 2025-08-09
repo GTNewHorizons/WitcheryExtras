@@ -1,4 +1,4 @@
-package alkalus.main.mixins.witchery;
+package alkalus.main.mixins.late.witchery;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;

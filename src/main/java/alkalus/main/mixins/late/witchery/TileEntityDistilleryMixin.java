@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import com.emoniph.witchery.blocks.BlockDistillery;
 
+@SuppressWarnings("UnusedMixin")
 @Mixin(BlockDistillery.TileEntityDistillery.class)
 public class TileEntityDistilleryMixin {
 

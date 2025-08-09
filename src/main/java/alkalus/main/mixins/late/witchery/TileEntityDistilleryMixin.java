@@ -1,4 +1,4 @@
-package alkalus.main.mixins.witchery;
+package alkalus.main.mixins.late.witchery;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;

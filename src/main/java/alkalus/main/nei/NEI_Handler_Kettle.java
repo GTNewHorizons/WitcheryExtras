@@ -16,10 +16,10 @@ public class NEI_Handler_Kettle extends TemplateRecipeHandler {
 
     public void loadTransferRects() {
         this.transferRects.add(
-                new TemplateRecipeHandler.RecipeTransferRect(
-                        new Rectangle(84, 23, 24, 18),
-                        "witchery_brewing",
-                        new Object[0]));
+            new TemplateRecipeHandler.RecipeTransferRect(
+                new Rectangle(84, 23, 24, 18),
+                "witchery_brewing",
+                new Object[0]));
     }
 
     public Class<? extends GuiContainer> getGuiClass() {
@@ -41,7 +41,8 @@ public class NEI_Handler_Kettle extends TemplateRecipeHandler {
     }
 
     public void loadCraftingRecipes(final ItemStack result) {
-        final KettleRecipes.KettleRecipe recipe = KettleRecipes.instance().findRecipeFor(result);
+        final KettleRecipes.KettleRecipe recipe = KettleRecipes.instance()
+            .findRecipeFor(result);
         if (recipe != null) {
             this.arecipes.add(new CachedKettleRecipe(recipe.output, recipe));
         }
@@ -50,7 +51,7 @@ public class NEI_Handler_Kettle extends TemplateRecipeHandler {
     public void loadUsageRecipes(final ItemStack ingredient) {
         for (final KettleRecipes.KettleRecipe recipe : KettleRecipes.instance().recipes) {
             if (Arrays.stream(recipe.inputs)
-                    .anyMatch(item -> NEIServerUtils.areStacksSameTypeCrafting(item, ingredient))) {
+                .anyMatch(item -> NEIServerUtils.areStacksSameTypeCrafting(item, ingredient))) {
                 this.arecipes.add(new CachedKettleRecipe(recipe.output, recipe));
             }
         }

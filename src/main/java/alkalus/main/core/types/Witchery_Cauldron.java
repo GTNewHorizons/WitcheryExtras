@@ -22,27 +22,25 @@ public class Witchery_Cauldron {
 
     public static Hashtable<BrewItemKey, BrewAction> getIngredients() {
         return (Hashtable<BrewItemKey, BrewAction>) ReflectionUtils.getFieldValue(
-                ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"),
-                WitcheryBrewRegistry.INSTANCE);
+            ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"),
+            WitcheryBrewRegistry.INSTANCE);
     }
 
-    public BrewAction getActionForItemStack(final ItemStack stack) {
+    public static BrewAction getActionForItemStack(final ItemStack stack) {
         return getIngredients().get(BrewItemKey.fromStack(stack));
     }
 
-    private boolean removeCauldronBrewAction(final ItemStack ingredient) {
+    private static boolean removeCauldronBrewAction(final ItemStack ingredient) {
         return removeCauldronBrewAction(getActionForItemStack(ingredient));
     }
 
-    private boolean removeCauldronBrewAction(final BrewAction ingredient) {
+    private static boolean removeCauldronBrewAction(final BrewAction ingredient) {
         // Bad Recipe to remove
         if (ingredient == null || ingredient.ITEM_KEY == null) {
             return false;
         }
         if (getIngredients().containsKey(ingredient.ITEM_KEY)) {
-            if (getIngredients().remove(ingredient.ITEM_KEY) != null) {
-                return true;
-            }
+            return getIngredients().remove(ingredient.ITEM_KEY) != null;
         }
         return false;
     }
@@ -56,15 +54,18 @@ public class Witchery_Cauldron {
     }
 
     public static synchronized DistilleryRecipe getDistillingResult(ItemStack input1, ItemStack intput2,
-            ItemStack jars) {
-        return DistilleryRecipes.instance().getDistillingResult(input1, intput2, jars);
+        ItemStack jars) {
+        return DistilleryRecipes.instance()
+            .getDistillingResult(input1, intput2, jars);
     }
 
     public static synchronized DistilleryRecipe findRecipeFor(ItemStack result) {
-        return DistilleryRecipes.instance().findRecipeFor(result);
+        return DistilleryRecipes.instance()
+            .findRecipeFor(result);
     }
 
     public static synchronized DistilleryRecipe findRecipeUsing(ItemStack ingredient) {
-        return DistilleryRecipes.instance().findRecipeUsing(ingredient);
+        return DistilleryRecipes.instance()
+            .findRecipeUsing(ingredient);
     }
 }

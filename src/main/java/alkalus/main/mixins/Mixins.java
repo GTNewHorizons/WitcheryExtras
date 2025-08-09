@@ -1,15 +1,19 @@
-package alkalus.main.mixinplugin;
+package alkalus.main.mixins;
 
 import javax.annotation.Nonnull;
 
 import com.gtnewhorizon.gtnhmixins.builders.IMixins;
 import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
-public enum Mixin implements IMixins {
+import alkalus.main.config.AsmConfig;
+
+public enum Mixins implements IMixins {
 
     // spotless:off
     WITCHERY(new MixinBuilder()
             .addCommonMixins(
+                    "witchery.TileEntityPoppetShelfMixin",
+                    "witchery.TileEntityWitchesOvenMixin",
                     "witchery.TileEntitySpinningWheelMixin",
                     "witchery.SpinningRecipeMixin",
                     "witchery.ShockwaveTaskMixin",
@@ -18,12 +22,17 @@ public enum Mixin implements IMixins {
                     "witchery.BlockAltarMixin")
             .addClientMixins("witchery.ItemBrewMixin")
             .addRequiredMod(TargetedMod.WITCHERY)
+            .setPhase(Phase.LATE)),
+    WITCHERY_NEI_CONFIG(new MixinBuilder()
+            .addCommonMixins("witchery.NEIWitcheryConfigMixin")
+            .setApplyIf(()-> AsmConfig.enablePatchNEI)
+            .addRequiredMod(TargetedMod.WITCHERY)
             .setPhase(Phase.LATE));
     // spotless:on
 
     private final MixinBuilder builder;
 
-    Mixin(MixinBuilder builder) {
+    Mixins(MixinBuilder builder) {
         this.builder = builder;
     }
 

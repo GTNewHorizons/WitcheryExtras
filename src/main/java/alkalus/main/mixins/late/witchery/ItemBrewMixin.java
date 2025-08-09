@@ -1,4 +1,4 @@
-package alkalus.main.mixins.witchery;
+package alkalus.main.mixins.late.witchery;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class ItemBrewMixin {
 
     @Inject(method = "addInformation", at = @At("TAIL"))
     private void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean expanded,
-            CallbackInfo ci) {
+        CallbackInfo ci) {
         if (stack == null || !(stack.getItem() instanceof ItemBrew)) return;
 
         NBTTagCompound tag = stack.getTagCompound();

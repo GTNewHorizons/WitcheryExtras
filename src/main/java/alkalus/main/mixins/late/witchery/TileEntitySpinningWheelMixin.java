@@ -1,4 +1,4 @@
-package alkalus.main.mixins.witchery;
+package alkalus.main.mixins.late.witchery;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,8 @@ public class TileEntitySpinningWheelMixin {
     private void onUpdateIfContained(ArrayList<ItemStack> available, int slot, CallbackInfo ci) {
         if (this.slots[slot] != null) {
             for (int i = 0; i < available.size(); ++i) {
-                if (available.get(i).isItemEqual(this.slots[slot])) {
+                if (available.get(i)
+                    .isItemEqual(this.slots[slot])) {
                     /* - */
                     // --this.slots[slot].stackSize;
                     /* + */ this.slots[slot].stackSize -= available.get(i).stackSize;

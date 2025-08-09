@@ -6,34 +6,29 @@ import alkalus.main.core.WitcheryExtras;
 
 public class Logger {
 
-    public static final org.apache.logging.log4j.Logger modLogger = Logger.makeLogger();
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(WitcheryExtras.NAME);
 
-    public static org.apache.logging.log4j.Logger makeLogger() {
-        final org.apache.logging.log4j.Logger loggers = LogManager.getLogger(WitcheryExtras.NAME);
-        return loggers;
+    public static org.apache.logging.log4j.Logger getLogger() {
+        return logger;
     }
 
-    public static final org.apache.logging.log4j.Logger getLogger() {
-        return modLogger;
+    public static void INFO(final String s) {
+        logger.info(s);
     }
 
-    public void INFO(final String s) {
-        modLogger.info(s);
+    public static void WARNING(final String s) {
+        logger.warn(s);
     }
 
-    public void WARNING(final String s) {
-        modLogger.warn(s);
-    }
-
-    public void ERROR(final String s) {
-        modLogger.fatal(s);
+    public static void ERROR(final String s) {
+        logger.fatal(s);
     }
 
     public static void REFLECTION(String string) {
-        modLogger.info("[Reflection] " + string);
+        logger.info("[Reflection] " + string);
     }
 
     public static void ASM(String string) {
-        modLogger.info("[ASM] " + string);
+        logger.info("[ASM] " + string);
     }
 }

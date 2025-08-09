@@ -1,4 +1,4 @@
-package alkalus.main.mixinplugin;
+package alkalus.main.mixins;
 
 import javax.annotation.Nonnull;
 

@@ -18,7 +18,8 @@ public enum Mixins implements IMixins {
                     "witchery.SpinningRecipeMixin",
                     "witchery.ShockwaveTaskMixin",
                     "witchery.TileEntityDistilleryMixin",
-                    "witchery.ItemGeneral$3$1Mixin")
+                    "witchery.ItemGeneral$3$1Mixin",
+                    "witchery.BlockAltarMixin")
             .addClientMixins("witchery.ItemBrewMixin")
             .addRequiredMod(TargetedMod.WITCHERY)
             .setPhase(Phase.LATE)),

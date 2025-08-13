@@ -22,8 +22,8 @@ public class Witchery_Cauldron {
 
     public static Hashtable<BrewItemKey, BrewAction> getIngredients() {
         return (Hashtable<BrewItemKey, BrewAction>) ReflectionUtils.getFieldValue(
-            ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"),
-            WitcheryBrewRegistry.INSTANCE);
+                ReflectionUtils.getField(WitcheryBrewRegistry.class, "ingredients"),
+                WitcheryBrewRegistry.INSTANCE);
     }
 
     public static BrewAction getActionForItemStack(final ItemStack stack) {
@@ -54,18 +54,15 @@ public class Witchery_Cauldron {
     }
 
     public static synchronized DistilleryRecipe getDistillingResult(ItemStack input1, ItemStack intput2,
-        ItemStack jars) {
-        return DistilleryRecipes.instance()
-            .getDistillingResult(input1, intput2, jars);
+            ItemStack jars) {
+        return DistilleryRecipes.instance().getDistillingResult(input1, intput2, jars);
     }
 
     public static synchronized DistilleryRecipe findRecipeFor(ItemStack result) {
-        return DistilleryRecipes.instance()
-            .findRecipeFor(result);
+        return DistilleryRecipes.instance().findRecipeFor(result);
     }
 
     public static synchronized DistilleryRecipe findRecipeUsing(ItemStack ingredient) {
-        return DistilleryRecipes.instance()
-            .findRecipeUsing(ingredient);
+        return DistilleryRecipes.instance().findRecipeUsing(ingredient);
     }
 }

@@ -28,10 +28,10 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler {
 
     public void loadTransferRects() {
         this.transferRects.add(
-            new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(63, 4, 39, 35),
-                "witchery_distilling",
-                new Object[0]));
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(63, 4, 39, 35),
+                        "witchery_distilling",
+                        new Object[0]));
     }
 
     public void loadCraftingRecipes(final String outputId, final Object... results) {
@@ -54,8 +54,7 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler {
     }
 
     public void loadUsageRecipes(final ItemStack ingredient) {
-        final DistilleryRecipes.DistilleryRecipe recipe = DistilleryRecipes.instance()
-            .findRecipeUsing(ingredient);
+        final DistilleryRecipes.DistilleryRecipe recipe = DistilleryRecipes.instance().findRecipeUsing(ingredient);
         if (recipe != null) {
             this.arecipes.add(new CachedDistillingRecipe(ingredient, recipe));
         }
@@ -90,9 +89,9 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler {
             }
             if (recipe.jars > 0) {
                 this.jars = new PositionedStack(
-                    (Object) Witchery.Items.GENERIC.itemEmptyClayJar.createStack(recipe.jars),
-                    43,
-                    43);
+                        (Object) Witchery.Items.GENERIC.itemEmptyClayJar.createStack(recipe.jars),
+                        43,
+                        43);
             }
             if (recipe.outputs[0] != null) {
                 this.outputs[0] = new PositionedStack((Object) recipe.outputs[0], 105, 5);
@@ -114,9 +113,7 @@ public class NEI_Handler_Distillery extends TemplateRecipeHandler {
 
         @Override
         public List<PositionedStack> getOtherStacks() {
-            return Arrays.stream(this.outputs)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+            return Arrays.stream(this.outputs).filter(Objects::nonNull).collect(Collectors.toList());
         }
 
         public ArrayList<PositionedStack> getIngredients() {

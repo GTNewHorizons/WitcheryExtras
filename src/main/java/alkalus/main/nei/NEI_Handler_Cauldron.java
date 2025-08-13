@@ -20,10 +20,10 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
 
     public void loadTransferRects() {
         this.transferRects.add(
-            new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(92, 31, 24, 18),
-                "witchery_brewing_plus",
-                new Object[0]));
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(92, 31, 24, 18),
+                        "witchery_brewing_plus",
+                        new Object[0]));
     }
 
     public Class<? extends GuiContainer> getGuiClass() {
@@ -62,8 +62,8 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
                 for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
                     for (final ItemStack stack : recipe.ingredients) {
                         if (NEIServerUtils.areStacksSameTypeCrafting(stack, ingredient)) {
-                            this.arecipes
-                                .add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
+                            this.arecipes.add(
+                                    new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
                         }
                     }
                 }

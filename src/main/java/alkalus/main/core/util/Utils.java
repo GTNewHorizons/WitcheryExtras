@@ -72,12 +72,9 @@ public class Utils {
         if (I == null) {
             return false;
         }
-        List<IRecipe> recipes = CraftingManager.getInstance()
-            .getRecipeList();
-        return recipes.removeIf(
-            s -> (s != null) && (s.getRecipeOutput() != null)
-                && (s.getRecipeOutput()
-                    .isItemEqual(I)));
+        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+        return recipes
+                .removeIf(s -> (s != null) && (s.getRecipeOutput() != null) && (s.getRecipeOutput().isItemEqual(I)));
     }
 
     public static boolean hasValidOreDictTag(String validTag, ItemStack hasTag) {
@@ -114,12 +111,12 @@ public class Utils {
 
     public static boolean areStacksEqual(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
         return aStack1 != null && aStack2 != null
-            && aStack1.getItem() == aStack2.getItem()
-            && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
-                && (aStack1.getTagCompound() == null || aStack1.getTagCompound()
-                    .equals(aStack2.getTagCompound())))
-            && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
-                || Items.feather.getDamage(aStack1) == W
-                || Items.feather.getDamage(aStack2) == W);
+                && aStack1.getItem() == aStack2.getItem()
+                && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null))
+                        && (aStack1.getTagCompound() == null
+                                || aStack1.getTagCompound().equals(aStack2.getTagCompound())))
+                && (Items.feather.getDamage(aStack1) == Items.feather.getDamage(aStack2)
+                        || Items.feather.getDamage(aStack1) == W
+                        || Items.feather.getDamage(aStack2) == W);
     }
 }

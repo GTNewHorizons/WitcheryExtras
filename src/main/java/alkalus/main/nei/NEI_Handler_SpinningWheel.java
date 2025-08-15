@@ -25,10 +25,10 @@ public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler {
 
     public void loadTransferRects() {
         this.transferRects.add(
-            new TemplateRecipeHandler.RecipeTransferRect(
-                new Rectangle(74, 9, 24, 18),
-                "witchery_spinning",
-                new Object[0]));
+                new TemplateRecipeHandler.RecipeTransferRect(
+                        new Rectangle(74, 9, 24, 18),
+                        "witchery_spinning",
+                        new Object[0]));
     }
 
     public void loadCraftingRecipes(final String outputId, final Object... results) {
@@ -42,16 +42,14 @@ public class NEI_Handler_SpinningWheel extends TemplateRecipeHandler {
     }
 
     public void loadCraftingRecipes(final ItemStack result) {
-        final SpinningRecipes.SpinningRecipe recipe = SpinningRecipes.instance()
-            .findRecipeFor(result);
+        final SpinningRecipes.SpinningRecipe recipe = SpinningRecipes.instance().findRecipeFor(result);
         if (recipe != null) {
             this.arecipes.add(new CachedSpinningRecipe(result, recipe));
         }
     }
 
     public void loadUsageRecipes(final ItemStack ingredient) {
-        final SpinningRecipes.SpinningRecipe recipe = SpinningRecipes.instance()
-            .findRecipeUsing(ingredient);
+        final SpinningRecipes.SpinningRecipe recipe = SpinningRecipes.instance().findRecipeUsing(ingredient);
         if (recipe != null) {
             this.arecipes.add(new CachedSpinningRecipe(ingredient, recipe));
         }

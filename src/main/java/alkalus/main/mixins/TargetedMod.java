@@ -7,7 +7,8 @@ import com.gtnewhorizon.gtnhmixins.builders.TargetModBuilder;
 
 public enum TargetedMod implements ITargetMod {
 
-    WITCHERY("witchery");
+    WITCHERY("witchery"),
+    BAUBLES_EXPANDED("Baubles|Expanded");
 
     private final TargetModBuilder builder;
 

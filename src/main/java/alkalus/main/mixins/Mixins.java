@@ -27,6 +27,11 @@ public enum Mixins implements IMixins {
             .addCommonMixins("witchery.NEIWitcheryConfigMixin")
             .setApplyIf(()-> AsmConfig.enablePatchNEI)
             .addRequiredMod(TargetedMod.WITCHERY)
+            .setPhase(Phase.LATE)),
+    WITCHERY_BAUBLES_COMPAT(new MixinBuilder()
+            .addCommonMixins("witchery.BlockWitchDoorMixin")
+            .addRequiredMod(TargetedMod.WITCHERY)
+            .addRequiredMod(TargetedMod.BAUBLES_EXPANDED)
             .setPhase(Phase.LATE));
     // spotless:on
 

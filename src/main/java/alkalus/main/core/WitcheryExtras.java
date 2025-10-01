@@ -12,6 +12,8 @@ import alkalus.main.core.entities.PredictionHandler;
 import alkalus.main.core.recipe.fixes.GarlicRecipes;
 import alkalus.main.core.util.Logger;
 import alkalus.main.core.util.TooltipHandler;
+import baubles.api.expanded.BaubleExpandedSlots;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -41,6 +43,11 @@ public class WitcheryExtras {
         for (BasePluginWitchery bwp : getMpreinitevents()) {
             log(0, "Loading Plugin: " + bwp.getPluginName() + " | Phase: Pre-Init");
             bwp.preInit();
+        }
+
+        if (Loader.isModLoaded("Baubles|Expanded")) {
+            BaubleExpandedSlots.tryAssignSlotsUpToMinimum(BaubleExpandedSlots.beltType, 1);
+            BaubleExpandedSlots.tryAssignSlotsUpToMinimum(BaubleExpandedSlots.charmType, 1);
         }
     }
 

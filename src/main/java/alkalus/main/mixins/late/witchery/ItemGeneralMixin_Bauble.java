@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(ItemGeneral.class)
-public abstract class ItemGeneralMixin implements IBaubleExpanded {
+public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
 
     @Unique
     private static final String[] witcheryExtras$rowanKeyBaubleTypes = { BaubleExpandedSlots.amuletType,

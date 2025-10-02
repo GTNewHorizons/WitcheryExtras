@@ -19,7 +19,7 @@ import baubles.api.BaublesApi;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(BlockWitchDoor.class)
-public abstract class BlockWitchDoorMixin {
+public abstract class BlockWitchDoorMixin_Bauble {
 
     @WrapMethod(method = "hasKeyForDoor", remap = false)
     private boolean witcheryExtras$hasKeyForDoor(World world, int x, int y, int z, EntityPlayer player,

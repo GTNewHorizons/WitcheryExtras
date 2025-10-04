@@ -91,6 +91,6 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public boolean canUnequip(ItemStack stack, EntityLivingBase player) {
-        return itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack);
+        return true;
     }
 }

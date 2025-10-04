@@ -1,8 +1,8 @@
 // Add your dependencies here
 
 dependencies {
-	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.0-GTNH:dev')
+	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.4-GTNH:dev')
 
 	api(deobfCurse('witchery-69673:2234410'))
-    compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.1.15-GTNH:dev')
+    compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.2.0-GTNH:dev')
 }

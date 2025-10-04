@@ -63,8 +63,8 @@ public abstract class BlockWitchDoorMixin_Bauble {
     }
 
     @Unique
-    private static boolean witcheryExtras$keyNBTMatchesDoor(final NBTTagCompound nbt, final int x, final int y, final int z,
-            final int dimension) {
+    private static boolean witcheryExtras$keyNBTMatchesDoor(final NBTTagCompound nbt, final int x, final int y,
+            final int z, final int dimension) {
         if (nbt == null || !nbt.hasKey("doorX") || !nbt.hasKey("doorY") || !nbt.hasKey("doorZ")) return false;
         if (nbt.hasKey("doorD") && nbt.getInteger("doorD") != dimension) return false;
 

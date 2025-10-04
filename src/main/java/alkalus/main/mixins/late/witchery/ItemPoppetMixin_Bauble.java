@@ -122,7 +122,7 @@ public abstract class ItemPoppetMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public String[] getBaubleTypes(ItemStack itemstack) {
-        return witcheryExtras$poppetBaubleTypes;
+        return witcheryExtras$isValidBauble(itemstack) ? witcheryExtras$poppetBaubleTypes : null;
     }
 
     @Unique

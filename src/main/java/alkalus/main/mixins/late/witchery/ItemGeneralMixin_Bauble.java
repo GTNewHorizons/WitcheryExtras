@@ -23,7 +23,6 @@ import baubles.api.expanded.IBaubleExpanded;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SuppressWarnings("UnusedMixin")
 @Mixin(ItemGeneral.class)
 public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
 

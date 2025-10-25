@@ -17,7 +17,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 
 import baubles.api.BaublesApi;
 
-@SuppressWarnings("UnusedMixin")
 @Mixin(BlockWitchDoor.class)
 public abstract class BlockWitchDoorMixin_Bauble {
 

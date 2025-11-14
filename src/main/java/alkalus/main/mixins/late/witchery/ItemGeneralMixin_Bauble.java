@@ -11,6 +11,9 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.emoniph.witchery.item.ItemGeneral;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
@@ -39,10 +42,9 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     public ItemGeneral.SubItem itemDoorKeyring;
 
     @SideOnly(Side.CLIENT)
-    @WrapMethod(method = "addInformation")
+    @Inject(method = "addInformation", at = @At(value = "TAIL"))
     public void witcheryExtras$addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip,
-            boolean expanded, Operation<Void> original) {
-        original.call(stack, player, tooltip, expanded);
+            boolean expanded, CallbackInfo ci) {
         if (itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack)) {
             BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$rowanKeyBaubleTypes);
         }

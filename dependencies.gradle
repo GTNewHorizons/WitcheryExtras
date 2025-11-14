@@ -5,4 +5,7 @@ dependencies {
 
 	api(deobfCurse('witchery-69673:2234410'))
     compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.2.2-GTNH:dev')
+
+    // Uncomment to test baubles compat
+    //devOnlyNonPublishable('com.github.GTNewHorizons:Baubles-Expanded:2.2.2-GTNH:dev')
 }

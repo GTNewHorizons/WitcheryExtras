@@ -24,9 +24,9 @@ public abstract class BlockWitchDoorMixin_Bauble {
     private boolean witcheryExtras$hasKeyForDoor(World world, int x, int y, int z, EntityPlayer player,
             Operation<Boolean> original) {
 
-        /* func_150012_g == getFullMetadata with MCP mappings.
-         * We use it to get the Y coord of the bottom door block, which has
-         * the NBT data we want, even if the player clicks on the top block.
+        /*
+         * func_150012_g == getFullMetadata with MCP mappings. We use it to get the Y coord of the bottom door block,
+         * which has the NBT data we want, even if the player clicks on the top block.
          */
         final int doorBaseY = (((BlockWitchDoor) (Object) this).func_150012_g(world, x, y, z) & 8) == 0 ? y : y - 1;
 

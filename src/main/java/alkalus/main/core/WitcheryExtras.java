@@ -28,7 +28,7 @@ public class WitcheryExtras {
 
     public static final String MODID = "WitcheryExtras";
     public static final String NAME = "Witchery++";
-    public static final String VERSION = "GRADLETOKEN_VERSION";
+    public static final String VERSION = WitcheryExtrasTags.VERSION;
 
     private static final Map<Integer, BasePluginWitchery> mPreInitEvents = new HashMap<>();
     private static final Map<Integer, BasePluginWitchery> mInitEvents = new HashMap<>();

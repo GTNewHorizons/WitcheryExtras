@@ -166,22 +166,15 @@ public class OvenRecipes {
         // Build Inputs
         ItemStack mInputStack = null;
         String mInputString = null;
-        int mJars = 0;
         if (input1 != null) {
             mInputStack = input1;
-        } else if (inputString1 != null && !inputString1.equals("")) {
+        } else if (inputString1 != null && !inputString1.isEmpty()) {
             mInputString = inputString1;
         } else {
-            WitcheryExtras.log(0, "Failed adding a Oven recipe for: INVALID.");
+            WitcheryExtras.log(2, "Failed adding a Oven recipe for: INVALID.");
             return null;
         }
 
-        WitcheryExtras.log(
-                0,
-                "Trying to add an Oven Recipe for "
-                        + (mInputStack != null ? mInputStack.getDisplayName() : mInputString));
-
-        mJars = jars;
         // Build Outputs
         ItemStack mOutputStack = null;
         int mOutputAmount = 0;
@@ -198,8 +191,8 @@ public class OvenRecipes {
             ItemStack[] w = Utils.getAllItemsFromOreDictEntry(inputString1);
             ItemStack s = null;
             if (w != null && w.length > 0) {
-                for (int i = 0; i < w.length; i++) {
-                    ItemStack gh = FurnaceRecipes.smelting().getSmeltingResult(w[i]);
+                for (ItemStack stack : w) {
+                    ItemStack gh = FurnaceRecipes.smelting().getSmeltingResult(stack);
                     if (gh != null) {
                         gh = gh.copy();
                         if (gh.stackSize > 64 || gh.stackSize <= 0) {
@@ -210,15 +203,12 @@ public class OvenRecipes {
                     }
                 }
             } else {
-                WitcheryExtras.log(0, "Found no entries in OreDict for " + inputString1);
+                WitcheryExtras.log(2, "Found no entries in OreDict for " + inputString1);
             }
             if (s != null) {
                 mOutputStack = s;
                 mOutputAmount = s.stackSize;
                 y[0] = true;
-            } else {
-                WitcheryExtras.log(0, "Set Y0 to False");
-                y[0] = false;
             }
         }
         // Jar Output
@@ -226,16 +216,13 @@ public class OvenRecipes {
             mJarOutputStack = outputJarStack;
             mJarOutputAmount = amt2;
             y[1] = true;
-        } else {
-            y[1] = false;
-            WitcheryExtras.log(0, "Set Y1 to False");
         }
         if (y[0] && y[1]) {
             OvenRecipe recipe;
             if (mInputStack != null) {
                 recipe = new OvenRecipe(
                         mInputStack.copy(),
-                        mJars,
+                        jars,
                         mOutputStack.copy(),
                         mOutputAmount,
                         mJarOutputStack.copy(),
@@ -243,18 +230,17 @@ public class OvenRecipes {
             } else {
                 recipe = new OvenRecipe(
                         mInputString,
-                        mJars,
+                        jars,
                         mOutputStack.copy(),
                         mOutputAmount,
                         mJarOutputStack.copy(),
                         mJarOutputAmount);
             }
             mRecipeMap.add(recipe);
-            WitcheryExtras.log(0, "Added an Oven Recipe" + recipe.getDescription());
             return recipe;
         } else {
             WitcheryExtras.log(
-                    0,
+                    2,
                     "Failed when trying to add an Oven Recipe for "
                             + (mInputStack != null ? mInputStack.getDisplayName() : mInputString));
             return null;
@@ -417,14 +403,11 @@ public class OvenRecipes {
                             + (output != null ? output.stackSize : 0)),
                     ("Jar Output: " + this.outputJar.getDisplayName() + " x" + jars),
                     ("OreDict: " + this.validOreDictInput) };
-            String z = "";
+            StringBuilder sb = new StringBuilder();
             for (String x : y) {
-                WitcheryExtras.log(0, x);
+                sb.append(".").append(x);
             }
-            for (String x : y) {
-                z += "." + x;
-            }
-            return z;
+            return sb.toString();
         }
 
         public boolean resultsIn(final ItemStack result) {

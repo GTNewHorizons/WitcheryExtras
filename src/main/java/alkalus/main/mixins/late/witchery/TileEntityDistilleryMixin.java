@@ -1,7 +1,5 @@
 package alkalus.main.mixins.late.witchery;
 
-import net.minecraft.inventory.IInventory;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -10,7 +8,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(value = BlockDistillery.TileEntityDistillery.class, remap = false)
-public abstract class TileEntityDistilleryMixin implements IInventory {
+public abstract class TileEntityDistilleryMixin {
 
     // Manually specify obfuscation mapping, and require that exactly one hits.
     // The mixin AP can't find it automatically for some reason

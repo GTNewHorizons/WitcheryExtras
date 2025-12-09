@@ -39,9 +39,7 @@ public class WitcheryExtras {
 
     @Mod.EventHandler
     public synchronized void preInit(final FMLPreInitializationEvent e) {
-        log(0, "Loading " + NAME + " - v" + VERSION);
         for (BasePluginWitchery bwp : getMpreinitevents()) {
-            log(0, "Loading Plugin: " + bwp.getPluginName() + " | Phase: Pre-Init");
             bwp.preInit();
         }
 
@@ -56,7 +54,6 @@ public class WitcheryExtras {
         new GarlicRecipes();
         OvenRecipes.generateDefaultOvenRecipes();
         for (BasePluginWitchery bwp : getMinitevents()) {
-            log(0, "Loading Plugin: " + bwp.getPluginName() + " | Phase: Init");
             bwp.init();
         }
     }
@@ -67,7 +64,6 @@ public class WitcheryExtras {
             MinecraftForge.EVENT_BUS.register(new TooltipHandler());
         }
         for (BasePluginWitchery bwp : getMpostinitevents()) {
-            log(0, "Loading Plugin: " + bwp.getPluginName() + " | Phase: Post-Init");
             bwp.postInit();
         }
         PredictionHandler.adjustPredictions();

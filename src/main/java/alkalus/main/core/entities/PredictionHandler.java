@@ -19,7 +19,6 @@ import com.emoniph.witchery.predictions.PredictionWet;
 
 import alkalus.main.api.RecipeManager;
 import alkalus.main.config.AsmConfig;
-import alkalus.main.core.WitcheryExtras;
 import alkalus.main.core.util.ReflectionUtils;
 
 public class PredictionHandler {
@@ -92,14 +91,6 @@ public class PredictionHandler {
             if (aOld != null) {
                 if (aOld.itemWeight != aNewValues[i - 1]) {
                     RecipeManager.Predictions.remove(aOld);
-                    WitcheryExtras.log(
-                            0,
-                            "Adjusting weight of " + aOld.getTranslationKey()
-                                    + " from "
-                                    + aOld.itemWeight
-                                    + " to "
-                                    + aNewValues[i - 1]
-                                    + ".");
                     RecipeManager.Predictions.add(generateNewPrediction(aOld, aNewValues[i - 1]));
                 }
             }

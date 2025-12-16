@@ -52,10 +52,8 @@ public class WitcheryRecipeHandlerInternal {
                 aDidRemove = true;
             }
         }
-        if (aDidRemove) {
-            WitcheryExtras.log(0, "Removed Oven recipe: " + mRecipe.getDescription());
-        } else {
-            WitcheryExtras.log(0, "Failed to remove Oven recipe: " + mRecipe.getDescription());
+        if (!aDidRemove) {
+            WitcheryExtras.log(2, "Failed to remove Oven recipe: " + mRecipe.getDescription());
         }
         return aDidRemove;
     }
@@ -82,10 +80,8 @@ public class WitcheryRecipeHandlerInternal {
                 aDidRemove = true;
             }
         }
-        if (aDidRemove) {
-            WitcheryExtras.log(0, "Removed Distillery recipe: " + mRecipe.getDescription());
-        } else {
-            WitcheryExtras.log(0, "Failed to remove Distillery recipe: " + mRecipe.getDescription());
+        if (!aDidRemove) {
+            WitcheryExtras.log(2, "Failed to remove Distillery recipe: " + mRecipe.getDescription());
         }
         return aDidRemove;
     }
@@ -114,14 +110,8 @@ public class WitcheryRecipeHandlerInternal {
                 aDidRemove = true;
             }
         }
-        if (aDidRemove) {
-            WitcheryExtras.log(
-                    0,
-                    "Removed Kettle recipe for output: " + toRemove.output.getDisplayName()
-                            + ". "
-                            + toRemove.getDescription());
-        } else {
-            WitcheryExtras.log(0, "Failed to remove Kettle recipe for " + mOutput.getDisplayName());
+        if (!aDidRemove) {
+            WitcheryExtras.log(2, "Failed to remove Kettle recipe for " + mOutput.getDisplayName());
         }
         return aDidRemove;
     }
@@ -155,12 +145,11 @@ public class WitcheryRecipeHandlerInternal {
         for (CreaturePower aCreaturePower : registry) {
             if (aCreaturePower != null && aCreaturePower.getCreaturePowerID() == power.getCreaturePowerID()) {
                 registry.remove(aCreaturePower);
-                WitcheryExtras.log(0, "Removed CreaturePower: " + aCreaturePower.getCreaturePowerID() + ".");
                 break;
             }
         }
         if (registry.size() >= aSizeStart) {
-            WitcheryExtras.log(0, "Failed to remove CreaturePower: " + power.getCreaturePowerID() + ".");
+            WitcheryExtras.log(2, "Failed to remove CreaturePower: " + power.getCreaturePowerID() + ".");
         }
         return registry.size() < aSizeStart;
     }
@@ -210,11 +199,9 @@ public class WitcheryRecipeHandlerInternal {
                 aDidRemove = true;
             }
         }
-        if (aDidRemove) {
-            WitcheryExtras.log(0, "Removed Rite: " + toRemove.getDescription());
-        } else {
+        if (!aDidRemove) {
             WitcheryExtras.log(
-                    0,
+                    2,
                     "Failed to remove Rite: "
                             + (toRemove != null
                                     ? toRemove.getLocalizedName() + " | "
@@ -233,8 +220,6 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean addNewPrediction(Prediction prediction) {
         try {
             PredictionManager.instance().addPrediction(prediction);
-            WitcheryExtras
-                    .log(0, "Added Prediction: " + prediction.getTranslationKey() + " | " + prediction.predictionID);
             return true;
         } catch (NullPointerException e) {
             return false;
@@ -256,14 +241,12 @@ public class WitcheryRecipeHandlerInternal {
         for (Prediction aPredic : predictions.values()) {
             if (aPredic != null && aPredic.predictionID == prediction.predictionID) {
                 predictions.remove(prediction.predictionID);
-                WitcheryExtras
-                        .log(0, "Removed Prediction: " + aPredic.getTranslationKey() + " | " + aPredic.predictionID);
                 break;
             }
         }
         if (predictions.size() >= aSizeStart) {
             WitcheryExtras.log(
-                    0,
+                    2,
                     "Failed to remove Prediction: "
                             + (prediction != null ? prediction.getTranslationKey() + ", " + prediction.predictionID
                                     : prediction.predictionID));
@@ -305,13 +288,12 @@ public class WitcheryRecipeHandlerInternal {
         for (Infusion aInfusion : infusions) {
             if (aInfusion != null && aInfusion.infusionID == infusion.infusionID) {
                 infusions.remove(aInfusion);
-                WitcheryExtras.log(0, "Removed Infusion: " + infusion.toString() + " | " + infusion.infusionID);
                 break;
             }
         }
         if (infusions.size() >= aSizeStart) {
             WitcheryExtras.log(
-                    1,
+                    2,
                     "Failed to remove Infusion: "
                             + (infusion != null ? infusion.toString() + " | " + infusion.infusionID + " | "
                                     : infusion.infusionID));

@@ -35,7 +35,14 @@ public enum Mixins implements IMixins {
                     "witchery.ItemPoppetMixin_Bauble")
             .addRequiredMod(TargetedMod.WITCHERY)
             .addRequiredMod(TargetedMod.BAUBLES_EXPANDED)
-            .setPhase(Phase.LATE));
+            .setPhase(Phase.LATE)),
+    WITCHERY_DISABLE_CONTAINER_BLOCKS(new MixinBuilder()
+            .addCommonMixins("witchery.BlockBaseContainerMixin")
+            .addRequiredMod(TargetedMod.WITCHERY)
+            .setPhase(Phase.LATE)
+            // configs handle individual blocks to disable
+            ),
+        ;
     // spotless:on
 
     private final MixinBuilder builder;

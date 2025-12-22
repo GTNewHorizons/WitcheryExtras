@@ -34,6 +34,8 @@ public class AsmConfig {
     public static int chancePredictionFindShinies;
     public static int chancePredictionVillagerLove;
 
+    public static boolean disableSilverVat;
+
     static {
         config = new Configuration(new File("config/WitcheryExtras/asm.cfg"));
         syncConfig(true);
@@ -170,7 +172,14 @@ public class AsmConfig {
             chancePredictionVillagerLove = prop.getInt(2);
             propOrder.add(prop.getName());
 
+            prop = config.get("blocks", "disableSilverVat", false);
+            prop.comment = "Disable Silver Vat";
+            prop.setLanguageKey("disableSilverVat");
+            disableSilverVat = prop.getBoolean(false);
+            propOrder.add(prop.getName());
+
             config.setCategoryPropertyOrder("general", propOrder);
+            config.setCategoryPropertyOrder("blocks", propOrder);
             config.setCategoryPropertyOrder("predictions", propOrder);
             config.setCategoryPropertyOrder("debug", propOrderDebug);
             if (config.hasChanged()) {

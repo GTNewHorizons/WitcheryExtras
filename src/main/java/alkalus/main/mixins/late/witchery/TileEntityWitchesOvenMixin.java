@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.emoniph.witchery.blocks.BlockWitchesOven.TileEntityWitchesOven;
 
@@ -37,6 +38,20 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
                     shift = At.Shift.AFTER))
     private void saveTile(CallbackInfo ci) {
         this.markDirty();
+    }
+
+    @Inject(method = { "getInventoryName", "func_145825_b" }, at = @At("HEAD"), cancellable = true, remap = false)
+    private void witcheryextras$useGuiTitleKey(CallbackInfoReturnable<String> cir) {
+        cir.setReturnValue("gui.witcheryextras.witchesoven.title");
+    }
+
+    @Inject(
+            method = { "hasCustomInventoryName", "func_145818_k_" },
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false)
+    private void witcheryextras$forceTranslatedName(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(false);
     }
 
     /**

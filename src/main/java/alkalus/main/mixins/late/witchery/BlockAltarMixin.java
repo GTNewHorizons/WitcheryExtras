@@ -10,8 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import com.emoniph.witchery.blocks.BlockAltar;
 import com.emoniph.witchery.blocks.BlockBaseContainer;
-
-import io.github.tox1cozz.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 
 @SuppressWarnings("UnusedMixin")
 @Mixin(BlockAltar.class)

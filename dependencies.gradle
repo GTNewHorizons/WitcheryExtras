@@ -1,11 +1,11 @@
 // Add your dependencies here
 
 dependencies {
-	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.37-GTNH:dev')
+	devOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.71-GTNH:dev')
 
 	api(rfg.deobf("curse.maven:witchery-69673:2234410"))
-    compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.2.2-GTNH:dev')
+    compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.2.6-GTNH:dev')
 
     // Uncomment to test baubles compat
-    //devOnlyNonPublishable('com.github.GTNewHorizons:Baubles-Expanded:2.2.2-GTNH:dev')
+    //devOnlyNonPublishable('com.github.GTNewHorizons:Baubles-Expanded:2.2.6-GTNH:dev')
 }

@@ -4,6 +4,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -42,16 +43,7 @@ public abstract class TileEntityWitchesOvenMixin extends TileEntity implements I
 
     @Inject(method = { "getInventoryName", "func_145825_b" }, at = @At("HEAD"), cancellable = true, remap = false)
     private void witcheryextras$useGuiTitleKey(CallbackInfoReturnable<String> cir) {
-        cir.setReturnValue("gui.witcheryextras.witchesoven.title");
-    }
-
-    @Inject(
-            method = { "hasCustomInventoryName", "func_145818_k_" },
-            at = @At("HEAD"),
-            cancellable = true,
-            remap = false)
-    private void witcheryextras$forceTranslatedName(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(false);
+        cir.setReturnValue(StatCollector.translateToLocal("gui.witcheryextras.witchesoven.title"));
     }
 
     /**

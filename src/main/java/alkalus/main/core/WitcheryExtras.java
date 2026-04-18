@@ -1,10 +1,14 @@
 package alkalus.main.core;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.minecraftforge.common.MinecraftForge;
+
+import com.emoniph.witchery.common.PowerSources;
 
 import alkalus.main.api.plugin.base.BasePluginWitchery;
 import alkalus.main.core.crafting.OvenRecipes;
@@ -13,11 +17,15 @@ import alkalus.main.core.recipe.fixes.GarlicRecipes;
 import alkalus.main.core.util.Logger;
 import alkalus.main.core.util.TooltipHandler;
 import baubles.api.expanded.BaubleExpandedSlots;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.FMLNetworkEvent.ClientDisconnectionFromServerEvent;
 
 @Mod(
         modid = WitcheryExtras.MODID,
@@ -38,7 +46,7 @@ public class WitcheryExtras {
     public static WitcheryExtras instance;
 
     @Mod.EventHandler
-    public synchronized void preInit(final FMLPreInitializationEvent e) {
+    public void preInit(final FMLPreInitializationEvent e) {
         for (BasePluginWitchery bwp : getMpreinitevents()) {
             bwp.preInit();
         }
@@ -50,7 +58,7 @@ public class WitcheryExtras {
     }
 
     @Mod.EventHandler
-    public synchronized void init(final FMLInitializationEvent e) {
+    public void init(final FMLInitializationEvent e) {
         new GarlicRecipes();
         OvenRecipes.generateDefaultOvenRecipes();
         for (BasePluginWitchery bwp : getMinitevents()) {
@@ -59,7 +67,8 @@ public class WitcheryExtras {
     }
 
     @Mod.EventHandler
-    public synchronized void postInit(final FMLPostInitializationEvent event) {
+    public void postInit(final FMLPostInitializationEvent event) {
+        FMLCommonHandler.instance().bus().register(this);
         if (event.getSide().isClient()) {
             MinecraftForge.EVENT_BUS.register(new TooltipHandler());
         }
@@ -67,6 +76,29 @@ public class WitcheryExtras {
             bwp.postInit();
         }
         PredictionHandler.adjustPredictions();
+    }
+
+    @Mod.EventHandler
+    public void onServerStopped(FMLServerStoppedEvent event) {
+        clearPowerSources(PowerSources.instance());
+    }
+
+    @SubscribeEvent
+    public void onClientDisconnect(ClientDisconnectionFromServerEvent event) {
+        clearPowerSources(PowerSources.instance());
+    }
+
+    private static void clearPowerSources(PowerSources instance) {
+        try {
+            final Field powerField = instance.getClass().getDeclaredField("powerSources");
+            final Field nullField = instance.getClass().getDeclaredField("nullSources");
+            powerField.setAccessible(true);
+            nullField.setAccessible(true);
+            ((List<?>) powerField.get(instance)).clear();
+            ((List<?>) nullField.get(instance)).clear();
+        } catch (NoSuchFieldException ignored) {} catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void log(int level, String text) {

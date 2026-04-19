@@ -89,6 +89,7 @@ public class WitcheryExtras {
     }
 
     private static void clearPowerSources(PowerSources instance) {
+        if (instance == null) return;
         try {
             final Field powerField = instance.getClass().getDeclaredField("powerSources");
             final Field nullField = instance.getClass().getDeclaredField("nullSources");
@@ -96,7 +97,7 @@ public class WitcheryExtras {
             nullField.setAccessible(true);
             ((List<?>) powerField.get(instance)).clear();
             ((List<?>) nullField.get(instance)).clear();
-        } catch (NoSuchFieldException ignored) {} catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

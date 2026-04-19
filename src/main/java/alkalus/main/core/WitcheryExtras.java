@@ -1,10 +1,8 @@
 package alkalus.main.core;
 
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import net.minecraftforge.common.MinecraftForge;
 
@@ -38,16 +36,16 @@ public class WitcheryExtras {
     public static final String NAME = "Witchery++";
     public static final String VERSION = WitcheryExtrasTags.VERSION;
 
-    private static final Map<Integer, BasePluginWitchery> mPreInitEvents = new HashMap<>();
-    private static final Map<Integer, BasePluginWitchery> mInitEvents = new HashMap<>();
-    private static final Map<Integer, BasePluginWitchery> mPostInitEvents = new HashMap<>();
+    private static final List<BasePluginWitchery> mPreInitEvents = new ArrayList<>();
+    private static final List<BasePluginWitchery> mInitEvents = new ArrayList<>();
+    private static final List<BasePluginWitchery> mPostInitEvents = new ArrayList<>();
 
     @Mod.Instance(MODID)
     public static WitcheryExtras instance;
 
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent e) {
-        for (BasePluginWitchery bwp : getMpreinitevents()) {
+        for (BasePluginWitchery bwp : mPreInitEvents) {
             bwp.preInit();
         }
 
@@ -61,7 +59,7 @@ public class WitcheryExtras {
     public void init(final FMLInitializationEvent e) {
         new GarlicRecipes();
         OvenRecipes.generateDefaultOvenRecipes();
-        for (BasePluginWitchery bwp : getMinitevents()) {
+        for (BasePluginWitchery bwp : mInitEvents) {
             bwp.init();
         }
     }
@@ -72,7 +70,7 @@ public class WitcheryExtras {
         if (event.getSide().isClient()) {
             MinecraftForge.EVENT_BUS.register(new TooltipHandler());
         }
-        for (BasePluginWitchery bwp : getMpostinitevents()) {
+        for (BasePluginWitchery bwp : mPostInitEvents) {
             bwp.postInit();
         }
         PredictionHandler.adjustPredictions();
@@ -112,34 +110,15 @@ public class WitcheryExtras {
         }
     }
 
-    // Custom Content Loader
-    public static synchronized Collection<BasePluginWitchery> getMpreinitevents() {
-        return mPreInitEvents.values();
+    public static void addEventPreInit(BasePluginWitchery plugin) {
+        mPreInitEvents.add(plugin);
     }
 
-    public static synchronized Collection<BasePluginWitchery> getMinitevents() {
-        return mInitEvents.values();
+    public static void addEventInit(BasePluginWitchery plugin) {
+        mInitEvents.add(plugin);
     }
 
-    public static synchronized Collection<BasePluginWitchery> getMpostinitevents() {
-        return mPostInitEvents.values();
-    }
-
-    private static int mID_1 = 0;
-
-    public static synchronized void addEventPreInit(BasePluginWitchery basePluginWitchery) {
-        mPreInitEvents.put(mID_1++, basePluginWitchery);
-    }
-
-    private static int mID_2 = 0;
-
-    public static synchronized void addEventInit(BasePluginWitchery minitevents) {
-        mInitEvents.put(mID_2++, minitevents);
-    }
-
-    private static int mID_3 = 0;
-
-    public static synchronized void addEventPostInit(BasePluginWitchery mpostinitevents) {
-        mPostInitEvents.put(mID_3++, mpostinitevents);
+    public static void addEventPostInit(BasePluginWitchery plugin) {
+        mPostInitEvents.add(plugin);
     }
 }

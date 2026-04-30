@@ -14,16 +14,20 @@ import alkalus.main.core.entities.PredictionHandler;
 import alkalus.main.core.recipe.fixes.GarlicRecipes;
 import alkalus.main.core.util.Logger;
 import alkalus.main.core.util.TooltipHandler;
+import alkalus.main.proxy.CommonProxy;
 import baubles.api.expanded.BaubleExpandedSlots;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientDisconnectionFromServerEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @Mod(
         modid = WitcheryExtras.MODID,
@@ -35,6 +39,7 @@ public class WitcheryExtras {
     public static final String MODID = "WitcheryExtras";
     public static final String NAME = "Witchery++";
     public static final String VERSION = WitcheryExtrasTags.VERSION;
+    public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 
     private static final List<BasePluginWitchery> mPreInitEvents = new ArrayList<>();
     private static final List<BasePluginWitchery> mInitEvents = new ArrayList<>();
@@ -43,8 +48,12 @@ public class WitcheryExtras {
     @Mod.Instance(MODID)
     public static WitcheryExtras instance;
 
+    @SidedProxy(clientSide = "alkalus.main.proxy.ClientProxy", serverSide = "alkalus.main.proxy.CommonProxy")
+    public static CommonProxy proxy;
+
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent e) {
+        proxy.preInit(e);
         for (BasePluginWitchery bwp : mPreInitEvents) {
             bwp.preInit();
         }
@@ -57,6 +66,7 @@ public class WitcheryExtras {
 
     @Mod.EventHandler
     public void init(final FMLInitializationEvent e) {
+        proxy.init(e);
         new GarlicRecipes();
         OvenRecipes.generateDefaultOvenRecipes();
         for (BasePluginWitchery bwp : mInitEvents) {
@@ -66,6 +76,7 @@ public class WitcheryExtras {
 
     @Mod.EventHandler
     public void postInit(final FMLPostInitializationEvent event) {
+        proxy.postInit(event);
         FMLCommonHandler.instance().bus().register(this);
         if (event.getSide().isClient()) {
             MinecraftForge.EVENT_BUS.register(new TooltipHandler());

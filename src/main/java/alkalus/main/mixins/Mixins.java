@@ -56,6 +56,10 @@ public enum Mixins implements IMixins {
             .setPhase(Phase.LATE)
             // configs handle individual blocks to disable
             ),
+    WITCHERY_FIX_EXTENDED_PLAYER_SYNC(new MixinBuilder("Disables Extended Player sync for FakePlayer")
+            .addCommonMixins("witchery.ExtendedPlayerMixin")
+            .setPhase(Phase.LATE)
+            ),
         ;
     // spotless:on
 

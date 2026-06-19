@@ -26,7 +26,7 @@ import alkalus.main.mixins.IBiomeBookScreen;
 import alkalus.main.network.BiomeBookEntry;
 import alkalus.main.network.BiomeBookRequestPacket;
 
-@Mixin(GuiScreenBiomeBook.class)
+@Mixin(value = GuiScreenBiomeBook.class, remap = false)
 public abstract class GuiScreenBiomeBookMixin extends GuiScreen implements IBiomeBookScreen {
 
     @Shadow

@@ -60,6 +60,12 @@ public enum Mixins implements IMixins {
             .addCommonMixins("witchery.ExtendedPlayerMixin")
             .setPhase(Phase.LATE)
             ),
+    WITCHERY_BIOME_BOOK_ACCESSOR(new MixinBuilder("Accessor for BiomeGenBase fields used by the biome book sync")
+            .addCommonMixins("minecraft.BiomeGenBaseAccessor")
+            .setPhase(Phase.LATE)),
+    WITCHERY_BIOME_BOOK_SYNC(new MixinBuilder("Sync biome book contents from the server")
+            .addClientMixins("witchery.GuiScreenBiomeBookMixin")
+            .setPhase(Phase.LATE)),
         ;
     // spotless:on
 

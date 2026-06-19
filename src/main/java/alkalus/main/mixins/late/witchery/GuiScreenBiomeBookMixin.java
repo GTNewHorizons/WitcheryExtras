@@ -68,6 +68,19 @@ public abstract class GuiScreenBiomeBookMixin extends GuiScreen implements IBiom
         }
         this.pageIndex = ItemBook.getSelectedBiome(this.itemstack, this.biomes.size());
         this.witcheryextras$loading = false;
+        // Rebuild the page/bookmark buttons: initGui already ran (with empty lists) right after the constructor, so the
+        // controls were built against no data. Re-run it now that the sections are populated.
+        this.initGui();
+    }
+
+    /**
+     * Keep the integrated server ticking while the book is open. The vanilla {@link GuiScreen} default pauses
+     * singleplayer, which would freeze the server before it can answer the biome list request, leaving the book stuck
+     * on "Loading...". Dedicated servers never pause, so this only matters in singleplayer.
+     */
+    @Override
+    public boolean doesGuiPauseGame() {
+        return false;
     }
 
     @Inject(method = "drawScreen", at = @At("TAIL"))

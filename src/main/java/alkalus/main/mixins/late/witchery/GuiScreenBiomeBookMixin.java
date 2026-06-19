@@ -39,6 +39,8 @@ public abstract class GuiScreenBiomeBookMixin extends GuiScreen implements IBiom
     private int pageIndex;
     @Shadow
     private ItemStack itemstack;
+    @Shadow
+    private int bookImageHeight;
 
     @Unique
     private boolean witcheryextras$loading;
@@ -86,7 +88,11 @@ public abstract class GuiScreenBiomeBookMixin extends GuiScreen implements IBiom
     @Inject(method = "drawScreen", at = @At("TAIL"))
     private void witcheryextras$drawLoading(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
         if (this.witcheryextras$loading) {
-            this.drawCenteredString(this.fontRendererObj, "Loading...", this.width / 2, this.height / 2, 0xFFFFFF);
+            // The book texture is drawn horizontally centered (so width / 2 is correct) with a top offset of 2,
+            // spanning
+            // bookImageHeight pixels. Center the label on the book, not the screen.
+            int bookCenterY = 2 + this.bookImageHeight / 2 - this.fontRendererObj.FONT_HEIGHT / 2;
+            this.drawCenteredString(this.fontRendererObj, "Loading...", this.width / 2, bookCenterY, 0xFFFFFF);
         }
     }
 }

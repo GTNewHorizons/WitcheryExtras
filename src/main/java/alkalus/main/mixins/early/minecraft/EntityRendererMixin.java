@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import alkalus.main.mixins.hooks.EntitySizeManager;
+import alkalus.main.handlers.ClientSizeHandler;
 
 @Mixin(EntityRenderer.class)
 public class EntityRendererMixin {
@@ -21,7 +21,7 @@ public class EntityRendererMixin {
     private float applyOffset(float origin) {
         if (this.mc.renderViewEntity instanceof EntityPlayer player) {
             if (!player.isPlayerSleeping() && !player.isRiding()) {
-                return origin + EntitySizeManager.OffsetContents.getCurrentOffset(player);
+                return origin + ClientSizeHandler.currentOffset;
             }
         }
         return origin;

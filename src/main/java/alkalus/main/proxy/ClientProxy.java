@@ -1,6 +1,5 @@
 package alkalus.main.proxy;
 
-import alkalus.main.compat.EFRCompat;
 import alkalus.main.handlers.ClientSizeHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;

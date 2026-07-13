@@ -16,6 +16,7 @@ public class CommonProxy {
         if (Loader.isModLoaded("etfuturum")) {
             if (EFRCompat.isPoseSystemEnabled()) {
                 usingEFR = true;
+                EFRCompat.registerToPoseSystem();
             }
         }
     }

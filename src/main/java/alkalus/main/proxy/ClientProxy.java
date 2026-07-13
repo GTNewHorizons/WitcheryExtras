@@ -11,7 +11,6 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent event) {
         super.init(event);
         if (usingEFR) {
-            EFRCompat.registerToPoseSystem();
             return;
         }
         FMLCommonHandler.instance().bus().register(new ClientSizeHandler());

@@ -14,15 +14,19 @@ import cpw.mods.fml.relauncher.Side;
 
 public class ClientSizeHandler {
 
-    public static float getTargetYOffset(EntityPlayer player) {
-        EntitySizeInfo size = new EntitySizeInfo(player);
+    public static float getScale(EntityPlayer player) {
         PotionEffect shrunk = Witchery.Potions.RESIZING != null
                 ? player.getActivePotionEffect(Witchery.Potions.RESIZING)
                 : null;
-        if (shrunk == null && size.isDefault) {
+        return shrunk == null ? 1F : PotionResizing.getScaleFactor(shrunk.getAmplifier());
+    }
+
+    public static float getTargetYOffset(EntityPlayer player) {
+        EntitySizeInfo size = new EntitySizeInfo(player);
+        float amp = getScale(player);
+        if (amp == 1F && size.isDefault) {
             return 0;
         }
-        float amp = shrunk != null ? PotionResizing.getScaleFactor(shrunk.getAmplifier()) : 1.0F;
         float scale = size.defaultHeight / 1.8F * amp;
         return 1.8F * (1.0F - scale);
     }

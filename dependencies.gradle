@@ -5,6 +5,7 @@ dependencies {
 
 	api(rfg.deobf("curse.maven:witchery-69673:2234410"))
     compileOnly('com.github.GTNewHorizons:Baubles-Expanded:2.2.21-GTNH:dev')
+    compileOnly('ganymedes01.etfuturum:Et-Futurum-Requiem:99.99.99:dev')
 
     // Uncomment to test baubles compat
     //devOnlyNonPublishable('com.github.GTNewHorizons:Baubles-Expanded:2.2.21-GTNH:dev')

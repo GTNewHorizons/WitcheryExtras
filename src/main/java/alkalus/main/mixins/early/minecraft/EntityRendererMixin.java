@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import alkalus.main.handlers.ClientSizeHandler;
+import alkalus.main.proxy.CommonProxy;
 
 @Mixin(EntityRenderer.class)
 public class EntityRendererMixin {
@@ -19,7 +20,7 @@ public class EntityRendererMixin {
 
     @ModifyVariable(method = "orientCamera", at = @At(value = "STORE", ordinal = 0), ordinal = 1)
     private float applyOffset(float origin) {
-        if (this.mc.renderViewEntity instanceof EntityPlayer player) {
+        if (!CommonProxy.usingEFR && this.mc.renderViewEntity instanceof EntityPlayer player) {
             if (!player.isPlayerSleeping() && !player.isRiding()) {
                 return origin + ClientSizeHandler.currentOffset;
             }

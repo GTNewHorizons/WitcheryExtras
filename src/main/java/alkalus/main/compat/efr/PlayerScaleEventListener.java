@@ -10,6 +10,6 @@ public class PlayerScaleEventListener {
     @SubscribeEvent
     public void onScale(PlayerScaleEvent event) {
         var player = event.player;
-        event.scale = getScale(player);
+        event.scale = event.scale * getScale(player);
     }
 }

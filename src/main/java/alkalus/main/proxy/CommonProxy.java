@@ -13,6 +13,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {}
 
     public void init(FMLInitializationEvent event) {
+    }
+
+    public void postInit(FMLPostInitializationEvent event) {
         if (Loader.isModLoaded("etfuturum")) {
             if (EFRCompat.isPoseSystemEnabled()) {
                 usingEFR = true;
@@ -20,6 +23,4 @@ public class CommonProxy {
             }
         }
     }
-
-    public void postInit(FMLPostInitializationEvent event) {}
 }

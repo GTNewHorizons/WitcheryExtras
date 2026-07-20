@@ -33,7 +33,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
         modid = WitcheryExtras.MODID,
         name = WitcheryExtras.NAME,
         version = WitcheryExtras.VERSION,
-        dependencies = "required-after:witchery;required-after:spongemixins;")
+        dependencies = "required-after:witchery;required-after:spongemixins;after:etfuturum;")
 public class WitcheryExtras {
 
     public static final String MODID = "WitcheryExtras";

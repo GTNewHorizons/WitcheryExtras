@@ -5,12 +5,11 @@ import net.minecraftforge.common.MinecraftForge;
 import alkalus.main.compat.efr.PlayerPose;
 import alkalus.main.compat.efr.PlayerScaleEventListener;
 import ganymedes01.etfuturum.pose.PlayerPoseManager;
-import ganymedes01.etfuturum.swimming.SwimmingHooks;
 
 public class EFRCompat {
 
     public static boolean isPoseSystemEnabled() {
-        return SwimmingHooks.isEnabled();
+        return PlayerPoseManager.isEnabled();
     }
 
     public static void registerToPoseSystem() {

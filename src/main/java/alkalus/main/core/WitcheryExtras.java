@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import org.apache.logging.log4j.LogManager;
+
 import com.emoniph.witchery.common.PowerSources;
 
 import alkalus.main.api.plugin.base.BasePluginWitchery;
@@ -27,7 +29,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientDisconnectionFromServerEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import org.apache.logging.log4j.LogManager;
 
 @Mod(
         modid = WitcheryExtras.MODID,

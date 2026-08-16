@@ -40,7 +40,8 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean removeOvenRecipe(OvenRecipe mRecipe) {
         if (mRecipe == null) {
-            WitcheryExtras.LOGGER.error("Null Oven Recipe parsed into removeOvenRecipe(). Please check all OvenRecipes are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Oven Recipe parsed into removeOvenRecipe(). Please check all OvenRecipes are valid before calling this function.");
             return false;
         }
         boolean aDidRemove = false;
@@ -67,7 +68,8 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean removeDistilleryRecipe(DistilleryRecipe mRecipe) {
         if (mRecipe == null) {
-            WitcheryExtras.LOGGER.error("Null Distillery Recipe parsed into removeDistilleryRecipe(). Please check all DistilleryRecipes are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Distillery Recipe parsed into removeDistilleryRecipe(). Please check all DistilleryRecipes are valid before calling this function.");
             return false;
         }
         boolean aDidRemove = false;
@@ -95,7 +97,8 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean removeKettleRecipe(ItemStack mOutput) {
         KettleRecipe toRemove = KettleRecipes.instance().findRecipeFor(mOutput);
         if (mOutput == null || toRemove == null) {
-            WitcheryExtras.LOGGER.error("Null Kettle Recipe parsed into removeKettleRecipe(). Please check all ItemStacks are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Kettle Recipe parsed into removeKettleRecipe(). Please check all ItemStacks are valid before calling this function.");
             return false;
         }
         boolean aDidRemove = false;
@@ -128,7 +131,8 @@ public class WitcheryRecipeHandlerInternal {
         Field aRegistry = ReflectionUtils.getField(CreaturePower.Registry.class, "registry");
         if (power == null || aRegistry == null
                 || ReflectionUtils.getFieldValue(aRegistry, CreaturePower.Registry.instance()) != null) {
-            WitcheryExtras.LOGGER.error("Null CreaturePower parsed into removeCreaturePower(). Please check all CreaturePowers are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null CreaturePower parsed into removeCreaturePower(). Please check all CreaturePowers are valid before calling this function.");
             return false;
         }
         ArrayList<CreaturePower> registry = (ArrayList<CreaturePower>) ReflectionUtils
@@ -153,7 +157,11 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean addNewRiteToRiteRegistry(int ritualID, int bookIndex, Rite rite,
             Sacrifice initialSacrifice, EnumSet<RitualTraits> traits, Circle... circles) {
         if (ritualID > Byte.MAX_VALUE) {
-            WitcheryExtras.LOGGER.warn("RitualID for Rite: {} has an ID greater than {}. Found ID: {}.", rite.toString(), Byte.MAX_VALUE, ritualID);
+            WitcheryExtras.LOGGER.warn(
+                    "RitualID for Rite: {} has an ID greater than {}. Found ID: {}.",
+                    rite.toString(),
+                    Byte.MAX_VALUE,
+                    ritualID);
             return false;
         }
         return RiteRegistry.addRecipe((byte) ritualID, bookIndex, rite, initialSacrifice, traits, circles) != null;
@@ -161,12 +169,17 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean removeRiteFromRiteRegistry(int ritualID) {
         if (ritualID < Byte.MIN_VALUE || ritualID > Byte.MAX_VALUE) {
-            WitcheryExtras.LOGGER.error("Failed to remove Rite, ID exceeded range of a byte. Found: {}, Expected: {}-{}.", ritualID, Byte.MIN_VALUE, Byte.MAX_VALUE );
+            WitcheryExtras.LOGGER.error(
+                    "Failed to remove Rite, ID exceeded range of a byte. Found: {}, Expected: {}-{}.",
+                    ritualID,
+                    Byte.MIN_VALUE,
+                    Byte.MAX_VALUE);
             return false;
         }
         Ritual toRemove = RiteRegistry.instance().getRitual((byte) ritualID);
         if (toRemove == null) {
-            WitcheryExtras.LOGGER.error("Invalid Rite ID parsed into removeRiteFromRiteRegistry(int). Please check ID is mapped before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Invalid Rite ID parsed into removeRiteFromRiteRegistry(int). Please check ID is mapped before calling this function.");
             return false;
         }
         boolean aDidRemove = false;
@@ -176,7 +189,11 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (!aDidRemove) {
-            WitcheryExtras.LOGGER.error("Failed to remove Rite: {} | {} | {}", toRemove.getLocalizedName(), toRemove.getRitualID(), toRemove.getDescription());
+            WitcheryExtras.LOGGER.error(
+                    "Failed to remove Rite: {} | {} | {}",
+                    toRemove.getLocalizedName(),
+                    toRemove.getRitualID(),
+                    toRemove.getDescription());
         }
         return aDidRemove;
     }
@@ -197,7 +214,8 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean removePrediction(Prediction prediction) {
         Field aRegistry = ReflectionUtils.getField(PredictionManager.class, "predictions");
         if (prediction == null) {
-            WitcheryExtras.LOGGER.error("Null Prediction parsed into removePrediction(). Please check all Predictions are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Prediction parsed into removePrediction(). Please check all Predictions are valid before calling this function.");
             return false;
         }
         PredictionManager aInstance = PredictionManager.instance();
@@ -211,7 +229,10 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (predictions.size() >= aSizeStart) {
-            WitcheryExtras.LOGGER.error("Failed to remove Prediction: {}, {}", prediction.getTranslationKey(), prediction.predictionID);
+            WitcheryExtras.LOGGER.error(
+                    "Failed to remove Prediction: {}, {}",
+                    prediction.getTranslationKey(),
+                    prediction.predictionID);
         }
         return predictions.size() < aSizeStart;
     }
@@ -231,13 +252,15 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean removeInfusion(Infusion infusion) {
         if (infusion == null) {
-            WitcheryExtras.LOGGER.error("Null Infusion parsed into removeInfusion(). Please check all Infusions are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Infusion parsed into removeInfusion(). Please check all Infusions are valid before calling this function.");
             return false;
         }
         Field aRegistry = ReflectionUtils.getField(CreaturePower.Registry.class, "registry");
         if (infusion == null || aRegistry == null
                 || ReflectionUtils.getFieldValue(aRegistry, Infusion.Registry.instance()) != null) {
-            WitcheryExtras.LOGGER.error("Null Infusion parsed into removeInfusion(). Please check all Infusions are valid before calling this function.");
+            WitcheryExtras.LOGGER.error(
+                    "Null Infusion parsed into removeInfusion(). Please check all Infusions are valid before calling this function.");
             return false;
         }
         ArrayList<Infusion> infusions = (ArrayList<Infusion>) ReflectionUtils

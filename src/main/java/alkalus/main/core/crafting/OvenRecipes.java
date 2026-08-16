@@ -239,7 +239,9 @@ public class OvenRecipes {
             mRecipeMap.add(recipe);
             return recipe;
         } else {
-            WitcheryExtras.LOGGER.error("Failed when trying to add an Oven Recipe for {}", mInputStack != null ? mInputStack.getDisplayName() : mInputString);
+            WitcheryExtras.LOGGER.error(
+                    "Failed when trying to add an Oven Recipe for {}",
+                    mInputStack != null ? mInputStack.getDisplayName() : mInputString);
             return null;
         }
     }

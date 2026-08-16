@@ -112,16 +112,6 @@ public class WitcheryExtras {
         }
     }
 
-    public static void log(int level, String text) {
-        if (level <= 0) {
-            LOGGER.info(text);
-        } else if (level == 1) {
-            LOGGER.warn(text);
-        } else {
-            LOGGER.fatal(text);
-        }
-    }
-
     public static void addEventPreInit(BasePluginWitchery plugin) {
         mPreInitEvents.add(plugin);
     }

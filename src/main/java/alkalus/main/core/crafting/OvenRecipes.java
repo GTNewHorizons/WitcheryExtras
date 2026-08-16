@@ -203,7 +203,7 @@ public class OvenRecipes {
                     }
                 }
             } else {
-                WitcheryExtras.LOGGER.error("Found no entries in OreDict for " + inputString1);
+                WitcheryExtras.LOGGER.error("Found no entries in OreDict for {}", inputString1);
             }
             if (s != null) {
                 mOutputStack = s;
@@ -239,7 +239,7 @@ public class OvenRecipes {
             mRecipeMap.add(recipe);
             return recipe;
         } else {
-            WitcheryExtras.LOGGER.error("Failed when trying to add an Oven Recipe for " + (mInputStack != null ? mInputStack.getDisplayName() : mInputString));
+            WitcheryExtras.LOGGER.error("Failed when trying to add an Oven Recipe for {}", mInputStack != null ? mInputStack.getDisplayName() : mInputString);
             return null;
         }
     }

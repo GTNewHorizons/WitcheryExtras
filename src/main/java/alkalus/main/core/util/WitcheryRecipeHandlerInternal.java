@@ -51,7 +51,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (!aDidRemove) {
-            WitcheryExtras.LOGGER.error("Failed to remove Oven recipe: " + mRecipe.getDescription());
+            WitcheryExtras.LOGGER.error("Failed to remove Oven recipe: {}", mRecipe.getDescription());
         }
         return aDidRemove;
     }
@@ -77,7 +77,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (!aDidRemove) {
-            WitcheryExtras.LOGGER.error("Failed to remove Distillery recipe: " + mRecipe.getDescription());
+            WitcheryExtras.LOGGER.error("Failed to remove Distillery recipe: {}", mRecipe.getDescription());
         }
         return aDidRemove;
     }
@@ -105,7 +105,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (!aDidRemove) {
-            WitcheryExtras.LOGGER.error("Failed to remove Kettle recipe for " + mOutput.getDisplayName());
+            WitcheryExtras.LOGGER.error("Failed to remove Kettle recipe for {}", mOutput.getDisplayName());
         }
         return aDidRemove;
     }
@@ -141,7 +141,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (registry.size() >= aSizeStart) {
-            WitcheryExtras.LOGGER.error("Failed to remove CreaturePower: " + power.getCreaturePowerID() + ".");
+            WitcheryExtras.LOGGER.error("Failed to remove CreaturePower: {}.", power.getCreaturePowerID());
         }
         return registry.size() < aSizeStart;
     }
@@ -153,12 +153,7 @@ public class WitcheryRecipeHandlerInternal {
     public static synchronized boolean addNewRiteToRiteRegistry(int ritualID, int bookIndex, Rite rite,
             Sacrifice initialSacrifice, EnumSet<RitualTraits> traits, Circle... circles) {
         if (ritualID > Byte.MAX_VALUE) {
-            WitcheryExtras.LOGGER.warn("RitualID for Rite: " + rite.toString()
-                            + " has an ID greater than "
-                            + Byte.MAX_VALUE
-                            + ". Found ID: "
-                            + ritualID
-                            + ".");
+            WitcheryExtras.LOGGER.warn("RitualID for Rite: {} has an ID greater than {}. Found ID: {}.", rite.toString(), Byte.MAX_VALUE, ritualID);
             return false;
         }
         return RiteRegistry.addRecipe((byte) ritualID, bookIndex, rite, initialSacrifice, traits, circles) != null;
@@ -166,12 +161,7 @@ public class WitcheryRecipeHandlerInternal {
 
     public static synchronized boolean removeRiteFromRiteRegistry(int ritualID) {
         if (ritualID < Byte.MIN_VALUE || ritualID > Byte.MAX_VALUE) {
-            WitcheryExtras.LOGGER.error("Failed to remove Rite, ID exceeded range of a byte. Found: " + ritualID
-                            + ", Expected: "
-                            + Byte.MIN_VALUE
-                            + "-"
-                            + Byte.MAX_VALUE
-                            + ".");
+            WitcheryExtras.LOGGER.error("Failed to remove Rite, ID exceeded range of a byte. Found: {}, Expected: {}-{}.", ritualID, Byte.MIN_VALUE, Byte.MAX_VALUE );
             return false;
         }
         Ritual toRemove = RiteRegistry.instance().getRitual((byte) ritualID);
@@ -186,13 +176,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (!aDidRemove) {
-            WitcheryExtras.LOGGER.error("Failed to remove Rite: "
-                            + (toRemove != null
-                                    ? toRemove.getLocalizedName() + " | "
-                                            + toRemove.getRitualID()
-                                            + " | "
-                                            + toRemove.getDescription()
-                                    : ritualID));
+            WitcheryExtras.LOGGER.error("Failed to remove Rite: {} | {} | {}", toRemove.getLocalizedName(), toRemove.getRitualID(), toRemove.getDescription());
         }
         return aDidRemove;
     }
@@ -227,9 +211,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (predictions.size() >= aSizeStart) {
-            WitcheryExtras.LOGGER.error("Failed to remove Prediction: "
-                            + (prediction != null ? prediction.getTranslationKey() + ", " + prediction.predictionID
-                                    : prediction.predictionID));
+            WitcheryExtras.LOGGER.error("Failed to remove Prediction: {}, {}", prediction.getTranslationKey(), prediction.predictionID);
         }
         return predictions.size() < aSizeStart;
     }
@@ -268,9 +250,7 @@ public class WitcheryRecipeHandlerInternal {
             }
         }
         if (infusions.size() >= aSizeStart) {
-            WitcheryExtras.LOGGER.error("Failed to remove Infusion: "
-                            + (infusion != null ? infusion.toString() + " | " + infusion.infusionID + " | "
-                                    : infusion.infusionID));
+            WitcheryExtras.LOGGER.error("Failed to remove Infusion: {} | {}", infusion, infusion.infusionID);
         }
         return infusions.size() < aSizeStart;
     }

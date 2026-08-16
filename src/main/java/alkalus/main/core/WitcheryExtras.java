@@ -6,13 +6,14 @@ import java.util.List;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import org.apache.logging.log4j.LogManager;
+
 import com.emoniph.witchery.common.PowerSources;
 
 import alkalus.main.api.plugin.base.BasePluginWitchery;
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.entities.PredictionHandler;
 import alkalus.main.core.recipe.fixes.GarlicRecipes;
-import alkalus.main.core.util.Logger;
 import alkalus.main.core.util.TooltipHandler;
 import alkalus.main.proxy.CommonProxy;
 import baubles.api.expanded.BaubleExpandedSlots;
@@ -41,6 +42,7 @@ public class WitcheryExtras {
     public static final String VERSION = WitcheryExtrasTags.VERSION;
     public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 
+    public static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(WitcheryExtras.NAME);
     private static final List<BasePluginWitchery> mPreInitEvents = new ArrayList<>();
     private static final List<BasePluginWitchery> mInitEvents = new ArrayList<>();
     private static final List<BasePluginWitchery> mPostInitEvents = new ArrayList<>();
@@ -108,16 +110,6 @@ public class WitcheryExtras {
             ((List<?>) nullField.get(instance)).clear();
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void log(int level, String text) {
-        if (level <= 0) {
-            Logger.INFO(text);
-        } else if (level == 1) {
-            Logger.WARNING(text);
-        } else {
-            Logger.ERROR(text);
         }
     }
 

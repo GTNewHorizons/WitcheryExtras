@@ -78,9 +78,7 @@ public class NEI_Handler_Oven extends TemplateRecipeHandler {
     public void loadUsageRecipes(final ItemStack ingredient) {
 
         final List<OvenRecipe> recipes = OvenRecipes.getRecipeMap();
-        if (ingredient != null) {
-            // Logger.INFO("Looking up Usage results for "+ItemUtils.getItemName(ingredient));
-        }
+
         for (final OvenRecipe recipe : recipes) {
             if (recipe.isValid()) {
                 final ItemStack input = recipe.inputs.copy();

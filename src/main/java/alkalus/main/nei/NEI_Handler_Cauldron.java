@@ -1,7 +1,6 @@
 package alkalus.main.nei;
 
 import java.awt.*;
-import java.lang.reflect.Field;
 import java.util.*;
 
 import net.minecraft.client.gui.inventory.*;
@@ -38,7 +37,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
         if (outputId.equals("witchery_brewing_plus") && this.getClass() == NEI_Handler_Cauldron.class) {
             for (final BrewActionRitualRecipe ritual : WitcheryBrewRegistry.INSTANCE.getRecipes()) {
                 for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
-                    this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
+                    this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(recipe)));
                 }
             }
         } else {
@@ -50,7 +49,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
         for (final BrewActionRitualRecipe ritual : WitcheryBrewRegistry.INSTANCE.getRecipes()) {
             for (final BrewActionRitualRecipe.Recipe recipe : ritual.getExpandedRecipes()) {
                 if (NEIServerUtils.areStacksSameTypeCrafting(result, recipe.result)) {
-                    this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
+                    this.arecipes.add(new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(recipe)));
                 }
             }
         }
@@ -63,7 +62,7 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
                     for (final ItemStack stack : recipe.ingredients) {
                         if (NEIServerUtils.areStacksSameTypeCrafting(stack, ingredient)) {
                             this.arecipes.add(
-                                    new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(ritual)));
+                                    new CachedKettleRecipe(recipe.result, recipe.ingredients, getPowerCost(recipe)));
                         }
                     }
                 }
@@ -91,15 +90,22 @@ public class NEI_Handler_Cauldron extends TemplateRecipeHandler {
         return "witchery_brewing_plus";
     }
 
-    private AltarPower getPowerCost(BrewAction recipe) {
-        try {
-            Field powerCostField = BrewAction.class.getDeclaredField("powerCost");
-            powerCostField.setAccessible(true);
-            return (AltarPower) powerCostField.get(recipe);
-        } catch (Exception e) {
-            e.printStackTrace();
+    /**
+     * The cauldron charges for every item thrown in, not just for the one that triggers the ritual, so sum the cost of
+     * all ingredients the same way TileEntityCauldron does. The expanded recipe already contains the trigger item.
+     */
+    private AltarPower getPowerCost(BrewActionRitualRecipe.Recipe recipe) {
+        AltarPower total = new AltarPower(0);
+        for (final ItemStack stack : recipe.ingredients) {
+            if (stack == null) {
+                continue;
+            }
+            final BrewAction action = WitcheryBrewRegistry.INSTANCE.getActionForItemStack(stack);
+            if (action != null) {
+                action.accumulatePower(total);
+            }
         }
-        return null;
+        return total;
     }
 
     public class CachedKettleRecipe extends TemplateRecipeHandler.CachedRecipe {

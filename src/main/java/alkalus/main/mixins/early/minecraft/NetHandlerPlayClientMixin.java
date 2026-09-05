@@ -1,6 +1,5 @@
 package alkalus.main.mixins.early.minecraft;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 
-import alkalus.main.mixins.hooks.EntitySizeManager;
+import alkalus.main.handlers.ClientSizeHandler;
 
 @Mixin(NetHandlerPlayClient.class)
 public class NetHandlerPlayClientMixin {
@@ -19,6 +18,6 @@ public class NetHandlerPlayClientMixin {
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/play/server/S08PacketPlayerPosLook;func_148928_d()D"))
     private double applyOffset(double origin) {
-        return origin - EntitySizeManager.OffsetContents.getCurrentOffset(Minecraft.getMinecraft().thePlayer);
+        return origin - ClientSizeHandler.currentOffset;
     }
 }

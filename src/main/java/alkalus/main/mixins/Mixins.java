@@ -14,7 +14,8 @@ public enum Mixins implements IMixins {
             .addClientMixins("minecraft.NetHandlerPlayClientMixin")
             .setPhase(Phase.EARLY)),
     FIX_SHAPESHIFT_STANCE_VALIDATION(new MixinBuilder("Correct stance limit when shapeshift")
-            .addCommonMixins("minecraft.NetHandlerPlayServerMixin")
+            .addClientMixins("minecraft.C04PacketPlayerPositionMixin")
+            .addClientMixins("minecraft.C06PacketPlayerPosLookMixin")
             .setPhase(Phase.EARLY)),
     FIX_IS_ENTITY_INSIDE_OPAQUE_BLOCK(new MixinBuilder("Fix suffocation check for resized entities")
             .addCommonMixins("minecraft.EntityMixin")

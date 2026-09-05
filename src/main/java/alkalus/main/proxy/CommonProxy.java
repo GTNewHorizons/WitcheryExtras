@@ -5,6 +5,8 @@ import net.minecraftforge.common.MinecraftForge;
 import alkalus.main.core.WitcheryExtras;
 import alkalus.main.handlers.ServerSizeHandler;
 import alkalus.main.mixins.hooks.EntitySizeManager;
+import alkalus.main.network.BiomeBookRequestPacket;
+import alkalus.main.network.BiomeBookSyncPacket;
 import alkalus.main.network.EntitySizeSyncPacket;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -21,6 +23,10 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EntitySizeManager());
         WitcheryExtras.NETWORK
                 .registerMessage(EntitySizeSyncPacket.Handler.class, EntitySizeSyncPacket.class, 0, Side.CLIENT);
+        WitcheryExtras.NETWORK
+                .registerMessage(BiomeBookRequestPacket.Handler.class, BiomeBookRequestPacket.class, 1, Side.SERVER);
+        WitcheryExtras.NETWORK
+                .registerMessage(BiomeBookSyncPacket.Handler.class, BiomeBookSyncPacket.class, 2, Side.CLIENT);
     }
 
     public void postInit(FMLPostInitializationEvent event) {}

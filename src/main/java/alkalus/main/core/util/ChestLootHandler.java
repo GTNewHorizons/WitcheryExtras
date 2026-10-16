@@ -13,7 +13,6 @@ import net.minecraftforge.common.ChestGenHooks;
 
 import com.emoniph.witchery.Witchery;
 import com.emoniph.witchery.util.Config;
-import com.emoniph.witchery.worldgen.ComponentClonedStructure;
 import com.emoniph.witchery.worldgen.ComponentShack;
 import com.emoniph.witchery.worldgen.ComponentVillageApothecary;
 import com.emoniph.witchery.worldgen.ComponentVillageBookShop;
@@ -23,7 +22,6 @@ import com.emoniph.witchery.worldgen.ComponentVillageWatchTower;
 public class ChestLootHandler {
 
     public static final String SHACK = "witchery:shack";
-    public static final String CLONED_STRUCTURE = "witchery:cloned_structure";
     public static final String APOTHECARY = "witchery:apothecary";
     public static final String BOOKSHOP = "witchery:bookshop";
     public static final String KEEP = "witchery:keep";
@@ -33,7 +31,6 @@ public class ChestLootHandler {
 
     public static void register() {
         addTable(SHACK, ComponentShack.shackChestContents);
-        addTable(CLONED_STRUCTURE, ComponentClonedStructure.shackChestContents);
         addTable(APOTHECARY, ComponentVillageApothecary.villageApothecaryChestContents);
         addTable(BOOKSHOP, getBookshopContents());
         addTable(KEEP, ComponentVillageKeep.villageTowerChestContents);

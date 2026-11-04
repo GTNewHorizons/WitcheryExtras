@@ -9,7 +9,9 @@ If you have not done so, login here first. [Sign into CircleCI here!](https://ci
 Downloads can be found on the artefacts tab (builds) located within each job.  
 
 ## Witchery  
-https://sites.google.com/site/witcherymod/  
+~~https://sites.google.com/site/witcherymod/~~  
+Old Official Wiki has been deprecated for some time, full parity re-host can be found here: 
+https://legacy-wiki.msrandom.net/site/witcherymod/ 
   
 ### Terms      
 Under no circumstances does WitcheryExtras try and break this condition of using Witchery.

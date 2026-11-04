@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.emoniph.witchery.common.ExtendedPlayer;
 
 @SuppressWarnings("UnusedMixin")
-@Mixin(ExtendedPlayer.class)
+@Mixin(value = ExtendedPlayer.class, remap = false)
 public class ExtendedPlayerMixin {
 
     @Shadow

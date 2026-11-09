@@ -41,6 +41,9 @@ public enum Mixins implements IMixins {
                     "witchery.ItemLeonardsUrnMixin")
             .addClientMixins("witchery.ItemBrewMixin")
             .setPhase(Phase.LATE)),
+    WITCHERY_STRUCTURE_LOOT(new MixinBuilder("Make structure chests use ChestGenHooks")
+            .addCommonMixins("witchery.StructureChestLootMixin")
+            .setPhase(Phase.LATE)),
     WITCHERY_NEI_CONFIG(new MixinBuilder()
             .addCommonMixins("witchery.NEIWitcheryConfigMixin")
             .setApplyIf(()-> AsmConfig.enablePatchNEI)

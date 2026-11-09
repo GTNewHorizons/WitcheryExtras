@@ -14,6 +14,7 @@ import alkalus.main.api.plugin.base.BasePluginWitchery;
 import alkalus.main.core.crafting.OvenRecipes;
 import alkalus.main.core.entities.PredictionHandler;
 import alkalus.main.core.recipe.fixes.GarlicRecipes;
+import alkalus.main.core.util.ChestLootHandler;
 import alkalus.main.core.util.TooltipHandler;
 import alkalus.main.proxy.CommonProxy;
 import baubles.api.expanded.BaubleExpandedSlots;
@@ -87,6 +88,7 @@ public class WitcheryExtras {
             bwp.postInit();
         }
         PredictionHandler.adjustPredictions();
+        ChestLootHandler.register();
     }
 
     @Mod.EventHandler

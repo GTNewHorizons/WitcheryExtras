@@ -25,6 +25,9 @@ public enum Mixins implements IMixins {
     FIX_SHAPESHIFT_CAMERA(new MixinBuilder("Correct camera offset when shapeshift")
             .addClientMixins("minecraft.EntityRendererMixin")
             .setPhase(Phase.EARLY)),
+    FIX_BOLT_OWNER(new MixinBuilder("Fix bolt forgetting its owner upon owner reloading (MC-59626) to allow enchantments and HEE charms to work")
+            .addCommonMixins("witchery.EntityBoltMixin")
+            .setPhase(Phase.LATE)),
     WITCHERY_OFFSET_CAPTURE(new MixinBuilder("Skips the original view shifting logic")
             .addClientMixins("witchery.PlayerRenderMixin")
             .setPhase(Phase.LATE)),

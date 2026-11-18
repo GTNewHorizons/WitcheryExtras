@@ -21,7 +21,7 @@ import com.emoniph.witchery.entity.EntityWitchHunter;
  * reloaded
  */
 @Mixin(EntityBolt.class)
-public abstract class MixinEntityBolt extends Entity {
+public abstract class EntityBoltMixin extends Entity {
 
     @Shadow(remap = false)
     private Entity shootingEntity;
@@ -72,7 +72,7 @@ public abstract class MixinEntityBolt extends Entity {
         }
     }
 
-    private MixinEntityBolt(World worldIn) {
+    private EntityBoltMixin(World worldIn) {
         super(worldIn);
     }
 }

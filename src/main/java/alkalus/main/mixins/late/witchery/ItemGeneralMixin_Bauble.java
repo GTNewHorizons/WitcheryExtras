@@ -38,6 +38,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
 
     @Final
     @Shadow(remap = false)
+    // Internal name for the Charm of Fanciful Thinking
     public ItemGeneral.SubItem itemCharmOfDisruptedDreams;
 
     @Final
@@ -54,7 +55,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
             boolean expanded, CallbackInfo ci) {
         if (isRowanKeyType(stack)) {
             BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$rowanKeyBaubleTypes);
-        } else if (isDisruptedDreamsCharm(stack)) {
+        } else if (isCharmOfFancifulThinking(stack)) {
             BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$charmOfDisruptedDreamsBaubleTypes);
         }
     }
@@ -73,7 +74,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public String[] getBaubleTypes(ItemStack stack) {
-        if (isDisruptedDreamsCharm(stack)) {
+        if (isCharmOfFancifulThinking(stack)) {
             return witcheryExtras$charmOfDisruptedDreamsBaubleTypes;
         }
 
@@ -116,11 +117,11 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
 
     @Unique
     private boolean isBauble(ItemStack stack) {
-        return isDisruptedDreamsCharm(stack) || isRowanKeyType(stack);
+        return isCharmOfFancifulThinking(stack) || isRowanKeyType(stack);
     }
 
     @Unique
-    private boolean isDisruptedDreamsCharm(ItemStack stack) {
+    private boolean isCharmOfFancifulThinking(ItemStack stack) {
         return itemCharmOfDisruptedDreams.isMatch(stack);
     }
 

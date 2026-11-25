@@ -45,7 +45,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Inject(method = "addInformation", at = @At(value = "TAIL"))
     public void witcheryExtras$addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip,
             boolean expanded, CallbackInfo ci) {
-        if (itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack)) {
+        if (isRowanKeyType(stack)) {
             BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$rowanKeyBaubleTypes);
         }
     }
@@ -53,7 +53,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @WrapMethod(method = "onItemRightClick")
     public ItemStack witcheryExtras$onItemRightClick(ItemStack stack, World world, EntityPlayer player,
             Operation<ItemStack> original) {
-        return itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack)
+        return isRowanKeyType(stack)
                 ? BaubleItemHelper.onBaubleRightClick(stack, world, player)
                 : original.call(stack, world, player);
     }
@@ -62,7 +62,7 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public String[] getBaubleTypes(ItemStack stack) {
-        return itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack) ? witcheryExtras$rowanKeyBaubleTypes : null;
+        return isRowanKeyType(stack) ? witcheryExtras$rowanKeyBaubleTypes : null;
     }
 
     @Unique
@@ -86,12 +86,17 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public boolean canEquip(ItemStack stack, EntityLivingBase player) {
-        return itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack);
+        return isRowanKeyType(stack);
     }
 
     @Unique
     @Override
     public boolean canUnequip(ItemStack stack, EntityLivingBase player) {
         return true;
+    }
+
+    @Unique
+    private boolean isRowanKeyType(ItemStack stack) {
+        return itemDoorKey.isMatch(stack) || itemDoorKeyring.isMatch(stack);
     }
 }

@@ -30,8 +30,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
 
     @Unique
+    private static final String[] witcheryExtras$charmOfDisruptedDreamsBaubleTypes = { BaubleExpandedSlots.charmType };
+
+    @Unique
     private static final String[] witcheryExtras$rowanKeyBaubleTypes = { BaubleExpandedSlots.amuletType,
             BaubleExpandedSlots.beltType, BaubleExpandedSlots.charmType };
+
+    @Final
+    @Shadow(remap = false)
+    public ItemGeneral.SubItem itemCharmOfDisruptedDreams;
 
     @Final
     @Shadow(remap = false)
@@ -47,13 +54,17 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
             boolean expanded, CallbackInfo ci) {
         if (isRowanKeyType(stack)) {
             BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$rowanKeyBaubleTypes);
+        } else if (isDisruptedDreamsCharm(stack)) {
+            BaubleItemHelper.addSlotInformation(tooltip, witcheryExtras$charmOfDisruptedDreamsBaubleTypes);
         }
     }
 
     @WrapMethod(method = "onItemRightClick")
     public ItemStack witcheryExtras$onItemRightClick(ItemStack stack, World world, EntityPlayer player,
             Operation<ItemStack> original) {
-        return isRowanKeyType(stack)
+        return isBauble(stack)
+                // No need to call the original method because all of the subtypes
+                // of this item that can be worn as baubles have no right-click functionality.
                 ? BaubleItemHelper.onBaubleRightClick(stack, world, player)
                 : original.call(stack, world, player);
     }
@@ -62,7 +73,15 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public String[] getBaubleTypes(ItemStack stack) {
-        return isRowanKeyType(stack) ? witcheryExtras$rowanKeyBaubleTypes : null;
+        if (isDisruptedDreamsCharm(stack)) {
+            return witcheryExtras$charmOfDisruptedDreamsBaubleTypes;
+        }
+
+        if (isRowanKeyType(stack)) {
+            return witcheryExtras$rowanKeyBaubleTypes;
+        }
+
+        return null;
     }
 
     @Unique
@@ -86,13 +105,23 @@ public abstract class ItemGeneralMixin_Bauble implements IBaubleExpanded {
     @Unique
     @Override
     public boolean canEquip(ItemStack stack, EntityLivingBase player) {
-        return isRowanKeyType(stack);
+        return isBauble(stack);
     }
 
     @Unique
     @Override
     public boolean canUnequip(ItemStack stack, EntityLivingBase player) {
         return true;
+    }
+
+    @Unique
+    private boolean isBauble(ItemStack stack) {
+        return isDisruptedDreamsCharm(stack) || isRowanKeyType(stack);
+    }
+
+    @Unique
+    private boolean isDisruptedDreamsCharm(ItemStack stack) {
+        return itemCharmOfDisruptedDreams.isMatch(stack);
     }
 
     @Unique
